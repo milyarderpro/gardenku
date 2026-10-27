@@ -6,4 +6,4 @@ Contoh: `muyon/`, `creator-x/`, dan `creator-y/`. Setiap kreator menggunakan sub
 
 Kondisi cuaca, jenis kebun, tanaman, kamera, dan unsur lain dituliskan dalam analisis. Satu kreator boleh mempunyai video dengan konsep kebun berbeda-beda.
 
-Katalog lintas-kreator `INDEX.md` akan dibuat pada Tahap 5. Koleksi `muyon/` telah berisi 16 MP4 dan 16 file analisis berstatus `pending`. Frame JPG belum tersedia.
+[Katalog seluruh referensi](INDEX.md) sudah tersedia dan berisi 16 video dalam koleksi `muyon/`. Semua analisis masih berstatus `pending`: jenis kebun, cuaca, tanaman, kamera, dan frame JPG **belum dianalisis/tersedia**. Isi katalog diperbarui ketika setiap analisis selesai dan diperiksa.

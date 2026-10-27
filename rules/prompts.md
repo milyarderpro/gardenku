@@ -3,7 +3,7 @@
 **Target utama:** Google Veo / Google Flow (image-to-video maupun text-to-video sesuai permintaan).  
 **Tujuan:** Membuat prompt yang jelas, visual, realistis, dan konsisten dengan konsep pilihan pengguna serta pembelajaran dari referensi.
 
-> Ini adalah **aturan kerja**. Format penulisan baku akan tersedia di `templates/video-prompt.md` pada Tahap 3. Arsip lama `prompt/mp-v01.md` bukan acuan utama untuk tugas baru bila ketentuannya bertentangan dengan dokumen ini.
+> Ini adalah **aturan kerja**. Format penulisan baku tersedia di `templates/video-prompt.md`. Arsip lama `projects/legacy/mp-v01.md` adalah dokumen historis, bukan acuan utama untuk tugas baru bila ketentuannya bertentangan dengan dokumen ini.
 
 ## 1. Kapan membuat prompt?
 Buat prompt **hanya** jika pengguna sudah meminta prompt atau memilih ide untuk dikembangkan. Jika pengguna hanya meminta analisis atau daftar ide, selesaikan tugas itu terlebih dahulu.
