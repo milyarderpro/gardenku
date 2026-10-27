@@ -1,42 +1,48 @@
 # Gardenku
 
-Gardenku adalah pustaka referensi video kebun untuk membantu AI **menganalisis video**, **mempelajari gaya visual**, **mengembangkan ide baru**, dan **menyusun prompt video per shot**.
+**Gardenku** adalah pustaka referensi video kebun untuk AI: mengamati video asli, menyimpan analisis yang dapat ditelusuri, mengembangkan ide baru, dan membuat prompt Google Veo/Flow per shot.
 
-Dokumen ditulis dalam **bahasa Indonesia**; nama folder dan file teknis memakai **bahasa Inggris**.
+**Bahasa:** nama folder/file teknis memakai bahasa Inggris, isi dokumen dan prompt memakai bahasa Indonesia (istilah teknis kamera boleh berbahasa Inggris).
 
-## Struktur pustaka
+## Mulai dari sini
 
-| Lokasi | Fungsi |
+| Yang ingin dilakukan | Dokumen yang dibaca |
 |---|---|
-| `AGENTS.md` | Petunjuk bagi AI yang bekerja dengan repository ini |
-| `rules/` | Aturan analisis referensi, pembuatan ide, dan penulisan prompt (selesai Tahap 2) |
-| `templates/` | Format dokumen standar (selesai Tahap 3) |
-| `references/` | Referensi yang dikelompokkan menurut sumber/kreator; [katalog utama](references/INDEX.md) |
-| `references/<creator>/videos/` | Video asli dari kreator tersebut |
-| `references/<creator>/analysis/` | Hasil analisis setiap video |
-| `references/<creator>/frames/` | Gambar frame asli yang diekstrak dari video |
-| `styles/` | [Style Library](styles/README.md): rangkuman berbasis analisis yang sudah diverifikasi |
-| `projects/` | Konsep video baru, rencana shot, prompt, evaluasi, dan [arsip lama](projects/legacy/README.md) |
+| Memahami aturan kerja AI | [AGENTS.md](AGENTS.md) |
+| Mencari referensi | [references/INDEX.md](references/INDEX.md) |
+| Menganalisis video | [Aturan analisis](rules/analysis.md) + [template analisis](templates/video-analysis.md) |
+| Membuat ide atau konsep | [Aturan ide](rules/ideas.md) + [template konsep](templates/video-concept.md) |
+| Membuat prompt Veo/Flow | [Aturan prompt](rules/prompts.md) + [template prompt](templates/video-prompt.md) |
+| Mempelajari gaya visual | [styles/README.md](styles/README.md) |
+| Menyimpan produksi dan hasil uji | [projects/README.md](projects/README.md) |
 
-Contoh pasangan berkas setelah migrasi Tahap 4:
+## Struktur folder
 
-- `references/muyon/videos/muyon-01.mp4`
-- `references/muyon/analysis/muyon-01.md`
-- `references/muyon/frames/muyon-01/`
+```text
+gardenku/
+├── README.md                 # Pengantar untuk pengguna
+├── AGENTS.md                 # Navigasi dan prioritas kerja AI
+├── rules/                    # Ketentuan bagaimana pekerjaan dilakukan
+├── templates/                # Bentuk dokumen yang dihasilkan
+├── references/               # Video, analisis, dan frame menurut sumber
+│   ├── INDEX.md              # Katalog seluruh kreator
+│   └── muyon/
+│       ├── README.md
+│       ├── videos/           # muyon-01.mp4 ... muyon-16.mp4
+│       ├── analysis/         # muyon-01.md ... muyon-16.md
+│       └── frames/           # JPG asli bila sudah diekstrak
+├── styles/                   # Rangkuman gaya berbasis bukti
+└── projects/                 # Konsep, prompt, evaluasi, dan arsip
+```
 
-Nama yang sama (`muyon-01`) menghubungkan video, analisis, dan frame.
+Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backyard, rooftop, dan sebagainya). **Jenis kebun adalah metadata analisis, bukan subfolder tambahan.** ID seperti `muyon-01` menghubungkan video, analisis, dan folder frame.
 
-## Status implementasi
+## Kondisi data sekarang
 
-**Tahap 1–5 selesai pada branch kerja:** struktur folder, aturan AI, tiga template, migrasi 16 MP4 Muyon, katalog referensi, persiapan Style Library, dan pengarsipan master prompt lama. Semua berkas analisis masih **`pending`**, belum ada isi analisis video yang terverifikasi.
+- **16 video Muyon** telah tersedia di `references/muyon/videos/`.
+- **16 dokumen analisis** tersedia di `references/muyon/analysis/`, semuanya masih **`pending`** (belum dianalisis).
+- Belum ada frame JPG asli atau style profile yang didukung analisis terverifikasi.
+- [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
+- URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik; periksa izin/hak distribusi sebelum memperluas penggunaan atau membagikan video.**
 
-- Video: `references/muyon/videos/muyon-01.mp4` sampai `muyon-16.mp4`.
-- Analisis: `references/muyon/analysis/muyon-01.md` sampai `muyon-16.md`.
-- Frame JPG: **belum diekstrak**; `references/muyon/frames/` masih disiapkan.
-- Katalog: [`references/INDEX.md`](references/INDEX.md) berisi 16 referensi dan tautan file yang benar.
-- Style Library: [`styles/README.md`](styles/README.md) berisi aturan membuat profile, **belum** berisi profile terverifikasi.
-- Arsip prompt lama: `projects/legacy/mp-v01.md` (isi file tetap identik).
-
-**Tahap berikutnya:** verifikasi menyeluruh dan Pull Request untuk ditinjau (Tahap 6). **Tidak dilakukan pada Tahap 5.**
-
-> Menyimpan dokumen di GitHub tidak otomatis melatih ulang model AI. AI harus diberikan akses dan diarahkan untuk membaca dokumen yang relevan.
+**Langkah kerja berikutnya:** analisis referensi satu per satu, ekstrak frame asli bila tersedia alat yang mendukung, lalu perbarui katalog dan gaya visual berdasarkan bukti. Menyimpan file di GitHub **tidak** otomatis melatih ulang model AI; model harus diberi akses dan membaca file yang relevan.

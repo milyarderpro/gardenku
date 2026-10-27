@@ -1,19 +1,13 @@
 # Muyon — Reference Collection
 
-Koleksi video referensi dengan label sumber **Muyon**.
+Folder ini menyimpan koleksi yang saat ini diberi label sumber **Muyon**. Identitas kreator dan URL Facebook asli **belum diverifikasi**.
 
-## Susunan
+| Folder | Isi |
+|---|---|
+| [`videos/`](videos/) | 16 video MP4 asli, `muyon-01.mp4` sampai `muyon-16.mp4` |
+| [`analysis/`](analysis/) | 16 dokumen `muyon-01.md` sampai `muyon-16.md`, semuanya **`pending`** |
+| `frames/` | Disiapkan untuk JPG hasil ekstraksi video; saat ini belum ada JPG |
 
-- `videos/`: file MP4 asli.
-- `analysis/`: satu file Markdown untuk setiap video dengan nama sama.
-- `frames/`: frame JPG asli, dikelompokkan berdasarkan ID video.
+Gunakan [INDEX utama](../INDEX.md) untuk menuju file dan menemukan referensi setelah metadata dianalisis. **Jangan menyimpulkan seluruh koleksi bertema kebun terbuka atau hujan:** jenis kebun, tanaman, kamera, dan cuaca ditentukan **per video**, setelah analisis.
 
-## Status migrasi
-
-**Selesai dipindahkan pada Tahap 4.** Seluruh 16 video `muyon-01.mp4` sampai `muyon-16.mp4` tersedia di `references/muyon/videos/`. Setiap video memiliki berkas analisis berpasangan di `references/muyon/analysis/`, seluruhnya berstatus **`pending`**. Folder `frames/` belum berisi JPG hasil ekstraksi. Isi MP4 dipertahankan menggunakan blob Git lama yang sama.
-
-Data sumber asli seperti URL Facebook, hak penggunaan, dan kategori kebun per video akan dicatat bila sudah diverifikasi. Jangan menganggap semua video dari kreator ini memiliki satu jenis kebun yang sama.
-
-## Katalog
-
-Lihat [`references/INDEX.md`](../INDEX.md) untuk menemukan daftar 16 video dan berkas analisisnya. Jenis kebun, cuaca, dan gaya kamera belum diklasifikasikan karena seluruh analisis masih `pending`.
+Seluruh MP4 telah dipindahkan tanpa mengubah isi (blob Git identik dengan file sebelum migrasi). File analisis awal merupakan kerangka, **bukan** kesimpulan hasil menonton.

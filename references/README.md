@@ -1,9 +1,15 @@
-# References
+# References — Pustaka Video Asli
 
-Di sini koleksi video dikelompokkan **berdasarkan kreator atau sumber**, bukan hanya berdasarkan jenis kebun.
+Seluruh referensi dikelompokkan **berdasarkan kreator atau sumber** (`muyon/`, `creator-x/`, dan seterusnya). **Jangan membuat subfolder untuk cuaca atau jenis kebun:** keduanya adalah metadata analisis, karena satu sumber dapat memuat konsep kebun berbeda.
 
-Contoh: `muyon/`, `creator-x/`, dan `creator-y/`. Setiap kreator menggunakan subfolder `videos/`, `analysis/`, dan `frames/`.
+Lihat [`INDEX.md`](INDEX.md) untuk mencari koleksi dan status semua video.
 
-Kondisi cuaca, jenis kebun, tanaman, kamera, dan unsur lain dituliskan dalam analisis. Satu kreator boleh mempunyai video dengan konsep kebun berbeda-beda.
+## Menambahkan satu video baru
 
-[Katalog seluruh referensi](INDEX.md) sudah tersedia dan berisi 16 video dalam koleksi `muyon/`. Semua analisis masih berstatus `pending`: jenis kebun, cuaca, tanaman, kamera, dan frame JPG **belum dianalisis/tersedia**. Isi katalog diperbarui ketika setiap analisis selesai dan diperiksa.
+1. Tentukan nama folder kreator **lowercase-kebab-case** dan ID video yang tidak bentrok (contoh `creator-x-01`).
+2. Simpan video aslinya sebagai `<creator>/videos/<id>.mp4`. Jangan mengubah isi MP4 tanpa instruksi pemilik repo.
+3. Buat `<creator>/analysis/<id>.md` dengan status `pending`, menggunakan [template analisis](../templates/video-analysis.md) saat benar-benar dianalisis.
+4. Tempatkan hanya **frame JPG hasil ekstraksi asli** di `<creator>/frames/<id>/`, jika ada. Jangan menaruh storyboard AI sebagai frame referensi.
+5. Tambahkan entri pada [katalog utama](INDEX.md), cek tautan, status, dan informasi sumber video/izin penggunaan yang diketahui.
+
+**Status sekarang:** folder `muyon/` berisi 16 MP4 dan 16 kerangka analisis `pending`; frame JPG belum tersedia. Penyimpanan video di Facebook atau GitHub **tidak otomatis membuktikan hak distribusi**.
