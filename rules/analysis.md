@@ -13,7 +13,7 @@ Baca `AGENTS.md`, lalu periksa media dan analisis yang tersedia untuk referensi 
 - Analisis: `references/muyon/analysis/muyon-01.md`
 - Frame asli: `references/muyon/frames/muyon-01/`
 
-**Selama migrasi belum dilakukan**, video Muyon masih ada di `kebun01/video-ref/`. Jangan menganggap file sudah dipindahkan atau telah dianalisis.
+**Setelah migrasi Tahap 4**, video Muyon berada di `references/muyon/videos/`. Namun dokumen analisis awal berstatus `pending`; jangan menganggap isinya sudah dianalisis.
 
 ## 2. Prinsip wajib
 1. **Utamakan yang benar-benar terlihat atau terdengar.** Bila video tidak dapat dibuka, jelaskan keterbatasannya; jangan menyusun analisis lengkap seolah sudah menonton.

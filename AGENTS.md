@@ -17,10 +17,10 @@ Gunakan repository ini sebagai **pustaka referensi video kebun**: pelajari karak
 
 ## Lokasi informasi
 
-- **Aturan analisis:** `rules/analysis.md` (akan dibuat pada tahap 2).
-- **Aturan ide:** `rules/ideas.md` (akan dibuat pada tahap 2).
-- **Aturan prompt:** `rules/prompts.md` (akan dibuat pada tahap 2).
-- **Template:** `templates/` (akan diisi pada tahap 3).
+- **Aturan analisis:** `rules/analysis.md`.
+- **Aturan ide:** `rules/ideas.md`.
+- **Aturan prompt:** `rules/prompts.md`.
+- **Template:** `templates/video-analysis.md`, `templates/video-concept.md`, dan `templates/video-prompt.md`.
 - **Koleksi referensi:** `references/<creator>/`.
 - **Katalog referensi:** `references/INDEX.md` (akan dibuat pada tahap berikutnya).
 - **Gaya visual:** `styles/` (setelah tersedia analisis referensi).
@@ -40,6 +40,6 @@ Indeks harus menunjuk ke dokumen analisis yang benar. Jangan menandai analisis s
 
 ## Status saat ini
 
-Tahap 1 hanya menyiapkan struktur. **Enam belas video Muyon masih berada di** `kebun01/video-ref/`, dan master prompt lama masih di `prompt/mp-v01.md`. Migrasi media dan penulisan aturan lengkap adalah tahap terpisah.
+**Tahap 1–4 selesai di branch kerja.** Enam belas video Muyon sudah berada di `references/muyon/videos/`; 16 kerangka `references/muyon/analysis/` masih `pending`. Frame JPG belum diekstrak. Master prompt lama tetap di `prompt/mp-v01.md`. Jangan menyimpulkan video sudah dianalisis hanya dari keberadaan file kerangka.
 
 Lihat `README.md` untuk gambaran proyek dan status pekerjaan.
