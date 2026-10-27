@@ -3,7 +3,7 @@
 **Berlaku untuk:** `references/<creator>/analysis/<video-id>.md`  
 **Tujuan:** Mengubah video asli menjadi catatan visual yang akurat dan bisa dipakai ulang oleh AI untuk mengembangkan konsep video kebun.
 
-> Dokumen ini berisi **aturan kerja**, bukan hasil analisis video tertentu. Format berkas analisis baku akan berada di `templates/video-analysis.md` (Tahap 3).
+> Dokumen ini berisi **aturan kerja**, bukan hasil analisis video tertentu. Format berkas analisis baku tersedia di `templates/video-analysis.md`.
 
 ## 1. Kapan aturan ini digunakan?
 Gunakan saat pengguna meminta AI menonton, mengamati, memecah shot, atau menganalisis **video referensi kebun**. **Jangan membuat ide atau prompt video** apabila pengguna hanya meminta analisis.

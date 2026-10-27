@@ -2,7 +2,7 @@
 **Versi:** 1.0  
 **Tujuan:** Mengubah hasil pembelajaran dari pustaka referensi menjadi **ide video kebun baru** yang menarik, orisinal, dan realistis.
 
-> Gunakan dokumen ini jika pengguna meminta ide atau konsep. Format penulisan konsep standar akan berada di `templates/video-concept.md` (Tahap 3).
+> Gunakan dokumen ini jika pengguna meminta ide atau konsep. Format penulisan konsep standar tersedia di `templates/video-concept.md`.
 
 ## 1. Input dan sumber referensi
 1. Pahami permintaan pengguna: jenis kebun, luas ruang, tanaman, cuaca, waktu, hewan/manusia, gaya visual, dan jumlah ide yang diminta.
