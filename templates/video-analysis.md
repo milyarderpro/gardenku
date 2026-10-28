@@ -9,6 +9,8 @@
 | Video ID | `[creator-01]` |
 | Creator / Source | [nama kreator atau sumber] |
 | Video file | `../videos/[creator-01].mp4` (periksa path aktual) |
+| Evidence input | [video dari chat / MP4 repo / frame asli / sebagian saja; sertakan nama sumber] |
+| Repo match | [SHA blob Git + ukuran byte cocok / belum diverifikasi / berbeda] |
 | Frames folder | `../frames/[creator-01]/` (jika tersedia) |
 | Source URL | [tautan asli atau **belum diketahui**] |
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
@@ -19,6 +21,7 @@
 | Resolution / FPS | [jika terverifikasi] |
 | Aspect ratio | [9:16, 16:9, atau belum pasti] |
 | Shot count | [jumlah atau **belum diperiksa**] |
+| Audio review | [didengarkan / hanya track terdeteksi / belum diperiksa] |
 
 **Aturan status:** mulai dari `pending`; ubah ke `draft` setelah benar-benar dianalisis. `approved` memerlukan persetujuan yang jelas.
 
@@ -136,7 +139,15 @@
 - **Belum bisa diverifikasi:** [...]
 - **Asumsi yang harus diuji ulang:** [...]
 - **Sumber informasi dari pengguna:** [...]
-- **Frames pendukung:** [path + timestamp untuk setiap frame yang benar-benar tersedia]
+**Frame Manifest (hanya JPG yang benar-benar tersedia atau ditandai belum diunggah):**
+
+| Shot | Timestamp video asli | Nama/path JPG | Resolusi file unggahan | Tipe | Status verifikasi |
+|---|---|---|---|---|---|
+| Shot 01 | [00:02.1] | [`../frames/<video-id>/shot-01_2.1s.jpg` atau "belum diunggah"] | [mis. 720 × 1280 / belum tersedia] | [`original-resolution` / `preview` / belum ada] | [SHA+byte+path cocok / belum diverifikasi / belum diunggah] |
+
+> Isi satu baris untuk **setiap frame pilihan**, bukan untuk seluruh frame video. **Hapus baris contoh dan sesuaikan data**; tautkan hanya path JPG yang sudah diverifikasi. Bila memakai `-preview.jpg`, cantumkan resolusi unggahan sebenarnya. Jika ada shot penting tanpa frame, catat alasannya di bawah tabel. Peraturan lengkap ada di `rules/analysis.md`.
+
+- **Frames lokal yang belum diunggah / shot yang belum terwakili:** [...]
 - **Saran pemeriksaan lanjutan:** [...]
 
 ## 10. Quality Checklist
@@ -146,6 +157,8 @@
 - [ ] Camera movement, framing, komposisi, layout, cuaca, dan ritme tercatat.
 - [ ] Sumber air, manusia/hewan/objek, dan audio dibedakan sesuai bukti.
 - [ ] Tag dan kesimpulan didukung timestamp atau sumber yang jelas.
-- [ ] Link video/frame mengarah ke lokasi file yang benar.
-- [ ] Status benar, tidak otomatis `approved`.
+- [ ] Sumber MP4 dan cakupan pemeriksaan jelas; kecocokan video chat–repo tidak diasumsikan.
+- [ ] Frame Manifest berisi shot, timestamp, resolusi aktual, tipe dan status verifikasi; hanya JPG yang tersedia diberi tautan.
+- [ ] Jika upload diminta: SHA Git blob, ukuran, path dan keberhasilan commit diperiksa; kekurangan dicatat.
+- [ ] Status berkas analisis dan baris `references/INDEX.md` konsisten, tidak otomatis `approved`.
 - [ ] **Belum membuat ide atau prompt** jika pengguna hanya meminta analisis.

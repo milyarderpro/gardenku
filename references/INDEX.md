@@ -2,7 +2,7 @@
 
 **Katalog utama semua kreator.** Tiap video memakai **ID unik dalam folder kreator**: `videos/muyon-01.mp4` berpasangan dengan `analysis/muyon-01.md`; frame asli (jika tersedia) disimpan di `frames/muyon-01/`.
 
-**Status saat ini:** 16 video Muyon: **1 analisis `draft` (`muyon-01`) dan 15 `pending`**. Metadata visual `muyon-01` di bawah bersumber dari pemeriksaan MP4 asli dan **belum ditinjau pengguna**; baris lain hanya katalog file, bukan hasil pengamatan.
+**Status terkini:** lihat kolom **Status** di tabel berikut. Data visual pada baris `draft` berasal dari analisis AI dan **belum disetujui pengguna**; baris `pending` hanya katalog file, bukan hasil pengamatan. Jumlah status tidak disalin ke README lain.
 
 ## Muyon — 16 video
 
@@ -33,11 +33,11 @@
 
 1. Cari berdasarkan **kreator**, **jenis kebun**, **cuaca**, atau **kamera** yang sudah dicatat berdasarkan analisis.
 2. Klik ID untuk membuka analisis. **Hanya gunakan kesimpulan visual yang memiliki bukti/timestamp**, bukan deskripsi yang ditebak dari nama file.
-3. Ketika analisis selesai, perbarui baris terkait: jenis kebun, cuaca, camera movement, dan status sesuai [`rules/analysis.md`](../rules/analysis.md).
+3. Ketika analisis selesai atau direvisi, perbarui baris terkait **pada commit yang sama**: jenis kebun, cuaca, camera movement, dan status sesuai [`rules/analysis.md`](../rules/analysis.md). **Frame Manifest tetap di file analisis**, bukan diduplikasi ke tabel.
 4. Bila suatu detail sudah diperiksa tetapi tidak jelas, tulis **`belum pasti`**; jika belum diperiksa, tetap **`—`**.
 5. Ketika ada kreator baru, tambahkan bagian baru dan tabel sejenis. Jangan mengganti ID atau membuat baris ganda. Pastikan tautan `videos/` dan `analysis/` benar.
 6. Utamakan `approved` untuk menyusun [Style Library](../styles/README.md). `draft` perlu ditandai sebagai belum diverifikasi, sedangkan `pending` tidak boleh menjadi dasar kesimpulan visual.
 
-**Status analisis:** `pending` (belum dianalisis), `draft` (hasil AI belum diperiksa), `reviewed` (sudah ditinjau), `approved` (disetujui). Aturan lengkap dan pemindahan status ada di `rules/analysis.md`.
+**Status analisis:** `pending`, `draft`, `reviewed`, atau `approved`. Definisi, syarat perubahan, dan verifikasi terdapat di [aturan analisis](../rules/analysis.md). Status INDEX harus sama dengan berkas analisis terkait.
 
 **Asal-usul:** `muyon` adalah label koleksi, belum merupakan verifikasi identitas kreator. URL Facebook asli dan hak penggunaan belum diketahui. Repository bersifat **publik**; verifikasi hak sebelum mendistribusikan video.

@@ -37,12 +37,12 @@ gardenku/
 
 Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backyard, rooftop, dan sebagainya). **Jenis kebun adalah metadata analisis, bukan subfolder tambahan.** ID seperti `muyon-01` menghubungkan video, analisis, dan folder frame.
 
-## Kondisi data sekarang
+## Referensi dan status terkini
 
-- **16 video Muyon** telah tersedia di `references/muyon/videos/`.
-- **16 dokumen analisis** tersedia di `references/muyon/analysis/`: **1 `draft` (`muyon-01`) dan 15 `pending`**. Status `draft` belum disetujui.
-- [Tiga JPG preview hasil ekstraksi Muyon 01](references/muyon/frames/muyon-01/) tersedia untuk Shot 01, 03, dan 04 (dikompresi untuk uji upload); frame resolusi penuh serta style profile terverifikasi belum tersedia.
+- **Daftar video, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
+- **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis memuat Frame Manifest sesuai [template](templates/video-analysis.md).
+- **Frame JPG asli hasil ekstraksi:** tersimpan di `references/<creator>/frames/<video-id>/` jika sudah diunggah. Status `draft` bukan berarti sudah disetujui.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik; periksa izin/hak distribusi sebelum memperluas penggunaan atau membagikan video.**
 
-**Langkah kerja berikutnya:** analisis referensi satu per satu, ekstrak frame asli bila tersedia alat yang mendukung, lalu perbarui katalog dan gaya visual berdasarkan bukti. Menyimpan file di GitHub **tidak** otomatis melatih ulang model AI; model harus diberi akses dan membaca file yang relevan.
+**Alur rutin:** terima video yang bisa diperiksa (termasuk unggahan chat), analisis berdasarkan bukti, pilih frame JPG penting, verifikasi unggahan GitHub, lalu sinkronkan katalog. Prosedur lengkap ada di [rules/analysis.md](rules/analysis.md). Menyimpan file di GitHub **tidak** otomatis melatih ulang model AI; model harus diberi akses dan membaca file yang relevan.

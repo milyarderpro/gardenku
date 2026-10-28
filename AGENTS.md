@@ -20,17 +20,17 @@ Dokumen ini adalah **peta kerja untuk AI**, bukan pengganti aturan rinci, templa
 
 ## Pilih alur sesuai permintaan
 
-1. **Analisis referensi saja:** baca [`rules/analysis.md`](rules/analysis.md) dan [`templates/video-analysis.md`](templates/video-analysis.md); buka video/frame asli jika tersedia; tulis fakta dengan timestamp dan ketidakpastian. **Jangan membuat ide atau prompt** sebelum diminta.
+1. **Analisis referensi saja:** baca [`rules/analysis.md`](rules/analysis.md) dan [`templates/video-analysis.md`](templates/video-analysis.md). Jika konektor GitHub tidak dapat membaca MP4, gunakan unggahan video pengguna di chat; periksa kecocokan sumber jika memungkinkan. Tulis fakta dengan timestamp dan ketidakpastian, pilih frame JPG representatif sesuai aturan. **Jangan membuat ide atau prompt** sebelum diminta.
 2. **Buat ide/konsep:** baca [`rules/ideas.md`](rules/ideas.md) dan [`references/INDEX.md`](references/INDEX.md). Gunakan analisis yang sudah terverifikasi; `styles/` hanya pendukung. Gunakan [template konsep](templates/video-concept.md) **jika konsep lengkap diminta atau sebuah ide sudah dipilih**, bukan untuk setiap ide singkat.
 3. **Buat prompt Google Veo/Flow:** baca [`rules/prompts.md`](rules/prompts.md), konsep terpilih, dan [`templates/video-prompt.md`](templates/video-prompt.md). Default **satu continuous shot ~8 detik per prompt**, biasanya 2–3 shot berbeda jika membuat beberapa klip; ketentuan eksplisit pengguna tetap diutamakan.
 4. **Tambah referensi baru:** tentukan `<creator>` dengan nama folder Inggris lowercase-kebab-case; simpan `videos/<id>.mp4`, buat `analysis/<id>.md` berstatus `pending`, lalu perbarui `references/INDEX.md`. Folder `frames/<id>/` digunakan untuk frame JPG **yang benar-benar diekstrak**, bukan storyboard AI. Catat URL sumber/izin bila diketahui, jangan mengasumsikan izin dari fakta bahwa video ada di Facebook.
-5. **Selesai menganalisis:** ubah status `pending` menjadi `draft` hanya setelah melihat sumber; status `reviewed` dan `approved` mengikuti [aturan analisis](rules/analysis.md). Perbarui kolom jenis kebun, cuaca, kamera, dan status pada katalog hanya berdasarkan temuan yang terbukti. Profile `styles/` baru dibuat bila mempunyai bukti.
+5. **Selesai menganalisis dan menyimpan:** ubah `pending` menjadi `draft` setelah benar-benar memeriksa sumber; status `reviewed`/`approved` mengikuti [aturan analisis](rules/analysis.md). Jika diminta menyimpan ke GitHub, verifikasi file JPG biner, catat Frame Manifest pada analisis, dan sinkronkan baris [INDEX](references/INDEX.md). **Jangan menyalin jumlah status/frame ke README lain.** Profile `styles/` baru dibuat bila mempunyai bukti yang layak.
 
 ## Prinsip singkat
 
 - Bahasa isi: Indonesia; istilah teknis kamera Inggris diperbolehkan.
 - Bedakan **[OBSERVASI]**, **[KONTEKS PENGGUNA]**, **[INTERPRETASI]**, dan **[BELUM PASTI]**.
-- Video `pending` bukan referensi visual terverifikasi. Hindari menyebut sudah menonton jika hanya membaca nama file.
+- Video `pending` bukan referensi visual terverifikasi. Hindari menyebut sudah menonton jika hanya membaca nama file atau metadata GitHub. Keberadaan audio track tidak berarti suara sudah diperiksa.
 - **Shot** = rekaman kontinu; **scene** = kesatuan adegan; **clip** = file atau potongan video.
 - Manusia, hewan, hujan, kolam, dan sprinkler bukan elemen wajib.
 - Hindari instruksi kamera maju terus jika kamera pan/tracking/detail lebih sesuai dengan subjek.
