@@ -1,5 +1,5 @@
 # Aturan Analisis Video Referensi — Gardenku
-**Versi:** 1.1 — Opsi B+ (Evidence-Driven + Per-Shot Contact Sheet)  
+**Versi:** 1.2 — Opsi B+ Two-Phase Workflow (Analyze & Review → Save & Verify)  
 **Berlaku untuk:** `references/<creator>/analysis/<video-id>.md`  
 **Tujuan:** Mengubah video asli menjadi catatan visual yang akurat dan bisa dipakai ulang oleh AI untuk mengembangkan konsep video kebun.
 
@@ -92,12 +92,36 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 
 ## 5. Workflow Opsi B+ — 7 tahap resmi
 
-**Metode:** Evidence-Driven Video Analysis + Adaptive Per-Shot Contact Sheet + Dual Verification Gate. MP4 **dikirim melalui chat dan disimpan pengguna di PC**, tidak diunggah ke GitHub. Repository hanya menyimpan analisis, JPG asli hasil ekstraksi (gabungan contact sheet), katalog, dan pengetahuan turunan. Bagian ini sumber **aturan baku**; AGENTS adalah navigasi dan template adalah format keluaran.
+**Metode:** Evidence-Driven Video Analysis + Adaptive Per-Shot Contact Sheet + Dual Verification Gate. **Ketujuh tahap tetap berlaku tetapi dibagi menjadi dua fase dengan batas izin yang wajib.** MP4 **dikirim melalui chat dan disimpan pengguna di PC**, tidak diunggah ke GitHub. Repository hanya menyimpan hasil analisis dan contact sheet yang sudah mendapat izin simpan. Bagian ini sumber **aturan baku**; AGENTS adalah navigasi dan template adalah format keluaran.
+
+### Batas izin dua fase (WAJIB)
+
+**FASE 1 — Analyze & Review (Tahap 1–5)**
+
+- **Pemicu:** pengguna mengunggah MP4 dan meminta analisis. AI **boleh membaca** aturan, template, INDEX dan analisis lama dari repo, serta memproses MP4 dan membuat file JPG/contact sheet **sementara secara lokal** untuk diperlihatkan kepada pengguna.
+- Kerjakan kelima tahap sampai **Evidence Cross-Check**. Tampilkan hasil analisis lengkap, Shot Map, contact sheet untuk tiap shot, catatan ketidakpastian, dan versi yang siap direview. **Berhenti setelah Tahap 5** untuk menunggu umpan balik atau perintah simpan.
+- **Larangan selama Fase 1:** tidak boleh menambah/mengubah/menghapus file GitHub, membuat `pending` baru, mengunggah JPG, memperbarui INDEX, membuat branch/commit/PR, atau mengubah status repo, **meskipun video baru belum ada dalam katalog**. Seluruh data Fase 1 adalah **draft lokal/percakapan**, bukan data yang sudah tersimpan pada repository.
+- Pengguna boleh meminta revisi berulang. Perbarui **analisis dan contact sheet versi terbaru** sesuai bukti tanpa mengubah repository. **Review pengguna tidak otomatis membuat status `approved`**. Laporkan kesiapan Fase 1 secara deskriptif, **bukan** dengan Gate A/B/overall PASS.
+- Pada Fase 1 **Gate A/B/overall berstatus `belum dijalankan`**. Evidence Cross-Check adalah pemeriksaan awal, **bukan** Dual Verification Gate resmi. Jika MP4 gagal dibaca, laporkan bahwa analisis belum bisa dilanjutkan; jangan mengarang dan jangan menulis status Gate resmi `FAIL` sebelum Fase 2.
+- Usahakan tetap berada pada **chat yang sama** sampai disimpan: MP4, contact sheet, dan berkas sementara mungkin tidak bertahan pada sesi lain. Tidak boleh mengklaim artefak lokal tetap tersedia bila belum diperiksa.
+
+**HUMAN REVIEW — STOP**: **`save now`** (tidak peka huruf besar/kecil) adalah perintah eksplisit untuk melewati batas menuju Fase 2 bagi **analisis video terakhir yang sedang direview dalam percakapan**. Kata umum seperti `lanjut`, `oke`, atau sekadar revisi **bukan** izin menyimpan. Jika ada beberapa video atau versi yang benar-benar ambigu, pastikan target sebelum menulis. Jika pengguna secara jelas meminta penyimpanan dengan kata lain, hormati instruksi eksplisitnya; jangan menafsirkan persetujuan umum sebagai izin.
+
+**FASE 2 — Save & Verify (Tahap 6–7)**
+
+- **Pemicu:** pengguna mengetik **`save now`** (atau memberi instruksi penyimpanan yang sama jelasnya) **setelah Fase 1 untuk target yang diketahui**. Gunakan **hasil revisi terakhir** dan contact sheet yang sesuai; jangan menggunakan draft lama.
+- Sebelum upload, pastikan JPG lokal, video/bukti yang diperlukan, versi analisis final, dan ID target masih dapat diakses. Jika sumber/berkas sementara hilang atau tidak utuh, **hentikan penulisan yang terkait**, jelaskan kekurangan dan minta pengguna mengunggah ulang file yang diperlukan; jangan menciptakan frame/metadata sebagai pengganti.
+- Simpan `analysis/<id>.md`, contact sheet JPG, dan `references/INDEX.md` **dalam perubahan terkoordinasi**. Referensi baru dibuat dan dimasukkan INDEX **hanya pada fase ini**; status laporan AI menjadi `draft` kecuali telah ada persetujuan eksplisit berbeda.
+- **Default keamanan GitHub:** commit pada **branch kerja khusus**, buka Pull Request ke `main` untuk tinjauan; **jangan merge otomatis**. Jika pengguna menentukan branch tujuan secara eksplisit, ikuti instruksinya. Bedakan dengan jelas **tersimpan di branch/PR** dan **sudah masuk `main`**.
+- Setelah penyimpanan, jalankan **Gate A — Visual Accuracy** dan **Gate B — Repository Integrity** sebagai pemeriksaan resmi. Laporkan keduanya dan **overall PASS/PARTIAL/FAIL**, sertakan bukti commit, tautan, serta keterbatasan. Bila penyimpanan parsial/gagal, jangan mengklaim sudah selesai semua.
+- Perintah **`save now` bukan persetujuan `approved` ataupun izin untuk merge PR**. Sesudah Fase 2 selesai, perubahan lain perlu instruksi baru.
+
+**Ringkasan:** `MP4 dari chat → Tahap 1–5 → review/revisi → STOP → "save now" → Tahap 6–7 → laporan Gate`.
 
 ### Tahap 1 — Video Input & Validation
 
 - Tetapkan ID unik; periksa [INDEX](../references/INDEX.md) dan analisis sebelumnya. Gunakan MP4 yang **benar-benar dapat dibaca dari chat**; nama file atau metadata saja tidak membuktikan isi video.
-- Catat nama input, tanggal pemeriksaan, durasi, FPS, resolusi, rasio aspek, ukuran byte/hash **jika tersedia**, serta cakupan yang berhasil diperiksa. **Jika berbeda, bedakan durasi kontainer, trek video, dan trek audio; jangan menghitung durasi gambar hanya dari durasi kontainer × FPS.** Jika **pengguna meminta analisis sekarang** tetapi input tidak dapat diakses, jangan mengarang temuan atau membuat frame palsu; Gate A menjadi `FAIL` untuk upaya itu. **Dokumen administratif `pending` yang belum diproses tidak diberi Gate FAIL: gunakan `belum dijalankan`** sampai analisis benar-benar dicoba.
+- Catat nama input, tanggal pemeriksaan, durasi, FPS, resolusi, rasio aspek, ukuran byte/hash **jika tersedia**, serta cakupan yang berhasil diperiksa. **Jika berbeda, bedakan durasi kontainer, trek video, dan trek audio; jangan menghitung durasi gambar hanya dari durasi kontainer × FPS.** Jika **pengguna meminta analisis sekarang** tetapi input tidak dapat diakses, jangan mengarang temuan atau membuat frame palsu; nyatakan **Fase 1 belum dapat diselesaikan**. Gate A/B/overall **belum dijalankan** hingga perintah simpan dan proses verifikasi resmi. Dokumen administratif `pending` juga tetap memiliki Gate `belum dijalankan`.
 - Audio: bedakan keberadaan audio track dari suara yang benar-benar didengar. Bila tidak diaudit, tulis `audio belum diperiksa`; tidak boleh mengarang audio.
 - Jangan meminta upload ulang bila video sudah dapat diakses pada sesi ini.
 
@@ -122,15 +146,17 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 - Urutkan panel menurut **timestamp sumber** dari kiri ke kanan, lalu atas ke bawah. Setiap panel diberi label waktu **di luar area gambar**, contoh `00:02.10`; layout enam panel vertikal lazimnya **3 kolom × 2 baris**.
 - **Panel berasal dari MP4 asli**, tanpa generasi AI, upscale, perubahan objek, atau pemotongan yang menyesatkan. Pertahankan rasio aspek dan warna sumber. Target lebar tiap panel **480–720 px jika resolusi sumber/transfer memungkinkan** dan label mudah dibaca. **Target kualitas ini harus diuji, bukan diasumsikan berhasil**.
 - **Perbedaan ukuran sumber vs contact sheet:** panel dapat diperkecil **secara wajar** dari resolusi frame asli untuk memenuhi target keterbacaan 480–720 px; ini tetap **`shot-XX.jpg` (contact sheet standar)** jika panel jelas, proporsi/isi tidak berubah, dan ukuran sumber, ukuran panel, serta kanvas dicatat. Contoh: sumber 720×1280 menjadi panel 540×960 **tidak otomatis** disebut preview. **Wajib gunakan `shot-XX-preview.jpg`** jika resolusi diturunkan **di bawah target keterbacaan** karena batas transfer/alat, atau hasil tidak cukup detail untuk analisis; catat penurunan mutu secara terbuka. Jangan meng-upscale atau mengklaim panel beresolusi sumber jika sudah diperkecil. Frame individual boleh dipakai **sementara secara lokal** tetapi tidak diunggah sebagai standar utama.
-- **Contact Sheet Manifest** (satu baris per shot/JPG): Shot ID, link JPG jika **benar-benar sudah ada**, **semua timestamp panel**, jumlah panel, dimensi kanvas dan panel, tipe contact-sheet/preview, SHA Git blob, byte, dan hasil verifikasi render/path. Jika belum diunggah, tulis `belum diunggah` **tanpa link palsu**.
+- **Contact Sheet Manifest** (satu baris per shot/JPG): Shot ID, nama file lokal/tautan JPG **hanya jika sudah terunggah**, semua timestamp panel, jumlah panel, dimensi kanvas dan panel, tipe contact-sheet/preview, dan status penyimpanan. **Fase 1:** gunakan `lokal — belum diunggah`, jangan mengisi SHA GitHub, commit, atau URL yang belum ada; SHA lokal/byte yang benar-benar terukur boleh dicatat dengan label `lokal`. **Fase 2:** setelah verifikasi unggah, lengkapi SHA Git blob, byte, link repo dan hasil pemeriksaan render/path.
 
 ### Tahap 5 — Evidence Cross-Check
 
 - Cocokkan Shot Map, MP4 bergerak, laporan per shot, timestamp panel, contact sheet, dan tag. Pastikan semua shot penting tercakup, **perubahan awal–akhir benar**, serta klaim objek/gerakan sesuai bukti.
 - Ambiguitas kamera diuji ulang melalui MP4, objek kecil melalui frame sumber resolusi lebih baik. Catat confidence; jangan menyimpulkan spesies/gerimis atau suara bila bukti tidak cukup.
-- Bedakan `tidak terlihat`, `belum diperiksa`, dan `belum pasti`. Jangan menambah gambar AI atau tautan belum ada.
+- Bedakan `tidak terlihat`, `belum diperiksa`, dan `belum pasti`. Jangan menambah gambar AI atau tautan belum ada. **Setelah tahap ini, sajikan hasil untuk review, tunggu revisi atau `save now`, dan jangan menjalankan Tahap 6–7 tanpa izin.**
 
 ### Tahap 6 — Repository Save
+
+**HANYA SETELAH `save now`/izin simpan eksplisit untuk target yang jelas. Tidak dijalankan saat Fase 1.**
 
 - Siapkan `analysis/<id>.md` dengan **10 bagian template + Shot Map + Contact Sheet Manifest**, JPG terverifikasi, dan baris INDEX yang konsisten. Usahakan **satu commit terkoordinasi** pada branch yang disetujui pengguna.
 - Kirim JPG sebagai **Git blob biner** (contoh Base64 dengan `encoding: base64`, bukan teks Base64 bernama JPG). **Sebelum commit:** uji format JPEG/dimensi/render lokal, cocokkan SHA Git blob sumber dengan SHA hasil upload, byte dan path. Jika berbeda, **jangan commit**.
@@ -138,6 +164,8 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 - Jangan hapus **legacy preview** sebelum contact sheet pengganti **terunggah dan diverifikasi**. Bila transfer gambar berkualitas tinggi gagal, simpan JPG lokal untuk pengguna dan tandai `belum diunggah` di manifest; **jangan mengklaim Gate B PASS**.
 
 ### Tahap 7 — Dual Verification Gate
+
+**HANYA PADA FASE 2 setelah Repository Save; selama Fase 1 status Gate A/B/overall adalah `belum dijalankan`.**
 
 **Gate A — Visual Accuracy** wajib memeriksa:
 1. Sumber MP4 dan cakupan video benar-benar diperiksa, Pass 1 + Pass 2 serta Shot Map lengkap/ketidaklengkapannya dinyatakan.
@@ -150,13 +178,18 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 2. SHA Git blob, byte, path, jumlah file/panel, tautan, commit dan branch HEAD benar. Bila render melalui UI GitHub tak dapat diperiksa, batasan dilaporkan; **SHA Git blob dan byte yang cocok dengan JPEG yang sudah berhasil dibuka lokal dapat membuktikan identitas biner, tetapi bukan bukti bahwa UI GitHub telah ditinjau langsung**.
 3. Analisis **10 bagian**, Shot Map/Manifest dan INDEX konsisten; tidak ada MP4 di tree. Penggantian legacy JPG tidak menyisakan link rusak.
 
-**Hasil:** `belum dijalankan` untuk referensi `pending` yang belum dikerjakan; `PASS` bila kriteria wajib sesuai cakupan terpenuhi; `PARTIAL` bila pemeriksaan/unggah/coverage masih kurang tetapi data yang ada valid; `FAIL` bila analisis diminta tetapi sumber tak bisa diperiksa, isi direka, gambar salah/rusak atau keberhasilan penyimpanan tidak dapat dipastikan. **Overall**: `PASS` hanya jika A dan B PASS; `FAIL` jika salah satu FAIL; sisanya `PARTIAL`. Simpan A/B/overall, alasan, dan bukti commit.
+**Hasil:** `belum dijalankan` selama **Fase 1** (termasuk referensi `pending` maupun draft lokal yang sedang direview); `PASS` bila kriteria wajib Fase 2 dalam cakupan terpenuhi; `PARTIAL` bila pemeriksaan/unggah/coverage masih kurang tetapi data yang ada valid; `FAIL` bila verifikasi resmi Fase 2 menemukan sumber tak dapat diperiksa, isi direka, gambar salah/rusak atau keberhasilan penyimpanan tidak dapat dipastikan. **Overall**: `PASS` hanya jika A dan B PASS; `FAIL` jika salah satu FAIL; sisanya `PARTIAL`. Simpan A/B/overall, alasan, dan bukti commit.
 
 **Status terpisah dari Gate:** `pending` (belum dianalisis), `draft` (AI telah menganalisis tetapi belum disetujui), `reviewed` (ditinjau pengguna), `approved` (persetujuan **eksplisit** pengguna). Gate PASS **tidak membuat status otomatis approved**. INDEX adalah sumber status ringkas; README tidak menyalin angka status.
 
 **Hak dan riwayat:** Repo publik tidak otomatis mengizinkan distribusi frame. MP4 yang dihapus dari tree Git masih mungkin ada dalam riwayat commit lama; pembersihan sejarah Git bukan bagian analisis rutin.
 
 ## 6. Pemeriksaan sebelum selesai
+
+**Periksa dua kali sesuai fase:** akhir Fase 1 hanya **kesiapan review lokal** dan larangan menulis ke repo; setelah `save now` periksa Gate A+B serta hasil commit. Jangan menandai Gate telah PASS sebelum penyimpanan diverifikasi.
+
+- [ ] Fase 1 berhenti sesudah tahap 5, menampilkan hasil dan contact sheet lokal tanpa perubahan apa pun di GitHub.
+- [ ] Fase 2 dimulai hanya setelah `save now`/instruksi simpan jelas untuk target dan versi analisis terbaru.
 - [ ] Benar-benar mengakses video/frame asli, atau dengan jelas melaporkan jika tidak bisa.
 - [ ] Setiap shot memiliki perkiraan timestamp, subjek, kamera, komposisi, dan layout.
 - [ ] Cuaca, sumber air, manusia, hewan, suara dicatat sesuai bukti atau sebagai belum pasti/tidak terlihat.
