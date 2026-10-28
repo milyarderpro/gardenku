@@ -12,15 +12,15 @@
 | Video storage | PC pengguna; **tidak disimpan di repo** |
 | Evidence input | [MP4 chat yang diperiksa / hanya frame / sebagian / belum diperiksa] |
 | Input metadata | [ukuran byte dan hash file bila tersedia; **bukan** hash yang ditebak] |
-| Contact sheet folder | `../frames/[creator-01]/` — JPG multi-panel per shot, jika sudah diunggah |
+| Contact sheet path | `../frames/[creator-01]/` — lokasi JPG yang dikelola pengguna lewat repo lokal; tidak mengharuskan JPG sudah ada di remote |
 | Source URL | [tautan asli atau **belum diketahui**] |
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
 | Analysis date | [YYYY-MM-DD atau belum dianalisis] |
 | Workflow phase | `Fase 1 — review lokal` / `Fase 2 — save & verify` |
 | Save authorization | `belum ada` / `save now` (atau instruksi eksplisit lain) + waktu/versi jika diketahui |
-| Repository save | `belum disimpan` / `branch + commit + PR` (isi hanya bila benar) |
+| Repository save | `belum disimpan` / `main` + commit SHA yang benar-benar diverifikasi; **hanya Markdown + INDEX** |
 | Analysis status | `pending` (belum dianalisis) / `draft` / `reviewed` / `approved`; **Fase 1 bukan perubahan status repo** |
-| Gate A / Gate B / Overall | **Fase 1: `belum dijalankan`**; setelah Fase 2: `PASS` / `PARTIAL` / `FAIL` masing-masing dan alasan pada bagian 10 |
+| Gate A / Gate B / Overall | Fase 1: `belum dijalankan`; Fase 2: `PASS` / `PARTIAL` / `FAIL` sesuai akurasi analisis (A) dan integritas dokumen/INDEX di `main` (B); **JPG remote di luar cakupan** |
 | Evidence checked | [video asli / frame asli / informasi pengguna / **belum diperiksa**] |
 | Duration | [durasi kontainer, dan durasi trek video jika berbeda; hanya nilai terverifikasi] |
 | Resolution / FPS | [jika terverifikasi] |
@@ -152,27 +152,28 @@
 - **Belum bisa diverifikasi:** [...]
 - **Asumsi yang harus diuji ulang:** [...]
 - **Sumber informasi dari pengguna:** [...]
-**Contact Sheet Manifest — satu baris untuk satu JPG berisi beberapa panel frame satu shot:**
+**Contact Sheet Manifest — satu baris untuk satu JPG contact sheet yang diberikan pada Fase 1:**
 
-| Shot | JPG di GitHub / belum diunggah | Semua timestamp panel (urut) | Panel | Dimensi kanvas / panel | Kategori | SHA Git blob / byte | Verifikasi render/path |
-|---|---|---|---:|---|---|---|---|
-| 01 | [Fase 1: `lokal — belum diunggah`; Fase 2: tautkan JPG yang sudah terverifikasi di GitHub] | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960; sumber 720×1280] | [`contact-sheet` / `contact-sheet-preview`] | [Fase 1: `belum ada SHA GitHub` / hash lokal bila benar-benar dihitung; Fase 2: SHA Git blob + byte] | [lokal / upload terverifikasi / belum terverifikasi] |
+| Shot | Nama/path JPG yang dikelola pengguna | Semua timestamp panel (urut) | Panel | Dimensi kanvas / panel | Kategori | Ukuran byte lokal (jika diketahui) |
+|---|---|---|---:|---|---|---|
+| 01 | `../frames/[creator-01]/shot-01.jpg` | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960; sumber 720×1280] | [`contact-sheet` / `contact-sheet-preview`] | [byte sebenarnya, jika tersedia] |
 
-**Petunjuk:** satu JPG `shot-XX.jpg` dapat berisi **3–6 panel kronologis sebagai target adaptif**, bukan satu JPG per timestamp. **Pengecilan wajar panel untuk komposisi contact sheet tidak otomatis menjadikannya preview.** Gunakan `shot-XX-preview.jpg` bila hasil harus diturunkan di bawah target keterbacaan karena batas transfer/alat; catat dimensi sumber, dimensi panel/kanvas, dan batas kualitas nyata. Hapus baris contoh saat digunakan. **Fase 1:** tampilkan nama JPG lokal dan waktu panel tetapi **jangan membuat tautan repo, SHA GitHub, commit, atau klaim upload**; hash lokal yang terukur harus diberi label `lokal`. **Fase 2:** setelah `save now`, lengkapi link/SHA/byte hanya berdasarkan upload yang sudah diverifikasi. Tautkan hanya JPG yang benar-benar ada di tree repo. Path frame relatif terhadap berkas analisis final di `references/<creator>/analysis/`. Lihat [aturan utama](../rules/analysis.md).
+**Petunjuk:** nama/path JPG ditulis sebagai **lokasi arsip baku**, bukan hyperlink aktif atau bukti file telah tersimpan di GitHub. **Tidak perlu menulis status JPG `pending`**, SHA GitHub, atau hasil verifikasi render remote. AI sudah memberikan JPG individual pada Fase 1; pengguna menyimpannya sendiri melalui repo lokal kapan saja. Satu JPG berisi beberapa panel timestamp (target 3–6 adaptif); tidak perlu ZIP, upload oleh AI, atau menunggu JPG berada di GitHub. Pengecilan panel yang wajar dan terbaca tetap `shot-XX.jpg`, bukan otomatis preview; pakai `shot-XX-preview.jpg` jika kualitas turun di bawah target keterbacaan seperti dijelaskan dalam [aturan utama](../rules/analysis.md). Hapus contoh ini saat digunakan.
 
 **Evidence Cross-Check (akhir Fase 1, sebelum STOP/review):**
 - **Shot yang belum terwakili / perubahan visual yang terlewat:** [...]
 - **Gerakan kamera/transisi/objek ambigu yang diperiksa ulang pada MP4:** [...]
-- **Kualitas dan keberadaan contact sheet:** [**Fase 1: lokal dan terbaca / belum tersedia**; Fase 2: terunggah dan diverifikasi / PARTIAL]
+- **Kualitas contact sheet:** [hasil JPG Fase 1 yang benar-benar dibuat/diperiksa; **keberadaan file JPG di GitHub bukan bagian dari verifikasi Fase 2**]
 - **Audio belum diperiksa bila relevan:** [...]
 
 ## 10. Quality Checklist
 
-**Gate A — Visual Accuracy:** [**Fase 1: belum dijalankan**; Fase 2: PASS/PARTIAL/FAIL + cakupan MP4, Shot Map, kamera, bukti, audio]  
-**Gate B — Repository Integrity:** [**Fase 1: belum dijalankan**; Fase 2 setelah simpan: PASS/PARTIAL/FAIL + JPG multi-panel, SHA/byte/path, kualitas render, link, INDEX, commit/HEAD, tanpa MP4]  
-**Overall Gate:** [**Fase 1: belum dijalankan**; Fase 2: PASS jika keduanya PASS, FAIL jika salah satu FAIL, selain itu PARTIAL]  
-**Bukti verifikasi:** [SHA, byte, dimensi, commit, branch HEAD, jumlah panel/shot, tautan]  
-**Kendala terbuka:** [tidak ada / daftar kekurangan] 
+**Gate A — Visual Accuracy:** [Fase 1: belum dijalankan; Fase 2: PASS/PARTIAL/FAIL berdasarkan cakupan MP4, Shot Map, gerak kamera, bukti timestamp dan audio]  
+**Gate B — Document & Repository Integrity:** [Fase 1: belum dijalankan; Fase 2: PASS/PARTIAL/FAIL berdasarkan analisis 10 bagian + INDEX + status + commit/HEAD `main` + tautan Markdown aktif; **bukan** upload/keberadaan JPG]  
+**Overall Gate:** [Fase 1: belum dijalankan; Fase 2: PASS bila A dan B PASS, FAIL bila salah satu FAIL, selain itu PARTIAL; **JPG belum di-push tidak menurunkan nilai**]  
+**Bukti verifikasi:** [tanggal/cakupan visual, commit SHA, HEAD `main`, link dokumen/INDEX, path standar JPG]  
+**Kendala terbuka:** [kendala analisis atau dokumen; **bukan jadwal upload JPG pengguna**]
+
 
 - [ ] Referensi benar-benar diperiksa; bila tidak, keterbatasan tertulis jelas.
 - [ ] Jumlah dan waktu shot tidak dikarang.
@@ -182,8 +183,8 @@
 - [ ] Nama MP4 unggahan chat, sumber, serta cakupan pemeriksaan jelas; tidak mengklaim MP4 tersedia di repo.
 - [ ] Shot Map Pass 1 dan pemeriksaan MP4 Pass 2 mencakup shot yang relevan.
 - [ ] Satu JPG contact sheet per shot sebagai target, dengan timestamp tiap panel berurutan dan dapat dibaca.
-- [ ] Contact Sheet Manifest satu baris per shot/JPG, semua timestamp panel, dimensi, SHA/byte, dan status; hanya JPG repo yang tersedia diberi tautan.
-- [ ] **Fase 1:** Evidence Cross-Check selesai; hasil dan contact sheet lokal siap review dan AI **berhenti** tanpa perubahan GitHub.
-- [ ] **Fase 2:** ada instruksi eksplisit `save now`, target jelas, dan **versi terbaru** digunakan; Gate A/B/overall resmi hanya setelah penyimpanan.
-- [ ] Status berkas analisis dan baris `references/INDEX.md` konsisten **setelah Fase 2**, tidak otomatis `approved` atau merge.
+- [ ] Contact Sheet Manifest satu baris per shot/JPG, nama/path standar, semua timestamp panel, dimensi dan byte lokal jika ada; **tanpa syarat JPG telah di-push**.
+- [ ] **Fase 1:** Evidence Cross-Check selesai; **JPG contact sheet individual diberikan ke pengguna** untuk dikelola lewat repo lokal, hasil siap review; AI berhenti tanpa mengubah GitHub.
+- [ ] **Fase 2:** setelah `save now`, simpan **Markdown analisis + INDEX langsung di `main`** dalam commit terkoordinasi; verifikasi HEAD/isi dan Gate A/B. **Tidak perlu mengirim atau memeriksa JPG GitHub**.
+- [ ] Status analisis dan INDEX konsisten setelah Fase 2; `save now` bukan otomatis `approved`.
 - [ ] **Belum membuat ide atau prompt** jika pengguna hanya meminta analisis.
