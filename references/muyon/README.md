@@ -6,7 +6,7 @@ Folder ini menyimpan koleksi yang saat ini diberi label sumber **Muyon**. Identi
 |---|---|
 | [`videos/`](videos/) | 16 video MP4 asli, `muyon-01.mp4` sampai `muyon-16.mp4` |
 | [`analysis/`](analysis/) | 16 dokumen `muyon-01.md` sampai `muyon-16.md`: **1 `draft` (`muyon-01`) dan 15 `pending`** |
-| [`frames/`](frames/) | Terdapat [1 JPG preview dari MP4 asli pada detik 00:15.9](frames/muyon-01/shot-03_15.9s-preview.jpg), diperkecil menjadi 160 × 284 px untuk uji unggah; frame lainnya belum diunggah |
+| [`frames/`](frames/) | [3 JPG preview dari Muyon 01](frames/muyon-01/), ditangkap pada 00:02.1, 00:15.9, dan 00:19.5. Semua asli dari MP4 tetapi diperkecil; Shot 02 dan frame resolusi penuh belum diunggah |
 
 Gunakan [INDEX utama](../INDEX.md) untuk menuju file dan menemukan referensi setelah metadata dianalisis. **Jangan menyimpulkan seluruh koleksi bertema kebun terbuka atau hujan:** jenis kebun, tanaman, kamera, dan cuaca ditentukan **per video**, setelah analisis.
 

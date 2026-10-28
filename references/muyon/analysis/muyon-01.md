@@ -22,7 +22,7 @@
 | Aspect ratio | **9:16 (vertikal)** |
 | Video / audio codec | H.264; audio AAC stereo 44,1 kHz (isi suara belum diaudit secara auditori) |
 | Main shot count | **4** (batas waktu perkiraan karena perpindahan singkat/dissolve) |
-| Frames folder | [`../frames/muyon-01/`](../frames/muyon-01/) — satu [JPG preview Shot 03 pada 00:15.9](../frames/muyon-01/shot-03_15.9s-preview.jpg) (160 × 284 px, dikompresi dari frame MP4 asli) |
+| Frames folder | [`../frames/muyon-01/`](../frames/muyon-01/) — **3 frame JPG asli yang diperkecil**, lihat daftar pada bagian 9 |
 
 ## 2. Overall Description
 
@@ -219,7 +219,11 @@
 - **Jenis tanaman:** Buah merah muda berkelompok (Shot 02), buah hijau bulat (Shot 04), dan beberapa sayuran daun belum dapat diidentifikasi hingga spesies dengan keyakinan tinggi.
 - **Ikan:** Bentuk jingga di kolam terlihat, tetapi identifikasinya belum pasti.
 - **Cuaca:** Kondisi selepas hujan dan gerimis adalah konteks pengguna; video menunjukkan jalur basah dan penyiraman, tetapi tidak cukup untuk memisahkan intensitas gerimis dari sprinkler.
-- **Frames pendukung:** Cuplikan frame asli diekstrak secara lokal pada ±00:02.1, 00:07.7, 00:10.6, 00:13.2, 00:15.9, 00:19.5. **[Preview Shot 03 pada 00:15.9](../frames/muyon-01/shot-03_15.9s-preview.jpg)** telah disimpan sebagai JPG berukuran **160 × 284 piksel**, yaitu versi kecil dan terkompresi dari frame MP4 asli untuk menguji unggah biner GitHub. Frame lainnya masih lokal dan belum ditautkan.
+- **Frames pendukung:** Terdapat **3 JPG preview yang diekstrak dari MP4 asli**, bukan gambar buatan AI:
+  - **Shot 01, 00:02.1** — [Pohon durian dan bedengan tomat](../frames/muyon-01/shot-01_2.1s-preview.jpg), **128 × 228 px**.
+  - **Shot 03, 00:15.9** — [Sprinkler, pepaya, dan kolam](../frames/muyon-01/shot-03_15.9s-preview.jpg), **160 × 284 px**.
+  - **Shot 04, 00:19.5** — [Bedengan sayuran dan pohon buah](../frames/muyon-01/shot-04_19.5s-preview.jpg), **128 × 228 px**.
+  Ketiganya merupakan **preview berukuran kecil dan terkompresi**, bukan frame resolusi asli 720 × 1280. Cuplikan lainnya, termasuk Shot 02, masih belum diunggah; jangan membuat tautan fiktif.
 - **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diperlukan unggah frame resolusi penuh sebagai pengganti/tambahan preview berukuran kecil.
 
 ## 10. Quality Checklist
@@ -229,9 +233,9 @@
 - [x] Kamera, framing, komposisi, tanaman, layout, cuaca, objek manusia/hewan, dan air diperiksa.
 - [x] Observasi, konteks pengguna, interpretasi, dan ketidakpastian dibedakan.
 - [x] Tag dan karakter visual didukung bukti/timestamp.
-- [x] Tautan MP4, aturan, template, dan satu frame JPG preview merujuk file yang benar-benar ada; frame lain yang belum diunggah tidak ditautkan.
+- [x] Tautan MP4, aturan, template, dan tiga frame JPG preview merujuk file yang benar-benar ada; frame yang belum diunggah tidak ditautkan.
 - [x] Status benar sebagai `draft`, bukan `reviewed` atau `approved`.
 - [x] Tidak membuat ide atau prompt video tanpa diminta.
 - [ ] Audio diperiksa secara auditori.
 - [ ] Hasil analisis ditinjau dan disetujui pengguna.
-- [x] Satu frame MP4 asli diunggah ke repository sebagai JPG **preview terkompresi** (160 × 284 px). Frame resolusi penuh dan frame lainnya belum diunggah.
+- [x] Tiga frame MP4 asli diunggah ke repository sebagai JPG **preview terkompresi** (128 × 228 dan 160 × 284 px). Frame resolusi penuh serta Shot 02 belum diunggah.

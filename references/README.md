@@ -12,4 +12,4 @@ Lihat [`INDEX.md`](INDEX.md) untuk mencari koleksi dan status semua video.
 4. Tempatkan hanya **frame JPG hasil ekstraksi asli** di `<creator>/frames/<id>/`, jika ada. Jangan menaruh storyboard AI sebagai frame referensi.
 5. Tambahkan entri pada [katalog utama](INDEX.md), cek tautan, status, dan informasi sumber video/izin penggunaan yang diketahui.
 
-**Status sekarang:** folder `muyon/` berisi 16 MP4; **`muyon-01` berstatus `draft`, 15 referensi lainnya `pending`**. [Satu JPG preview Muyon 01](muyon/frames/muyon-01/shot-03_15.9s-preview.jpg) sudah tersedia; frame lainnya belum diunggah. Penyimpanan video di Facebook atau GitHub **tidak otomatis membuktikan hak distribusi**.
+**Status sekarang:** folder `muyon/` berisi 16 MP4; **`muyon-01` berstatus `draft`, 15 referensi lainnya `pending`**. [Tiga JPG preview Muyon 01](muyon/frames/muyon-01/) sudah tersedia untuk Shot 01, 03, dan 04; frame resolusi penuh dan Shot 02 belum diunggah. Penyimpanan video di Facebook atau GitHub **tidak otomatis membuktikan hak distribusi**.
