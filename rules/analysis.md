@@ -1,5 +1,5 @@
 # Aturan Analisis Video Referensi — Gardenku
-**Versi:** 1.1  
+**Versi:** 1.1 — Opsi B+ (Evidence-Driven + Per-Shot Contact Sheet)  
 **Berlaku untuk:** `references/<creator>/analysis/<video-id>.md`  
 **Tujuan:** Mengubah video asli menjadi catatan visual yang akurat dan bisa dipakai ulang oleh AI untuk mengembangkan konsep video kebun.
 
@@ -30,6 +30,8 @@ Katalog mencatat **referensi**, bukan lokasi MP4 yang dapat diunduh. Saat membuk
 
 ## 3. Urutan analisis
 
+**Two-Pass Video Inspection wajib:** (1) *Pass 1 / Video Structure Mapping* telusuri seluruh timeline, sampling awal sekitar 0,5–1 detik lalu lebih rapat dekat cut/dissolve, buat Shot Map; (2) *Pass 2 / Deep Shot Analysis* periksa tiap shot dan gerak video asli dari awal hingga akhir. Interval sampling bukan pengganti melihat video bergerak. Waktu yang belum presisi wajib ditandai `perkiraan`.
+
 ### A. Identitas dan gambaran keseluruhan
 Catat identitas sumber/kreator, nama video, lokasi file, durasi, resolusi, aspek rasio, dan FPS **jika dapat diverifikasi**. Catat tautan sumber asli dan izin penggunaan bila tersedia; bila tidak, tulis "belum diketahui".
 
@@ -53,7 +55,7 @@ Untuk **setiap shot**, catat:
 - Cuaca, kualitas cahaya, warna dan kondisi permukaan.
 - Jenis transisi menuju shot berikut jika terlihat.
 
-**Perbedaan gerak kamera:** pan = kamera berputar kiri/kanan; tilt = berputar atas/bawah; tracking = kamera berpindah posisi menyamping; push-in = posisi kamera mendekati objek; zoom = pembesaran optik/digital. Jangan menyebut semua gerak sebagai "kamera maju".
+**Perbedaan gerak kamera:** pan = kamera berputar kiri/kanan; tilt = berputar atas/bawah; tracking = kamera berpindah posisi menyamping; push-in = posisi kamera mendekati objek; zoom = pembesaran optik/digital. Jangan menyebut semua gerak sebagai "kamera maju". **Verifikasi gerak dari MP4**, bukan dari JPG saja. Jika pan, tracking atau zoom sulit dibedakan, tulis `[INTERPRETASI]` dan tingkat keyakinannya. Catat perkembangan visual **awal → tengah → akhir** tiap shot.
 
 ### C. Detail lingkungan, cuaca, dan air
 Periksa bila relevan:
@@ -88,51 +90,71 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 
 
 
-## 5. Workflow Chat → Analisis → JPG → Repository
+## 5. Workflow Opsi B+ — 7 tahap resmi
 
-### A. Terima dan periksa MP4 dari chat
+**Metode:** Evidence-Driven Video Analysis + Adaptive Per-Shot Contact Sheet + Dual Verification Gate. MP4 **dikirim melalui chat dan disimpan pengguna di PC**, tidak diunggah ke GitHub. Repository hanya menyimpan analisis, JPG asli hasil ekstraksi (gabungan contact sheet), katalog, dan pengetahuan turunan. Bagian ini sumber **aturan baku**; AGENTS adalah navigasi dan template adalah format keluaran.
 
-1. Tentukan ID referensi unik dan cek [INDEX](../references/INDEX.md) serta file analisis lama. MP4 asli **disimpan di PC pengguna**, bukan di repo. Unggahan chat dapat dipakai sebagai bukti hanya jika kontennya benar-benar bisa diperiksa.
-2. Jika file belum tersedia atau tidak bisa dibaca, **jangan mengarang isi video**. Jelaskan batas akses, pertahankan status `pending` untuk referensi baru, dan jangan membuat frame palsu. Tidak perlu meminta video lagi bila sudah tersedia dan dapat diakses dalam sesi itu.
-3. Catat nama input MP4 dan, bila terverifikasi, durasi, FPS, resolusi, ukuran byte atau checksum file. **Jangan mewajibkan pencocokan SHA dengan GitHub**, sebab MP4 memang tidak lagi ada di repo. Catat URL asli dan izin publikasi hanya jika diketahui.
-4. Periksa video shot demi shot. Timestamp dan batas transisi yang belum presisi harus ditandai sebagai **perkiraan**. Jika hanya sebagian video terlihat, sebut bagian yang belum diperiksa. Metadata/codec/track audio **bukan bukti bahwa suara telah didengarkan**; tulis `audio belum diperiksa` bila perlu.
-5. Siapkan file analisis memakai [template](../templates/video-analysis.md) dengan pemisahan `[OBSERVASI]`, `[KONTEKS PENGGUNA]`, `[INTERPRETASI]`, dan `[BELUM PASTI]`. Jangan membuat ide atau prompt jika hanya diminta analisis.
+### Tahap 1 — Video Input & Validation
 
-### B. Pilih dan ekstrak frame JPG
+- Tetapkan ID unik; periksa [INDEX](../references/INDEX.md) dan analisis sebelumnya. Gunakan MP4 yang **benar-benar dapat dibaca dari chat**; nama file atau metadata saja tidak membuktikan isi video.
+- Catat nama input, tanggal pemeriksaan, durasi, FPS, resolusi, rasio aspek, ukuran byte/hash **jika tersedia**, serta cakupan yang berhasil diperiksa. Jika input tidak bisa diakses, jangan mengarang temuan atau membuat frame palsu; Gate A menjadi `FAIL`.
+- Audio: bedakan keberadaan audio track dari suara yang benar-benar didengar. Bila tidak diaudit, tulis `audio belum diperiksa`; tidak boleh mengarang audio.
+- Jangan meminta upload ulang bila video sudah dapat diakses pada sesi ini.
 
-- **Default 2–3 JPG representatif per video**, biasanya dari shot yang berbeda; **bukan 2–3 JPG untuk setiap shot**. Jika video hanya memuat satu shot, satu frame boleh cukup; lebih dari tiga diperbolehkan bila perlu membuktikan beberapa momen atau pengguna meminta. Catat jika shot penting belum terwakili.
-- Frame **harus diekstrak dari MP4 asli yang diperiksa**, bukan gambar AI, storyboard, atau hasil pencarian internet. Pilih momen yang jelas dan tidak sedang blur/transisi.
-- Prioritaskan **resolusi asli dan rasio aspek yang sama**; tanpa upscale atau mempercantik gambar sehingga berubah dari bukti. Jika terpaksa mengecilkan untuk transfer, gunakan akhiran `-preview.jpg` dan tulis resolusi sesungguhnya; jangan menyebut preview sebagai frame resolusi penuh.
-- Nama: `frames/<id>/shot-01_2.1s.jpg` atau `shot-01_2.1s-preview.jpg`; nomor shot dan timestamp merujuk **video sumber**. Hindari JPG duplikat yang tidak menambah informasi.
-- **Frame Manifest** harus memuat shot, timestamp, path JPG, resolusi hasil unggahan, tipe (`original-resolution` / `preview`), dan hasil verifikasi. JPG yang belum diunggah dicatat sebagai `belum diunggah` **tanpa tautan palsu**.
+### Tahap 2 — Video Structure Mapping (Pass 1)
 
-### C. Simpan dokumen dan JPG di GitHub
+- Telusuri **seluruh timeline** dengan sampling awal sekitar **0,5–1 detik** atau adaptif; deteksi jumlah shot kontinu, cut/dissolve, objek atau tempat yang berubah, dan bagian hitam.
+- Periksa **lebih rapat** dekat batas transisi, bukan menebak batas presisi dari interval sampling. Susun **Shot Map** (ID, start–end, durasi, transisi, ketepatan waktu, cakupan), lalu periksa kembali pada Pass 2.
+- Jika bagian video belum dapat diperiksa, sebutkan rentangnya; jangan menyatakan seluruh video telah ditinjau.
 
-1. Siapkan hasil analisis terlebih dahulu. Upload frame JPG yang dipilih dengan fitur GitHub binary blob/Base64 bila tersedia. Input `encoding: base64` mengirim **isi JPEG biner**, bukan teks Base64 yang salah diberi nama `.jpg`.
-2. Cocokkan **SHA Git blob** hasil upload dengan SHA Git blob dari file lokal yang benar (hash Git blob, bukan SHA-256 biasa). Cek ukuran byte JPEG, path/nama file, dan tipe file/kemampuan membuka JPEG secara lokal. **Jika tidak cocok, jangan masukkan blob itu ke commit.**
-3. Bangun tree/commit yang memuat file `analysis/<id>.md`, JPG yang lolos verifikasi, dan baris `references/INDEX.md` yang diperbarui, **sebisa mungkin dalam satu commit terkoordinasi**. Tidak boleh menautkan JPG yang belum tersedia. Jangan mengunggah MP4 ke repo.
-4. Push ke branch yang disetujui pengguna. Verifikasi ulang branch HEAD, jumlah berkas, SHA/byte/path JPG, tautan relatif, status INDEX vs analisis, serta kelengkapan 10 bagian template. Jika dapat mengakses tampilan gambar GitHub, cek gambar ter-render; bila konektor hanya mendukung metadata biner, nyatakan keterbatasan itu.
-5. Jika sebagian upload JPG gagal, jangan mencatat seolah seluruh gambar berhasil. Simpan hanya JPG yang terbukti valid; tandai yang belum tersimpan di manifest, dan laporkan apa yang perlu diperbaiki. **Jangan mengubah status menjadi `approved` dengan sendirinya.**
+### Tahap 3 — Deep Shot Analysis (Pass 2)
 
-### D. Verification Gate dan arti status
+- Periksa gerakan **MP4 asli** per shot: hero subject, tanaman/buah, susunan foreground/middle/background, kerapatan, bedengan/jalur/trellis/kolam, cuaca/cahaya, sumber air, hewan/manusia, aktivitas, transisi dan audio bila diperiksa.
+- Jelaskan perkembangan **awal → tengah → akhir**, termasuk objek yang muncul/hilang dan perubahan komposisi. Bedakan pan, tilt, tracking, push-in, zoom dan gerakan objek; jika ambigu beri label `[INTERPRETASI]` atau `[BELUM PASTI]` plus tingkat keyakinan.
+- Setiap klaim penting memiliki shot/timestamp dan dipisahkan menjadi `[OBSERVASI]`, `[KONTEKS PENGGUNA]`, `[INTERPRETASI]`, `[BELUM PASTI]`. Jangan menyamakan sprinkler/selang dengan hujan.
 
-**Gate dijalankan terakhir**, setelah push ke GitHub. Catat hasilnya dalam bagian Quality Checklist dan ringkas pada laporan pengguna.
+### Tahap 4 — Adaptive Per-Shot Contact Sheet
 
-| Hasil Gate | Syarat |
-|---|---|
-| **PASS** | Video benar-benar diperiksa; analisis 10 bagian dan shot/timestamp berbasis bukti; target frame yang dipilih tersedia atau pengecualian jumlah dijelaskan; JPG lolos pemeriksaan biner dan path; tautan & INDEX konsisten; commit/HEAD terverifikasi; keterbatasan audio/cuaca dicatat; **tidak ada MP4 di repo** |
-| **PARTIAL** | Analisis valid tetapi ada frame pilihan gagal diunggah, pemeriksaan biner/link/commit belum lengkap, atau ada aspek penting yang harus dikoreksi; kekurangannya disebut spesifik |
-| **FAIL** | Isi sumber tidak dapat diperiksa, data dikarang, file salah/rusak, atau tidak dapat memastikan hasil tersimpan. Jangan mengklaim proses telah berhasil |
+**Aturan utama: satu shot = satu JPG contact sheet `shot-XX.jpg`**, di `references/<creator>/frames/<video-id>/`. Setiap JPG berisi beberapa **panel frame sumber** berurutan, bukan JPG individual untuk setiap detik.
 
-**Status analisis berbeda dari hasil Gate:**
-- `pending`: video belum diperiksa secara memadai.
-- `draft`: AI telah memeriksa bukti dan menulis analisis; **belum disetujui pengguna**. Status ini masih mungkin memiliki Gate `PARTIAL` jika upload JPG belum lengkap.
-- `reviewed`: ditinjau pengguna, tetapi mungkin masih perlu koreksi.
-- `approved`: **disetujui jelas oleh pengguna** untuk menjadi rujukan gaya dan ide; AI tidak boleh menaikkan sendiri.
+- **Target 3–6 panel per shot**, adaptif: shot pendek/statis boleh 2–3; shot panjang/kompleks bisa 6–10+ bila memang perlu. Jumlah **bukan kuota kaku**; satu shot satu JPG adalah format utama, dengan pengecualian `shot-XX-part-01.jpg` dll. hanya jika satu lembar terlalu padat untuk dibaca dan alasannya dicatat.
+- Seleksi dari **awal, perkembangan, akhir**, serta perubahan kamera/objek/komposisi yang benar-benar informatif. Hindari hampir-duplikat, blur, dan frame di tengah dissolve (kecuali untuk bukti transisi).
+- Urutkan panel menurut **timestamp sumber** dari kiri ke kanan, lalu atas ke bawah. Setiap panel diberi label waktu **di luar area gambar**, contoh `00:02.10`; layout enam panel vertikal lazimnya **3 kolom × 2 baris**.
+- **Panel berasal dari MP4 asli**, tanpa generasi AI, upscale, perubahan objek, atau pemotongan yang menyesatkan. Pertahankan rasio aspek dan warna sumber. Target lebar tiap panel **480–720 px jika resolusi sumber/transfer memungkinkan** dan label mudah dibaca. **Target kualitas ini harus diuji, bukan diasumsikan berhasil**.
+- Jika terpaksa resolusi lebih kecil, nama wajib `shot-XX-preview.jpg`; cantumkan dimensi nyata dan dampaknya, jangan diam-diam menyebutnya kualitas penuh. Frame individual boleh dipakai **sementara secara lokal** untuk pemeriksaan, tetapi tidak diunggah sebagai standar utama.
+- **Contact Sheet Manifest** (satu baris per shot/JPG): Shot ID, link JPG jika **benar-benar sudah ada**, **semua timestamp panel**, jumlah panel, dimensi kanvas dan panel, tipe contact-sheet/preview, SHA Git blob, byte, dan hasil verifikasi render/path. Jika belum diunggah, tulis `belum diunggah` **tanpa link palsu**.
 
-**Lokasi informasi utama:** `analysis/<id>.md` memuat bukti, sumber MP4 chat, timestamp, Frame Manifest, dan hasil Gate; [INDEX](../references/INDEX.md) memuat metadata dan **status terbaru per ID**. README adalah petunjuk tetap—**jangan duplikasi jumlah video, status, atau frame**. Prosedur ini berlaku juga ketika sebagian tahap gagal: laporkan hasil sebenarnya tanpa memaksakan PASS.
+### Tahap 5 — Evidence Cross-Check
 
-**Izin dan jejak historis:** repo publik bukan izin redistribusi JPG. **Menghapus MP4 dari tree/branch tidak menghapus objeknya dari commit Git lama.** Pengubahan riwayat Git untuk menghapus objek lama memerlukan proyek tersendiri dan tidak menjadi bagian analisis rutin.
+- Cocokkan Shot Map, MP4 bergerak, laporan per shot, timestamp panel, contact sheet, dan tag. Pastikan semua shot penting tercakup, **perubahan awal–akhir benar**, serta klaim objek/gerakan sesuai bukti.
+- Ambiguitas kamera diuji ulang melalui MP4, objek kecil melalui frame sumber resolusi lebih baik. Catat confidence; jangan menyimpulkan spesies/gerimis atau suara bila bukti tidak cukup.
+- Bedakan `tidak terlihat`, `belum diperiksa`, dan `belum pasti`. Jangan menambah gambar AI atau tautan belum ada.
+
+### Tahap 6 — Repository Save
+
+- Siapkan `analysis/<id>.md` dengan **10 bagian template + Shot Map + Contact Sheet Manifest**, JPG terverifikasi, dan baris INDEX yang konsisten. Usahakan **satu commit terkoordinasi** pada branch yang disetujui pengguna.
+- Kirim JPG sebagai **Git blob biner** (contoh Base64 dengan `encoding: base64`, bukan teks Base64 bernama JPG). **Sebelum commit:** uji format JPEG/dimensi/render lokal, cocokkan SHA Git blob sumber dengan SHA hasil upload, byte dan path. Jika berbeda, **jangan commit**.
+- **Sesudah push:** periksa HEAD, tree, link Markdown, resolusi, jumlah gambar/panel, status INDEX, dan bahwa **tidak ada MP4 dalam tree repo**. Jika render jarak jauh tidak dapat diperiksa, nyatakan batasannya.
+- Jangan hapus **legacy preview** sebelum contact sheet pengganti **terunggah dan diverifikasi**. Bila transfer gambar berkualitas tinggi gagal, simpan JPG lokal untuk pengguna dan tandai `belum diunggah` di manifest; **jangan mengklaim Gate B PASS**.
+
+### Tahap 7 — Dual Verification Gate
+
+**Gate A — Visual Accuracy** wajib memeriksa:
+1. Sumber MP4 dan cakupan video benar-benar diperiksa, Pass 1 + Pass 2 serta Shot Map lengkap/ketidaklengkapannya dinyatakan.
+2. Shot penting terwakili dan panel memperlihatkan perubahan signifikan, berurutan dengan timestamp yang benar.
+3. Setiap klaim, kamera, buah/tanaman, cuaca/air, dan aktivitas memiliki bukti shot/timestamp serta confidence saat tidak pasti.
+4. Audio dinyatakan sesuai cakupan (tidak otomatis gagal bila audio di luar permintaan analisis visual, tetapi tidak mengarang suara).
+
+**Gate B — Repository Integrity** wajib memeriksa:
+1. Contact sheet JPG **valid dan terbaca** dengan panel/timestamp sesuai Manifest, rasio/dimensi memadai; file dari MP4 asli, bukan gambar AI.
+2. SHA Git blob, byte, path, jumlah file/panel, tautan, commit dan branch HEAD benar. Bila render pada GitHub tak dapat diperiksa, batasan dilaporkan.
+3. Analisis **10 bagian**, Shot Map/Manifest dan INDEX konsisten; tidak ada MP4 di tree. Penggantian legacy JPG tidak menyisakan link rusak.
+
+**Hasil:** `PASS` bila kriteria wajib sesuai cakupan terpenuhi; `PARTIAL` bila pemeriksaan/unggah/coverage masih kurang tetapi data yang ada valid; `FAIL` bila sumber tak bisa diperiksa, isi direka, gambar salah/rusak atau keberhasilan penyimpanan tidak dapat dipastikan. **Overall**: `PASS` hanya jika A dan B PASS; `FAIL` jika salah satu FAIL; sisanya `PARTIAL`. Simpan A/B/overall, alasan, dan bukti commit.
+
+**Status terpisah dari Gate:** `pending` (belum dianalisis), `draft` (AI telah menganalisis tetapi belum disetujui), `reviewed` (ditinjau pengguna), `approved` (persetujuan **eksplisit** pengguna). Gate PASS **tidak membuat status otomatis approved**. INDEX adalah sumber status ringkas; README tidak menyalin angka status.
+
+**Hak dan riwayat:** Repo publik tidak otomatis mengizinkan distribusi frame. MP4 yang dihapus dari tree Git masih mungkin ada dalam riwayat commit lama; pembersihan sejarah Git bukan bagian analisis rutin.
 
 ## 6. Pemeriksaan sebelum selesai
 - [ ] Benar-benar mengakses video/frame asli, atau dengan jelas melaporkan jika tidak bisa.
@@ -140,10 +162,12 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 - [ ] Cuaca, sumber air, manusia, hewan, suara dicatat sesuai bukti atau sebagai belum pasti/tidak terlihat.
 - [ ] Ada ciri visual dan pelajaran yang bisa digunakan ulang.
 - [ ] Sumber MP4 unggahan chat dan cakupan pemeriksaan dicatat; **tidak ada kewajiban MP4 di GitHub**.
-- [ ] Frame Manifest hanya menautkan JPG yang ada, dengan timestamp, resolusi sebenarnya, tipe preview/original dan bukti verifikasi.
-- [ ] SHA Git blob/byte/path JPG, tautan, commit, dan branch HEAD diverifikasi; kekurangan dinyatakan.
-- [ ] Status analisis dan `references/INDEX.md` sama; README tidak memuat status paralel.
-- [ ] Hasil **Verification Gate: PASS / PARTIAL / FAIL** dicatat dan dijelaskan; video MP4 tidak ikut tersimpan di repo.
+- [ ] Shot Map (Pass 1) dan Deep Shot Analysis (Pass 2) mencakup video atau gap dicatat.
+- [ ] Satu contact sheet JPG per shot berisi panel kronologis yang informatif dan label timestamp terbaca.
+- [ ] Manifest memuat semua timestamp panel, dimensi, SHA Git blob, byte, path dan status upload nyata.
+- [ ] Evidence Cross-Check memeriksa gerak kamera, objek, sumber air, dan perubahan visual terhadap MP4.
+- [ ] Gate A Visual Accuracy dan Gate B Repository Integrity masing-masing dinyatakan PASS / PARTIAL / FAIL dan overall konsisten.
+- [ ] Tidak ada MP4 di repo; INDEX/status/link cocok dan tidak ada klaim JPG yang belum diunggah.
 - [ ] Tidak membuat ide maupun prompt sebelum diminta.
 
 **Prioritas utama: analisis yang jujur, terstruktur, dan bisa dilacak kembali ke referensi aslinya.**

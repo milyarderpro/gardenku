@@ -29,7 +29,7 @@ gardenku/
 │   └── muyon/
 │       ├── README.md
 │       ├── analysis/         # hasil per video (Markdown + Frame Manifest)
-│       └── frames/           # JPG ekstraksi asli, termasuk preview kecil
+│       └── frames/           # satu JPG contact sheet multi-panel untuk setiap shot
 ├── styles/                   # Rangkuman gaya berbasis bukti
 └── projects/                 # Konsep, prompt, evaluasi, dan arsip
 ```
@@ -44,4 +44,4 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.
 
-**Alur rutin:** pengguna mengunggah MP4 lewat chat → AI menganalisis sumber → mengekstrak 2–3 JPG pilihan → menyimpan Markdown dan JPG serta menyinkronkan katalog → menjalankan **Verification Gate**. **MP4 asli tetap di PC pengguna, tidak disimpan di GitHub.** Saat perlu mengoreksi gerakan/transisi di sesi lain, pengguna dapat mengirim ulang MP4 karena JPG tidak menggantikan video. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.
+**Alur Opsi B+ (7 tahap):** video dari chat + validasi → Shot Map / Pass 1 → Deep Shot Analysis / Pass 2 → **contact sheet JPG per shot** (target 3–6 panel kronologis adaptif) → Evidence Cross-Check → simpan Markdown/JPG/INDEX → **Visual Accuracy Gate + Repository Integrity Gate**. **MP4 asli tetap di PC pengguna, tidak disimpan di GitHub.** Saat perlu mengoreksi gerakan/transisi di sesi lain, pengguna dapat mengirim ulang MP4 karena JPG tidak menggantikan video. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.

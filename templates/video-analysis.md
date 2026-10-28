@@ -12,12 +12,12 @@
 | Video storage | PC pengguna; **tidak disimpan di repo** |
 | Evidence input | [MP4 chat yang diperiksa / hanya frame / sebagian / belum diperiksa] |
 | Input metadata | [ukuran byte dan hash file bila tersedia; **bukan** hash yang ditebak] |
-| Frames folder | `../frames/[creator-01]/` (jika tersedia) |
+| Contact sheet folder | `../frames/[creator-01]/` — JPG multi-panel per shot, jika sudah diunggah |
 | Source URL | [tautan asli atau **belum diketahui**] |
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
 | Analysis date | [YYYY-MM-DD atau belum dianalisis] |
 | Analysis status | `pending` / `draft` / `reviewed` / `approved` |
-| Verification Gate | `PASS` / `PARTIAL` / `FAIL` / belum dijalankan; catat alasannya dalam bagian 10 |
+| Gate A / Gate B / Overall | `PASS` / `PARTIAL` / `FAIL` masing-masing; sertakan alasan dalam bagian 10 |
 | Evidence checked | [video asli / frame asli / informasi pengguna / **belum diperiksa**] |
 | Duration | [detik, jika terverifikasi] |
 | Resolution / FPS | [jika terverifikasi] |
@@ -40,6 +40,14 @@
 - **Distinctive character:** [maksimal tiga ciri khas]
 
 ## 3. Shot Breakdown
+
+**Shot Map (Pass 1, pemeriksaan ulang batas via Pass 2):**
+
+| Shot | Mulai–akhir | Durasi | Transisi | Ketepatan dan bukti waktu | Cakupan |
+|---|---|---|---|---|---|
+| Shot 01 | [00:00.00–00:05.60] | [5,6s] | [awal/dissolve] | [pasti/perkiraan, alasan] | [diperiksa/belum] |
+
+**Deep Shot Analysis (Pass 2):** setiap shot mencatat observasi MP4 bergerak, perubahan **awal → tengah → akhir**, dan jika gerak kamera ambigu tulis tingkat keyakinan/alternatif.
 
 > **Salin bagian Shot 01 ini untuk tiap shot yang benar-benar terlihat.** Timestamp merujuk pada **video referensi asli**, bukan durasi target generate 8 detik. Pisahkan shot berdasarkan cut; perubahan objek dalam satu gerakan kamera belum tentu cut.
 
@@ -141,22 +149,27 @@
 - **Belum bisa diverifikasi:** [...]
 - **Asumsi yang harus diuji ulang:** [...]
 - **Sumber informasi dari pengguna:** [...]
-**Frame Manifest (hanya JPG yang benar-benar tersedia atau ditandai belum diunggah):**
+**Contact Sheet Manifest — satu baris untuk satu JPG berisi beberapa panel frame satu shot:**
 
-| Shot | Timestamp video asli | Nama/path JPG | Resolusi file unggahan | Tipe | Status verifikasi |
-|---|---|---|---|---|---|
-| Shot 01 | [00:02.1] | [path JPG di repo atau "belum diunggah"] | [720 × 1280 / belum tersedia] | [`original-resolution` / `preview` / belum ada] | [SHA Git blob dan byte cocok / belum diunggah] |
+| Shot | JPG di GitHub / belum diunggah | Semua timestamp panel (urut) | Panel | Dimensi kanvas / panel | Kategori | SHA Git blob / byte | Verifikasi render/path |
+|---|---|---|---:|---|---|---|---|
+| 01 | [tautan hanya jika sudah ada di GitHub; jika belum, tulis `belum diunggah`] | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960] | [`contact-sheet` / `preview`] | [SHA / byte / belum] | [valid / tidak dapat diverifikasi] |
 
-> Isi satu baris untuk **setiap frame pilihan**, bukan seluruh frame video. **Hapus contoh**; buat tautan Markdown hanya setelah path JPG di GitHub ada. Catat SHA Git blob/ukuran byte jika sudah diverifikasi, atau alasan pemeriksaan belum lengkap. Bila memakai `-preview.jpg`, cantumkan resolusi hasil upload sebenarnya. Jika ada shot penting tanpa frame, jelaskan alasannya. Baca [rules/analysis.md](../rules/analysis.md) untuk ketentuan upload dan Verification Gate. Path JPG dalam contoh tabel adalah relatif terhadap **berkas analisis final** di `references/<creator>/analysis/`, bukan terhadap template ini.
+**Petunjuk:** satu JPG `shot-XX.jpg` dapat berisi **3–6 panel kronologis sebagai target adaptif**, bukan satu JPG per timestamp. Bila JPG gabungan diperkecil untuk transfer gunakan `shot-XX-preview.jpg`; catat resolusi aktual dan batas kualitasnya. Hapus baris contoh saat digunakan. Tautkan hanya JPG yang sudah **benar-benar tersimpan** di tree repo. Path frame relatif terhadap berkas analisis final di `references/<creator>/analysis/`. Lihat [aturan utama](../rules/analysis.md).
 
-- **Frames lokal yang belum diunggah / shot yang belum terwakili:** [...]
-- **Saran pemeriksaan lanjutan:** [...]
+**Evidence Cross-Check:**
+- **Shot yang belum terwakili / perubahan visual yang terlewat:** [...]
+- **Gerakan kamera/transisi/objek ambigu yang diperiksa ulang pada MP4:** [...]
+- **Kualitas dan keberadaan contact sheet:** [terunggah dan terbaca / lokal saja / belum tersedia]
+- **Audio belum diperiksa bila relevan:** [...]
 
 ## 10. Quality Checklist
 
-**Verification Gate:** [PASS / PARTIAL / FAIL / belum dijalankan]  
-**Bukti verifikasi repo:** [commit/branch HEAD, jumlah JPG, SHA/byte/path, hasil pemeriksaan tautan; atau alasan yang belum selesai]  
-**Kendala terbuka:** [tidak ada / daftar kegagalan spesifik]
+**Gate A — Visual Accuracy:** [PASS/PARTIAL/FAIL + cakupan MP4, Shot Map, klaim kamera, bukti, audio]  
+**Gate B — Repository Integrity:** [PASS/PARTIAL/FAIL + JPG multi-panel, SHA/byte/path, kualitas render, link, INDEX, commit/HEAD, tanpa MP4]  
+**Overall Gate:** [PASS jika keduanya PASS; FAIL jika salah satu FAIL; selain itu PARTIAL]  
+**Bukti verifikasi:** [SHA, byte, dimensi, commit, branch HEAD, jumlah panel/shot, tautan]  
+**Kendala terbuka:** [tidak ada / daftar kekurangan] 
 
 - [ ] Referensi benar-benar diperiksa; bila tidak, keterbatasan tertulis jelas.
 - [ ] Jumlah dan waktu shot tidak dikarang.
@@ -164,7 +177,9 @@
 - [ ] Sumber air, manusia/hewan/objek, dan audio dibedakan sesuai bukti.
 - [ ] Tag dan kesimpulan didukung timestamp atau sumber yang jelas.
 - [ ] Nama MP4 unggahan chat, sumber, serta cakupan pemeriksaan jelas; tidak mengklaim MP4 tersedia di repo.
-- [ ] Frame Manifest berisi shot, timestamp, resolusi aktual, tipe dan status verifikasi; hanya JPG yang tersedia diberi tautan.
-- [ ] Jika upload diminta: **Verification Gate** mencatat PASS / PARTIAL / FAIL berdasarkan SHA Git blob, byte, path, tautan, commit, dan kelengkapan bukti.
+- [ ] Shot Map Pass 1 dan pemeriksaan MP4 Pass 2 mencakup shot yang relevan.
+- [ ] Satu JPG contact sheet per shot sebagai target, dengan timestamp tiap panel berurutan dan dapat dibaca.
+- [ ] Contact Sheet Manifest satu baris per shot/JPG, semua timestamp panel, dimensi, SHA/byte, dan status; hanya JPG repo yang tersedia diberi tautan.
+- [ ] Evidence Cross-Check serta Gate A dan B dicatat terpisah, overall PASS/PARTIAL/FAIL konsisten.
 - [ ] Status berkas analisis dan baris `references/INDEX.md` konsisten, tidak otomatis `approved`.
 - [ ] **Belum membuat ide atau prompt** jika pengguna hanya meminta analisis.

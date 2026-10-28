@@ -17,14 +17,14 @@
 | Rights / Permission | Belum diverifikasi; jangan menganggap video bebas didistribusikan |
 | Analysis date | 2026-10-28 |
 | Analysis status | **`draft`** — memerlukan peninjauan pengguna |
-| Verification Gate | Pemeriksaan awal JPG/tautan Git lolos (2026-10-28); **belum ada audit visual rendering di GitHub dan audio belum diperiksa** |
+| Verification Gate Opsi B+ | **Gate A: PARTIAL** (perlu audit ulang gerakan/transisi melalui MP4 sesuai dua-pass); **Gate B: PARTIAL** (3 JPG preview lama di GitHub, 4 contact sheet baru baru tersedia lokal); **Overall: PARTIAL** |
 | Evidence checked | [OBSERVASI] MP4 asli, cuplikan frame sepanjang video, pemeriksaan batas shot, metadata video |
 | Video duration | **22,870 detik** |
 | Resolution / Frame rate | **720 × 1280**, **30 FPS** |
 | Aspect ratio | **9:16 (vertikal)** |
 | Video / audio codec | H.264; audio AAC stereo 44,1 kHz (isi suara belum diaudit secara auditori) |
 | Main shot count | **4** (batas waktu perkiraan karena perpindahan singkat/dissolve) |
-| Frames folder | [`../frames/muyon-01/`](../frames/muyon-01/) — **3 frame JPG asli yang diperkecil**, lihat daftar pada bagian 9 |
+| Contact sheets folder | [`../frames/muyon-01/`](../frames/muyon-01/) — saat ini masih **3 JPG preview individual warisan**, belum ada 4 contact sheet Opsi B+ di GitHub |
 
 ## 2. Overall Description
 
@@ -221,7 +221,7 @@
 - **Jenis tanaman:** Buah merah muda berkelompok (Shot 02), buah hijau bulat (Shot 04), dan beberapa sayuran daun belum dapat diidentifikasi hingga spesies dengan keyakinan tinggi.
 - **Ikan:** Bentuk jingga di kolam terlihat, tetapi identifikasinya belum pasti.
 - **Cuaca:** Kondisi selepas hujan dan gerimis adalah konteks pengguna; video menunjukkan jalur basah dan penyiraman, tetapi tidak cukup untuk memisahkan intensitas gerimis dari sprinkler.
-**Frame Manifest — JPG terverifikasi di GitHub (preview, hasil ekstraksi MP4 asli):**
+**Legacy Frame Manifest — JPG individual lama yang benar-benar ada di GitHub (bukan contact sheet Opsi B+):**
 
 | Shot | Timestamp asli | JPG | Resolusi tersimpan | Tipe | Verifikasi Git blob |
 |---|---|---|---|---|---|
@@ -229,7 +229,19 @@
 | Shot 03 | 00:15.9 | [`shot-03_15.9s-preview.jpg`](../frames/muyon-01/shot-03_15.9s-preview.jpg) | 160 × 284 | `preview` | SHA `7473b9bdbe921ca40e98fb30487720c073291635`, 5.222 byte; path cocok |
 | Shot 04 | 00:19.5 | [`shot-04_19.5s-preview.jpg`](../frames/muyon-01/shot-04_19.5s-preview.jpg) | 128 × 228 | `preview` | SHA `08e1f7542fecc5d859926bf33f8bf9ee8978c0aa`, 4.204 byte; path cocok |
 
-Ketiga JPG merupakan **frame asli yang diperkecil**, bukan resolusi penuh 720 × 1280 dan bukan gambar buatan AI. **Shot 02 belum memiliki JPG di GitHub.** Ada cuplikan lokal lain pada ±00:07.7, 00:10.6 dan 00:13.2 yang belum diunggah. Verifikasi render melalui UI GitHub belum dilakukan; SHA/ukuran/path telah diperiksa.
+Ketiga JPG di atas adalah **preview individual beresolusi rendah** dan tetap dipertahankan sebagai bukti yang tersedia sampai penggantinya benar-benar terunggah. **Shot 02 belum mempunyai JPG di GitHub.** SHA/ukuran/path preview lama diperiksa; rendering melalui UI GitHub belum terbukti.
+
+**Contact Sheet Manifest Opsi B+ — empat JPG diekstrak dari MP4 chat ke file lokal, BELUM tersedia di GitHub:**
+
+| Shot | File tujuan (bukan tautan aktif) | Semua timestamp panel | Panel | Dimensi JPG / tiap panel | Ukuran file lokal | SHA Git blob lokal | Status repo |
+|---|---|---|---:|---|---:|---|---|
+| 01 | `shot-01.jpg` | 00:00.20; 00:01.10; 00:02.10; 00:03.10; 00:04.10; 00:05.20 | 6 | 1676×2116 / 540×960 | 1.265.088 byte | `8a04eab91ce1f4e6120e47d005b4832c27a7cbac` | **Belum diunggah** |
+| 02 | `shot-02.jpg` | 00:06.20; 00:07.20; 00:08.30; 00:09.30; 00:10.30; 00:11.40 | 6 | 1676×2116 / 540×960 | 1.163.762 byte | `a69eb2afedeb1ade3fb50d919a787b1dcc4f3aeb` | **Belum diunggah** |
+| 03 | `shot-03.jpg` | 00:12.20; 00:13.30; 00:14.40; 00:15.40; 00:16.20 | 5 | 1676×2116 / 540×960 | 953.713 byte | `4b504aa895ddc5f2dbd6bb3b908aafad394bad22` | **Belum diunggah** |
+| 04 | `shot-04.jpg` | 00:17.30; 00:18.40; 00:19.50; 00:20.60; 00:21.70 | 5 | 1676×2116 / 540×960 | 1.112.812 byte | `14d20db8968421b3869fe726f04bd982062b9aa7` | **Belum diunggah** |
+
+Total **22 panel dalam empat JPG contact sheet** dibuat secara lokal dengan rasio frame sumber 9:16 dan label timestamp. **Belum ada pengujian transfer GitHub berhasil untuk empat JPG sebesar ±1 MB ini**; SHA dan ukuran di atas adalah **hash berkas lokal**, bukan hasil verifikasi upload. Jangan menautkan file-file ini sebagai gambar yang sudah ada di repository.
+
 
 - **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diperlukan unggah frame resolusi penuh sebagai pengganti/tambahan preview berukuran kecil.
 
@@ -245,5 +257,7 @@ Ketiga JPG merupakan **frame asli yang diperkecil**, bukan resolusi penuh 720 ×
 - [x] Tidak membuat ide atau prompt video tanpa diminta.
 - [ ] Audio diperiksa secara auditori.
 - [ ] Hasil analisis ditinjau dan disetujui pengguna.
-- [x] Tiga frame dari MP4 asli tersimpan sebagai JPG **preview**; SHA Git blob/byte/path cocok. Frame resolusi penuh dan Shot 02 belum diunggah.
-- [ ] **Verification Gate v1.1 untuk analisis ini:** **PARTIAL** — JPG tervalidasi dalam Git, tetapi belum tersedia bukti render via GitHub UI, audio belum diperiksa, dan Shot 02 belum terwakili. Analisis tetap `draft` sampai peninjauan pengguna.
+- [x] Tiga preview lama dari MP4 asli tersimpan di GitHub dengan SHA/blob/path cocok; ini **bukan** bukti bahwa contact sheet Opsi B+ sudah berhasil diunggah.
+- [ ] **Gate A — Visual Accuracy: PARTIAL.** Shot Map dasar dan peninjauan frame tersedia, tetapi pemeriksaan gerakan kamera/transisi dua-pass yang lebih rinci serta audio belum lengkap.
+- [ ] **Gate B — Repository Integrity: PARTIAL.** Empat contact sheet dibuat dan diperiksa lokal tetapi belum terunggah; tiga preview lama tetap tersedia dan tautannya valid. Upload resolusi tinggi dan audit render jarak jauh belum lulus.
+- [ ] **Overall Gate: PARTIAL.** Status analisis tetap `draft`, tidak otomatis `approved`.

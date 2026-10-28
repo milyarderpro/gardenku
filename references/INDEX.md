@@ -33,7 +33,7 @@
 
 1. Cari berdasarkan **kreator**, **jenis kebun**, **cuaca**, atau **kamera** yang sudah dicatat berdasarkan analisis.
 2. Klik ID untuk membuka analisis. **Hanya gunakan kesimpulan visual yang memiliki bukti/timestamp**, bukan deskripsi yang ditebak dari nama file.
-3. Ketika analisis selesai atau direvisi, perbarui baris terkait **pada commit yang sama**: jenis kebun, cuaca, camera movement, dan status sesuai [`rules/analysis.md`](../rules/analysis.md). **Frame Manifest tetap di file analisis**, bukan diduplikasi ke tabel.
+3. Ketika analisis selesai atau direvisi, perbarui baris terkait **pada commit yang sama**: jenis kebun, cuaca, camera movement, dan status sesuai [`rules/analysis.md`](../rules/analysis.md). **Shot Map dan Contact Sheet Manifest tetap di file analisis**, bukan diduplikasi ke tabel.
 4. Bila suatu detail sudah diperiksa tetapi tidak jelas, tulis **`belum pasti`**; jika belum diperiksa, tetap **`—`**.
 5. Ketika ada kreator baru, tambahkan bagian dan tabel sejenis. Jangan mengganti ID atau membuat baris ganda. Pastikan tautan `analysis/` dan frame yang **benar-benar tersedia** valid. MP4 **tidak** boleh ditautkan ke GitHub.
 6. Utamakan `approved` untuk menyusun [Style Library](../styles/README.md). `draft` perlu ditandai sebagai belum diverifikasi, sedangkan `pending` tidak boleh menjadi dasar kesimpulan visual.
