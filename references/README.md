@@ -1,15 +1,16 @@
-# References — Pustaka Video Asli
+# References — Pustaka Analisis dan Frame
 
-Seluruh referensi dikelompokkan **berdasarkan kreator atau sumber** (`muyon/`, `creator-x/`, dan seterusnya). **Jangan membuat subfolder untuk cuaca atau jenis kebun:** keduanya adalah metadata analisis, karena satu sumber dapat memuat konsep kebun berbeda.
+Folder ini menyimpan **pengetahuan hasil analisis** video referensi kebun, bukan file MP4. Video asli dikirim pengguna melalui chat untuk dianalisis dan **disimpan secara pribadi di PC pengguna**. GitHub menyimpan catatan Markdown dan JPG hasil ekstraksi yang terverifikasi.
 
-Lihat [`INDEX.md`](INDEX.md) untuk mencari koleksi dan status semua video.
+Cari referensi, status, dan metadata ringkas di [INDEX](INDEX.md). Hasil dan Frame Manifest setiap video menjadi sumber rincian utama; README tidak mengulang angka status yang cepat berubah.
 
-## Menambahkan satu video baru
+## Menambahkan atau menganalisis referensi
 
-1. Tentukan nama folder kreator **lowercase-kebab-case** dan ID video yang tidak bentrok (contoh `creator-x-01`).
-2. Jika menyimpan video baru, gunakan `<creator>/videos/<id>.mp4`; bila MP4 sudah tersedia, jangan mengunggah duplikat. Video yang dikirim lewat chat dapat menjadi sumber analisis jika isi MP4 repo tidak dapat diunduh. Cocokkan SHA Git blob/ukuran bila memungkinkan dan jangan mengubah MP4 asli tanpa izin.
-3. Buat `<creator>/analysis/<id>.md` dengan status `pending`, menggunakan [template analisis](../templates/video-analysis.md) saat benar-benar dianalisis.
-4. Tempatkan hanya **JPG yang diekstrak dari video asli** di `<creator>/frames/<id>/`, jika ada. Default 2–3 frame yang mewakili shot penting, resolusi sumber diutamakan; yang diperkecil harus memakai akhiran `-preview.jpg`. Catat daftar dan bukti verifikasi unggah dalam analisis. Detail teknis ada di [aturan analisis](../rules/analysis.md).
-5. Tambahkan entri pada [katalog utama](INDEX.md), cek tautan, status, dan informasi sumber video/izin penggunaan yang diketahui.
+1. Tentukan folder koleksi berdasarkan sumber/kreator (misalnya `muyon/`) dan ID unik lowercase-kebab-case (misalnya `muyon-17`). Jangan membuat subfolder per cuaca atau jenis kebun.
+2. Untuk referensi yang belum dikirim, buat `<creator>/analysis/<id>.md` berstatus `pending` dan masukkan ke [INDEX](INDEX.md) dengan sumber `Belum diterima di chat`.
+3. Ketika pengguna **mengunggah MP4 di chat**, periksa video yang benar-benar dapat diakses. Simpan nama input/ukuran/hash **jika tersedia** di analisis; **jangan mengunggah MP4 ke GitHub** dan jangan membuat tautan repo untuk MP4 yang tidak ada.
+4. Analisis mengikuti [rules/analysis.md](../rules/analysis.md) dan [template](../templates/video-analysis.md). Pisahkan observasi, konteks pengguna, interpretasi, serta ketidakpastian.
+5. Pilih **2–3 frame JPG representatif secara default**, atau sesuaikan jumlah dengan shot/bukti; utamakan resolusi sumber. Unggah hanya frame **yang benar-benar diekstrak**, di `<creator>/frames/<id>/`. Gambar diperkecil wajib diberi akhiran `-preview.jpg`.
+6. Simpan analisis dengan **Frame Manifest** dan perbarui baris INDEX secara konsisten. Jalankan **Verification Gate**: validasi SHA/byte/path, tautan, status, cakupan analisis, dan kondisi gagal/parsial sebelum mengklaim selesai.
 
-**Status & hasil terbaru:** lihat [INDEX](INDEX.md) untuk status masing-masing video dan berkas analisisnya untuk frame/timestamp. Hindari menyalin angka status dan frame ke README. Penyimpanan di Facebook atau GitHub **tidak otomatis membuktikan hak distribusi**.
+**Jangan menyimpan storyboard AI atau gambar hasil pencarian sebagai frame referensi.** Repositori publik bukan bukti izin mendistribusikan JPG atau video. Penghapusan MP4 dari tree Git terbaru **tidak membersihkan riwayat Git lama**.

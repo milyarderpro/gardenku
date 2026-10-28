@@ -1,13 +1,14 @@
 # Muyon — Reference Collection
 
-Folder ini menyimpan koleksi yang saat ini diberi label sumber **Muyon**. Identitas kreator dan URL Facebook asli **belum diverifikasi**.
+`muyon` adalah **label koleksi**. Identitas kreator asli, URL publikasi Facebook, dan izin penggunaan belum diverifikasi.
+
+Koleksi ini menggunakan **MP4 yang diunggah melalui chat** untuk pemeriksaan visual. **Video asli disimpan oleh pengguna di PC pribadi, bukan di repository.** Jika ingin menganalisis ulang di percakapan lain, unggah MP4 asli lagi.
 
 | Folder | Isi |
 |---|---|
-| [`videos/`](videos/) | MP4 referensi asli dengan ID seperti `muyon-01.mp4` |
-| [`analysis/`](analysis/) | Catatan per video dengan ID yang sama, termasuk status dan Frame Manifest |
-| [`frames/`](frames/) | JPG hasil ekstraksi video yang sudah berhasil diunggah; **preview** ditandai di nama file dan analisis |
+| [`analysis/`](analysis/) | Analisis per ID video (`muyon-01.md`, dst.), berisi status, shot, catatan sumber, dan Frame Manifest |
+| [`frames/`](frames/) | JPG hasil ekstraksi video asli yang **sudah terunggah**; versi kecil memakai `-preview.jpg` |
 
-Gunakan [INDEX utama](../INDEX.md) untuk menuju file dan menemukan referensi setelah metadata dianalisis. **Jangan menyimpulkan seluruh koleksi bertema kebun terbuka atau hujan:** jenis kebun, tanaman, kamera, dan cuaca ditentukan **per video**, setelah analisis.
+Lihat [INDEX utama](../INDEX.md) untuk status terkini dan navigasi; jangan menganggap semua referensi Muyon bertema kebun terbuka, hujan, atau slow pan. Temuan dan link frame berada dalam analisis **per video**, tidak diulang dalam README.
 
-MP4 hasil migrasi tetap merupakan sumber referensi utama dan tidak boleh diubah hanya untuk analisis. File analisis `pending` adalah kerangka, **bukan** kesimpulan hasil menonton. Lihat [INDEX](../INDEX.md) untuk status terbaru; buka analisis individual untuk bukti, ketidakpastian, dan tautan JPG yang benar-benar tersedia.
+**Catatan migrasi:** file MP4 lama dikeluarkan dari tree Git pada Workflow v1.1 atas keputusan pengguna. Salinan MP4 masih mungkin ada di riwayat Git lama. Untuk perbaikan hak penggunaan di repositori publik, penghapusan riwayat adalah pekerjaan terpisah.

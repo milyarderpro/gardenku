@@ -8,14 +8,16 @@
 |---|---|
 | Video ID | `[creator-01]` |
 | Creator / Source | [nama kreator atau sumber] |
-| Video file | `../videos/[creator-01].mp4` (periksa path aktual) |
-| Evidence input | [video dari chat / MP4 repo / frame asli / sebagian saja; sertakan nama sumber] |
-| Repo match | [SHA blob Git + ukuran byte cocok / belum diverifikasi / berbeda] |
+| Input MP4 (chat) | [nama file yang diunggah pengguna / belum diterima] |
+| Video storage | PC pengguna; **tidak disimpan di repo** |
+| Evidence input | [MP4 chat yang diperiksa / hanya frame / sebagian / belum diperiksa] |
+| Input metadata | [ukuran byte dan hash file bila tersedia; **bukan** hash yang ditebak] |
 | Frames folder | `../frames/[creator-01]/` (jika tersedia) |
 | Source URL | [tautan asli atau **belum diketahui**] |
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
 | Analysis date | [YYYY-MM-DD atau belum dianalisis] |
 | Analysis status | `pending` / `draft` / `reviewed` / `approved` |
+| Verification Gate | `PASS` / `PARTIAL` / `FAIL` / belum dijalankan; catat alasannya dalam bagian 10 |
 | Evidence checked | [video asli / frame asli / informasi pengguna / **belum diperiksa**] |
 | Duration | [detik, jika terverifikasi] |
 | Resolution / FPS | [jika terverifikasi] |
@@ -143,22 +145,26 @@
 
 | Shot | Timestamp video asli | Nama/path JPG | Resolusi file unggahan | Tipe | Status verifikasi |
 |---|---|---|---|---|---|
-| Shot 01 | [00:02.1] | [`../frames/<video-id>/shot-01_2.1s.jpg` atau "belum diunggah"] | [mis. 720 × 1280 / belum tersedia] | [`original-resolution` / `preview` / belum ada] | [SHA+byte+path cocok / belum diverifikasi / belum diunggah] |
+| Shot 01 | [00:02.1] | [path JPG di repo atau "belum diunggah"] | [720 × 1280 / belum tersedia] | [`original-resolution` / `preview` / belum ada] | [SHA Git blob dan byte cocok / belum diunggah] |
 
-> Isi satu baris untuk **setiap frame pilihan**, bukan untuk seluruh frame video. **Hapus baris contoh dan sesuaikan data**; tautkan hanya path JPG yang sudah diverifikasi. Bila memakai `-preview.jpg`, cantumkan resolusi unggahan sebenarnya. Jika ada shot penting tanpa frame, catat alasannya di bawah tabel. Peraturan lengkap ada di `rules/analysis.md`.
+> Isi satu baris untuk **setiap frame pilihan**, bukan seluruh frame video. **Hapus contoh**; buat tautan Markdown hanya setelah path JPG di GitHub ada. Catat SHA Git blob/ukuran byte jika sudah diverifikasi, atau alasan pemeriksaan belum lengkap. Bila memakai `-preview.jpg`, cantumkan resolusi hasil upload sebenarnya. Jika ada shot penting tanpa frame, jelaskan alasannya. Baca [rules/analysis.md](../rules/analysis.md) untuk ketentuan upload dan Verification Gate. Path JPG dalam contoh tabel adalah relatif terhadap **berkas analisis final** di `references/<creator>/analysis/`, bukan terhadap template ini.
 
 - **Frames lokal yang belum diunggah / shot yang belum terwakili:** [...]
 - **Saran pemeriksaan lanjutan:** [...]
 
 ## 10. Quality Checklist
 
+**Verification Gate:** [PASS / PARTIAL / FAIL / belum dijalankan]  
+**Bukti verifikasi repo:** [commit/branch HEAD, jumlah JPG, SHA/byte/path, hasil pemeriksaan tautan; atau alasan yang belum selesai]  
+**Kendala terbuka:** [tidak ada / daftar kegagalan spesifik]
+
 - [ ] Referensi benar-benar diperiksa; bila tidak, keterbatasan tertulis jelas.
 - [ ] Jumlah dan waktu shot tidak dikarang.
 - [ ] Camera movement, framing, komposisi, layout, cuaca, dan ritme tercatat.
 - [ ] Sumber air, manusia/hewan/objek, dan audio dibedakan sesuai bukti.
 - [ ] Tag dan kesimpulan didukung timestamp atau sumber yang jelas.
-- [ ] Sumber MP4 dan cakupan pemeriksaan jelas; kecocokan video chat–repo tidak diasumsikan.
+- [ ] Nama MP4 unggahan chat, sumber, serta cakupan pemeriksaan jelas; tidak mengklaim MP4 tersedia di repo.
 - [ ] Frame Manifest berisi shot, timestamp, resolusi aktual, tipe dan status verifikasi; hanya JPG yang tersedia diberi tautan.
-- [ ] Jika upload diminta: SHA Git blob, ukuran, path dan keberhasilan commit diperiksa; kekurangan dicatat.
+- [ ] Jika upload diminta: **Verification Gate** mencatat PASS / PARTIAL / FAIL berdasarkan SHA Git blob, byte, path, tautan, commit, dan kelengkapan bukti.
 - [ ] Status berkas analisis dan baris `references/INDEX.md` konsisten, tidak otomatis `approved`.
 - [ ] **Belum membuat ide atau prompt** jika pengguna hanya meminta analisis.

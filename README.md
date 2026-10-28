@@ -28,9 +28,8 @@ gardenku/
 │   ├── INDEX.md              # Katalog seluruh kreator
 │   └── muyon/
 │       ├── README.md
-│       ├── videos/           # muyon-01.mp4 ... muyon-16.mp4
-│       ├── analysis/         # muyon-01.md ... muyon-16.md
-│       └── frames/           # JPG asli bila sudah diekstrak
+│       ├── analysis/         # hasil per video (Markdown + Frame Manifest)
+│       └── frames/           # JPG ekstraksi asli, termasuk preview kecil
 ├── styles/                   # Rangkuman gaya berbasis bukti
 └── projects/                 # Konsep, prompt, evaluasi, dan arsip
 ```
@@ -39,10 +38,10 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 
 ## Referensi dan status terkini
 
-- **Daftar video, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
+- **Daftar referensi, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
 - **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis memuat Frame Manifest sesuai [template](templates/video-analysis.md).
 - **Frame JPG asli hasil ekstraksi:** tersimpan di `references/<creator>/frames/<video-id>/` jika sudah diunggah. Status `draft` bukan berarti sudah disetujui.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
-- URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik; periksa izin/hak distribusi sebelum memperluas penggunaan atau membagikan video.**
+- URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.
 
-**Alur rutin:** terima video yang bisa diperiksa (termasuk unggahan chat), analisis berdasarkan bukti, pilih frame JPG penting, verifikasi unggahan GitHub, lalu sinkronkan katalog. Prosedur lengkap ada di [rules/analysis.md](rules/analysis.md). Menyimpan file di GitHub **tidak** otomatis melatih ulang model AI; model harus diberi akses dan membaca file yang relevan.
+**Alur rutin:** pengguna mengunggah MP4 lewat chat → AI menganalisis sumber → mengekstrak 2–3 JPG pilihan → menyimpan Markdown dan JPG serta menyinkronkan katalog → menjalankan **Verification Gate**. **MP4 asli tetap di PC pengguna, tidak disimpan di GitHub.** Saat perlu mengoreksi gerakan/transisi di sesi lain, pengguna dapat mengirim ulang MP4 karena JPG tidak menggantikan video. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.

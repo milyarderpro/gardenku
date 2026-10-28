@@ -8,14 +8,16 @@
 |---|---|
 | Video ID | `muyon-01` |
 | Creator / Collection | Muyon (label koleksi, identitas akun asli belum diverifikasi) |
-| Video file | [`muyon-01.mp4`](../videos/muyon-01.mp4) |
-| Source for this analysis | Unggahan pengguna `muyon01(1).mp4`; **Git blob SHA identik** dengan video di repository |
-| SHA Git blob | `5bc8ff90e091ca7233b633774ac288171edb1465` |
+| Input MP4 (chat) | `muyon01(1).mp4` — diunggah pengguna saat analisis, 2026-10-28 |
+| Penyimpanan MP4 | PC pengguna; **tidak ada MP4 di repository setelah migrasi v1.1** |
+| Bukti cocok historis | Saat MP4 masih berada di repo, ukuran dan SHA Git blob unggahan chat cocok dengan file `muyon-01.mp4` (pemeriksaan 2026-10-28) |
+| SHA Git blob historis | `5bc8ff90e091ca7233b633774ac288171edb1465`; **bukan tautan MP4 aktif** |
 | File size | 19.234.334 bytes |
 | Source URL | URL unggahan Facebook asli belum diketahui; URL repo bukan sumber publikasi asli |
 | Rights / Permission | Belum diverifikasi; jangan menganggap video bebas didistribusikan |
 | Analysis date | 2026-10-28 |
 | Analysis status | **`draft`** — memerlukan peninjauan pengguna |
+| Verification Gate | Pemeriksaan awal JPG/tautan Git lolos (2026-10-28); **belum ada audit visual rendering di GitHub dan audio belum diperiksa** |
 | Evidence checked | [OBSERVASI] MP4 asli, cuplikan frame sepanjang video, pemeriksaan batas shot, metadata video |
 | Video duration | **22,870 detik** |
 | Resolution / Frame rate | **720 × 1280**, **30 FPS** |
@@ -211,7 +213,7 @@
 
 ## 9. Notes & Uncertainty
 
-- **Verifikasi identitas file:** Unggahan pengguna berukuran 19.234.334 byte dan menghasilkan SHA blob Git `5bc8ff90e091ca7233b633774ac288171edb1465`; **cocok persis** dengan MP4 pada `../videos/muyon-01.mp4`.
+- **Verifikasi identitas historis:** Saat pengujian 2026-10-28, unggahan chat berukuran 19.234.334 byte menghasilkan SHA Git blob `5bc8ff90e091ca7233b633774ac288171edb1465`; cocok dengan MP4 yang **saat itu masih ada di repo**. Setelah migrasi Workflow v1.1, MP4 telah dikeluarkan dari tree Git; salinan tetap dimiliki pengguna di PC. SHA ini dicatat sebagai **bukti historis**, bukan tautan unduhan yang aktif.
 - **Batas shot:** Angka waktu perkiraan; beberapa perpindahan memakai efek lembut sehingga sulit ditetapkan sebagai satu cut keras.
 - **Sumber dan izin:** URL unggahan asli, identitas pemilik video, dan hak distribusi belum diketahui.
 - **Audio:** Track terdeteksi, tetapi jenis suara tidak diklaim tanpa pemeriksaan auditori.
@@ -219,23 +221,29 @@
 - **Jenis tanaman:** Buah merah muda berkelompok (Shot 02), buah hijau bulat (Shot 04), dan beberapa sayuran daun belum dapat diidentifikasi hingga spesies dengan keyakinan tinggi.
 - **Ikan:** Bentuk jingga di kolam terlihat, tetapi identifikasinya belum pasti.
 - **Cuaca:** Kondisi selepas hujan dan gerimis adalah konteks pengguna; video menunjukkan jalur basah dan penyiraman, tetapi tidak cukup untuk memisahkan intensitas gerimis dari sprinkler.
-- **Frames pendukung:** Terdapat **3 JPG preview yang diekstrak dari MP4 asli**, bukan gambar buatan AI:
-  - **Shot 01, 00:02.1** — [Pohon durian dan bedengan tomat](../frames/muyon-01/shot-01_2.1s-preview.jpg), **128 × 228 px**.
-  - **Shot 03, 00:15.9** — [Sprinkler, pepaya, dan kolam](../frames/muyon-01/shot-03_15.9s-preview.jpg), **160 × 284 px**.
-  - **Shot 04, 00:19.5** — [Bedengan sayuran dan pohon buah](../frames/muyon-01/shot-04_19.5s-preview.jpg), **128 × 228 px**.
-  Ketiganya merupakan **preview berukuran kecil dan terkompresi**, bukan frame resolusi asli 720 × 1280. Cuplikan lainnya, termasuk Shot 02, masih belum diunggah; jangan membuat tautan fiktif.
+**Frame Manifest — JPG terverifikasi di GitHub (preview, hasil ekstraksi MP4 asli):**
+
+| Shot | Timestamp asli | JPG | Resolusi tersimpan | Tipe | Verifikasi Git blob |
+|---|---|---|---|---|---|
+| Shot 01 | 00:02.1 | [`shot-01_2.1s-preview.jpg`](../frames/muyon-01/shot-01_2.1s-preview.jpg) | 128 × 228 | `preview` | SHA `b66e8e58823ef4f22666df60f2c12c47ae302025`, 4.147 byte; path cocok |
+| Shot 03 | 00:15.9 | [`shot-03_15.9s-preview.jpg`](../frames/muyon-01/shot-03_15.9s-preview.jpg) | 160 × 284 | `preview` | SHA `7473b9bdbe921ca40e98fb30487720c073291635`, 5.222 byte; path cocok |
+| Shot 04 | 00:19.5 | [`shot-04_19.5s-preview.jpg`](../frames/muyon-01/shot-04_19.5s-preview.jpg) | 128 × 228 | `preview` | SHA `08e1f7542fecc5d859926bf33f8bf9ee8978c0aa`, 4.204 byte; path cocok |
+
+Ketiga JPG merupakan **frame asli yang diperkecil**, bukan resolusi penuh 720 × 1280 dan bukan gambar buatan AI. **Shot 02 belum memiliki JPG di GitHub.** Ada cuplikan lokal lain pada ±00:07.7, 00:10.6 dan 00:13.2 yang belum diunggah. Verifikasi render melalui UI GitHub belum dilakukan; SHA/ukuran/path telah diperiksa.
+
 - **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diperlukan unggah frame resolusi penuh sebagai pengganti/tambahan preview berukuran kecil.
 
 ## 10. Quality Checklist
 
-- [x] Video asli diakses dan dicocokkan dengan SHA Git.
+- [x] Video asli dari chat diakses; kecocokan SHA dengan MP4 repo **diverifikasi secara historis sebelum migrasi**, bukan klaim MP4 masih ada.
 - [x] Shot dan timestamp dipetakan dari isi video, batas perkiraan ditandai.
 - [x] Kamera, framing, komposisi, tanaman, layout, cuaca, objek manusia/hewan, dan air diperiksa.
 - [x] Observasi, konteks pengguna, interpretasi, dan ketidakpastian dibedakan.
 - [x] Tag dan karakter visual didukung bukti/timestamp.
-- [x] Tautan MP4, aturan, template, dan tiga frame JPG preview merujuk file yang benar-benar ada; frame yang belum diunggah tidak ditautkan.
+- [x] Tautan aturan, template, dan ketiga JPG mengarah ke file yang benar-benar ada; **tidak ada tautan MP4 GitHub**.
 - [x] Status benar sebagai `draft`, bukan `reviewed` atau `approved`.
 - [x] Tidak membuat ide atau prompt video tanpa diminta.
 - [ ] Audio diperiksa secara auditori.
 - [ ] Hasil analisis ditinjau dan disetujui pengguna.
-- [x] Tiga frame MP4 asli diunggah ke repository sebagai JPG **preview terkompresi** (128 × 228 dan 160 × 284 px). Frame resolusi penuh serta Shot 02 belum diunggah.
+- [x] Tiga frame dari MP4 asli tersimpan sebagai JPG **preview**; SHA Git blob/byte/path cocok. Frame resolusi penuh dan Shot 02 belum diunggah.
+- [ ] **Verification Gate v1.1 untuk analisis ini:** **PARTIAL** — JPG tervalidasi dalam Git, tetapi belum tersedia bukti render via GitHub UI, audio belum diperiksa, dan Shot 02 belum terwakili. Analisis tetap `draft` sampai peninjauan pengguna.

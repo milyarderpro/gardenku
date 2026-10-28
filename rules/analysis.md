@@ -8,12 +8,12 @@
 ## 1. Kapan aturan ini digunakan?
 Gunakan saat pengguna meminta AI menonton, mengamati, memecah shot, atau menganalisis **video referensi kebun**. **Jangan membuat ide atau prompt video** apabila pengguna hanya meminta analisis.
 
-Baca `AGENTS.md`, lalu periksa media dan analisis yang tersedia untuk referensi tersebut. Contoh setelah migrasi:
-- Video: `references/muyon/videos/muyon-01.mp4`
-- Analisis: `references/muyon/analysis/muyon-01.md`
-- Frame asli: `references/muyon/frames/muyon-01/`
+Baca `AGENTS.md`, lalu cek [INDEX](../references/INDEX.md) dan file analisis yang ada. Sumber video **selalu MP4 unggahan chat dari pengguna** (aslinya disimpan pengguna di PC). GitHub **tidak menyimpan MP4**; hanya analisis dan JPG ekstraksi. Contoh:
+- Input: pengguna mengunggah `muyon-01.mp4` di chat (nama input dapat berbeda).
+- Analisis: `references/muyon/analysis/muyon-01.md`.
+- JPG bukti: `references/muyon/frames/muyon-01/`.
 
-Video Muyon berada di `references/muyon/videos/`. **Status terbaru** setiap video diperiksa melalui [`references/INDEX.md`](../references/INDEX.md) dan berkas analisis terkait; jangan menganggap semua video sudah atau belum dianalisis hanya dari nama folder.
+Katalog mencatat **referensi**, bukan lokasi MP4 yang dapat diunduh. Saat membuka sesi baru, minta unggahan MP4 hanya bila belum tersedia/dapat dibaca di sesi tersebut.
 
 ## 2. Prinsip wajib
 1. **Utamakan yang benar-benar terlihat atau terdengar.** Bila video tidak dapat dibuka, jelaskan keterbatasannya; jangan menyusun analisis lengkap seolah sudah menonton.
@@ -26,7 +26,7 @@ Video Muyon berada di `references/muyon/videos/`. **Status terbaru** setiap vide
 4. **Jangan menebak** nama tanaman, jenis buah, jam pengambilan gambar, identitas orang, alat kamera, ukuran lahan, jumlah shot, atau jenis suara tanpa bukti.
 5. **Jaga konteks:** referensi kebun terbuka, pekarangan depan, backyard, rooftop, dan kebun dalam pot **bisa sangat berbeda**. Jangan memaksakan karakter kebun luas pada referensi lahan kecil.
 6. **Hewan, manusia, kolam, alat, dan cuaca adalah elemen opsional**: periksa keberadaannya, tetapi tulis "tidak terlihat" bila tidak ada.
-7. **Video asli tidak boleh diedit, diganti, atau dihapus** hanya untuk melakukan analisis.
+7. **MP4 asli disimpan di PC pengguna; jangan mengubah atau menghapus salinan pribadi.** Tidak perlu menyimpan/mengunggah MP4 ke GitHub. JPG yang diperoleh dengan ekstraksi tetap karya turunan dari video; periksa hak penggunaan saat repo publik.
 
 ## 3. Urutan analisis
 
@@ -87,60 +87,63 @@ Akhiri analisis dengan empat bagian:
 Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open-field`, `after-rain`, `light-drizzle`, `slow-pan`, `bamboo-trellis`, `pond-fish`. Jangan membuat tag berdasarkan dugaan.
 
 
-## 5. Workflow dari video sampai GitHub
 
-### A. Terima dan cocokkan sumber
+## 5. Workflow Chat → Analisis → JPG → Repository
 
-1. Mulai dari ID yang benar (misalnya `muyon-01`) dan cek [katalog](../references/INDEX.md), MP4 di repo, serta analisis yang sudah ada. **Jangan menimpa analisis terverifikasi tanpa memeriksa isi sebelumnya.**
-2. Coba baca media asli. Jika konektor GitHub hanya menampilkan metadata atau menolak MP4 biner, gunakan **MP4 yang pengguna unggah ke chat** untuk pemeriksaan visual. **Tautan GitHub atau metadata bukan bukti bahwa video sudah ditonton.**
-3. Bila sumber unggahan chat diklaim sama dengan MP4 repo, cocokan **ukuran byte dan SHA blob Git** bila alat mendukung. Catat hasilnya dalam analisis. Bila tidak bisa dicocokkan, tulis "belum terverifikasi"; jangan mengklaim keduanya identik. Jangan mengganti MP4 di repo hanya karena nama mirip.
-4. Periksa durasi, resolusi, FPS, rasio aspek, urutan shot dan batas transisi dari sumber yang benar-benar tersedia. Beri label "perkiraan" jika batas shot tidak diukur frame demi frame. Bila hanya sebagian video bisa diperiksa, tulis **cakupan pemeriksaan** serta bagian yang belum bisa diamati.
-5. **Audio terpisah dari metadata:** keberadaan audio track atau codec bukan bukti bahwa isi suaranya telah didengarkan. Catat "audio belum diperiksa" jika belum ada pemeriksaan auditori.
+### A. Terima dan periksa MP4 dari chat
 
-### B. Ekstrak frame JPG representatif
+1. Tentukan ID referensi unik dan cek [INDEX](../references/INDEX.md) serta file analisis lama. MP4 asli **disimpan di PC pengguna**, bukan di repo. Unggahan chat dapat dipakai sebagai bukti hanya jika kontennya benar-benar bisa diperiksa.
+2. Jika file belum tersedia atau tidak bisa dibaca, **jangan mengarang isi video**. Jelaskan batas akses, pertahankan status `pending` untuk referensi baru, dan jangan membuat frame palsu. Tidak perlu meminta video lagi bila sudah tersedia dan dapat diakses dalam sesi itu.
+3. Catat nama input MP4 dan, bila terverifikasi, durasi, FPS, resolusi, ukuran byte atau checksum file. **Jangan mewajibkan pencocokan SHA dengan GitHub**, sebab MP4 memang tidak lagi ada di repo. Catat URL asli dan izin publikasi hanya jika diketahui.
+4. Periksa video shot demi shot. Timestamp dan batas transisi yang belum presisi harus ditandai sebagai **perkiraan**. Jika hanya sebagian video terlihat, sebut bagian yang belum diperiksa. Metadata/codec/track audio **bukan bukti bahwa suara telah didengarkan**; tulis `audio belum diperiksa` bila perlu.
+5. Siapkan file analisis memakai [template](../templates/video-analysis.md) dengan pemisahan `[OBSERVASI]`, `[KONTEKS PENGGUNA]`, `[INTERPRETASI]`, dan `[BELUM PASTI]`. Jangan membuat ide atau prompt jika hanya diminta analisis.
 
-- **Default 2–3 JPG per video**, pilih frame yang berbeda dan paling informatif (biasanya dari shot berbeda). Ini target praktis, **bukan kuota wajib**: untuk 1 shot cukup 1 frame jika memadai; lebih dari 3 diperbolehkan jika dibutuhkan sebagai bukti atau diminta pengguna. Jika ada shot penting belum terwakili, catat secara jujur.
-- **Utamakan resolusi video asli**, tanpa upscale atau generasi AI. Bila batas transfer memaksa ukuran lebih kecil, beri akhiran `-preview.jpg`; simpan **resolusi hasil upload yang sebenarnya**, bukan mengaku file resolusi penuh. Kompresi JPG masih berasal dari frame video asli, tetapi disebut **turunan/preview** bila diperkecil.
-- Penamaan: `references/<creator>/frames/<id>/shot-01_2.1s.jpg` untuk frame sesuai resolusi sumber; `shot-01_2.1s-preview.jpg` untuk versi kecil. Gunakan `<shot-number>` dan timestamp **video referensi asli**, konsisten dengan Shot Breakdown. Hindari duplikat frame tanpa manfaat.
-- **Tidak boleh** menaruh gambar generatif, ilustrasi, ataupun storyboard AI di folder `references/.../frames/`. Jangan memakai hasil pencarian gambar internet sebagai pengganti frame MP4.
-- Setiap frame yang **berhasil tersimpan** harus terdaftar dalam **Frame Manifest** pada berkas analisis: shot, timestamp, path, resolusi unggahan, kategori `original-resolution` / `preview`, dan status verifikasi. Untuk frame yang gagal diunggah, tulis "belum diunggah", **tanpa tautan file yang tidak ada**.
+### B. Pilih dan ekstrak frame JPG
 
-### C. Upload dan pemeriksaan GitHub
+- **Default 2–3 JPG representatif per video**, biasanya dari shot yang berbeda; **bukan 2–3 JPG untuk setiap shot**. Jika video hanya memuat satu shot, satu frame boleh cukup; lebih dari tiga diperbolehkan bila perlu membuktikan beberapa momen atau pengguna meminta. Catat jika shot penting belum terwakili.
+- Frame **harus diekstrak dari MP4 asli yang diperiksa**, bukan gambar AI, storyboard, atau hasil pencarian internet. Pilih momen yang jelas dan tidak sedang blur/transisi.
+- Prioritaskan **resolusi asli dan rasio aspek yang sama**; tanpa upscale atau mempercantik gambar sehingga berubah dari bukti. Jika terpaksa mengecilkan untuk transfer, gunakan akhiran `-preview.jpg` dan tulis resolusi sesungguhnya; jangan menyebut preview sebagai frame resolusi penuh.
+- Nama: `frames/<id>/shot-01_2.1s.jpg` atau `shot-01_2.1s-preview.jpg`; nomor shot dan timestamp merujuk **video sumber**. Hindari JPG duplikat yang tidak menambah informasi.
+- **Frame Manifest** harus memuat shot, timestamp, path JPG, resolusi hasil unggahan, tipe (`original-resolution` / `preview`), dan hasil verifikasi. JPG yang belum diunggah dicatat sebagai `belum diunggah` **tanpa tautan palsu**.
 
-Jika pengguna meminta menyimpan ke repo:
+### C. Simpan dokumen dan JPG di GitHub
 
-1. Siapkan `analysis/<id>.md` dari [template](../templates/video-analysis.md), lalu pilih frame yang benar-benar diekstrak.
-2. Untuk konektor GitHub yang mendukungnya, unggah JPG biner sebagai **Git blob Base64** (mis. `create_blob` dengan `encoding: base64`), kemudian pasang SHA blob itu sebagai file JPG di `frames/<id>/` melalui tree/commit. **Jangan** memasukkan teks Base64 sebagai isi file `.jpg`.
-3. **Verifikasi sebelum commit:** bandingkan SHA **Git blob** hasil unggah dengan SHA Git blob file lokal yang dikalkulasi dengan format Git (bukan SHA-256 biasa); periksa ukuran byte serta path dalam tree kandidat. Jika SHA/ukuran tidak cocok, **jangan commit** gambar itu. Perbaiki transfer atau laporkan kegagalan.
-4. Commit pada **branch yang disetujui pengguna**; untuk perubahan aturan/template gunakan branch terpisah dan Pull Request sebelum merge. Sesudah push, periksa kembali SHA/path/ukuran di tree GitHub serta semua tautan Markdown yang dibuat. Bila memungkinkan, buka tampilan JPG agar gambar dapat dipastikan ter-render; jika tak bisa dibaca melalui konektor, nyatakan batas verifikasinya.
-5. Jangan mengubah MP4 asli. Jika sebagian JPG gagal, **jangan mengklaim seluruh frame selesai**. Simpan yang sudah terverifikasi, tandai sisanya secara jujur, dan jangan buat link palsu.
+1. Siapkan hasil analisis terlebih dahulu. Upload frame JPG yang dipilih dengan fitur GitHub binary blob/Base64 bila tersedia. Input `encoding: base64` mengirim **isi JPEG biner**, bukan teks Base64 yang salah diberi nama `.jpg`.
+2. Cocokkan **SHA Git blob** hasil upload dengan SHA Git blob dari file lokal yang benar (hash Git blob, bukan SHA-256 biasa). Cek ukuran byte JPEG, path/nama file, dan tipe file/kemampuan membuka JPEG secara lokal. **Jika tidak cocok, jangan masukkan blob itu ke commit.**
+3. Bangun tree/commit yang memuat file `analysis/<id>.md`, JPG yang lolos verifikasi, dan baris `references/INDEX.md` yang diperbarui, **sebisa mungkin dalam satu commit terkoordinasi**. Tidak boleh menautkan JPG yang belum tersedia. Jangan mengunggah MP4 ke repo.
+4. Push ke branch yang disetujui pengguna. Verifikasi ulang branch HEAD, jumlah berkas, SHA/byte/path JPG, tautan relatif, status INDEX vs analisis, serta kelengkapan 10 bagian template. Jika dapat mengakses tampilan gambar GitHub, cek gambar ter-render; bila konektor hanya mendukung metadata biner, nyatakan keterbatasan itu.
+5. Jika sebagian upload JPG gagal, jangan mencatat seolah seluruh gambar berhasil. Simpan hanya JPG yang terbukti valid; tandai yang belum tersimpan di manifest, dan laporkan apa yang perlu diperbaiki. **Jangan mengubah status menjadi `approved` dengan sendirinya.**
 
-**Perizinan:** repository publik bukan bukti izin mendistribusikan video atau frame. Catat sumber/izin yang diketahui, dan minta peninjauan hak penggunaan sebelum penyebaran lebih luas.
+### D. Verification Gate dan arti status
 
-### D. Status dan sumber informasi utama
+**Gate dijalankan terakhir**, setelah push ke GitHub. Catat hasilnya dalam bagian Quality Checklist dan ringkas pada laporan pengguna.
 
-- `pending`: belum ada pemeriksaan visual memadai; jangan mengarang hasil.
-- `draft`: ada hasil analisis AI dari bukti yang benar-benar diperiksa, **belum ditinjau pengguna**. Kekurangan audio atau frame masih boleh ada bila **dinyatakan dengan jelas**, tidak disamarkan.
-- `reviewed`: sudah ditinjau dan masih bisa memerlukan koreksi.
-- `approved`: disetujui eksplisit oleh pengguna untuk menjadi sumber referensi gaya/ide. **AI tidak boleh menaikkan sendiri status ke `approved`.**
+| Hasil Gate | Syarat |
+|---|---|
+| **PASS** | Video benar-benar diperiksa; analisis 10 bagian dan shot/timestamp berbasis bukti; target frame yang dipilih tersedia atau pengecualian jumlah dijelaskan; JPG lolos pemeriksaan biner dan path; tautan & INDEX konsisten; commit/HEAD terverifikasi; keterbatasan audio/cuaca dicatat; **tidak ada MP4 di repo** |
+| **PARTIAL** | Analisis valid tetapi ada frame pilihan gagal diunggah, pemeriksaan biner/link/commit belum lengkap, atau ada aspek penting yang harus dikoreksi; kekurangannya disebut spesifik |
+| **FAIL** | Isi sumber tidak dapat diperiksa, data dikarang, file salah/rusak, atau tidak dapat memastikan hasil tersimpan. Jangan mengklaim proses telah berhasil |
 
-**Satu sumber utama per jenis informasi:**
-- **Analisis per video:** sumber utama bukti, shot, timestamp, ketidakpastian, **Frame Manifest**, dan status kerja pada file tersebut.
-- **`references/INDEX.md`:** katalog utama yang menampilkan **status dan metadata ringkas** setiap video. Bila status/metadata berubah, sinkronkan baris INDEX pada commit yang sama.
-- **README folder dan `styles/README.md`:** petunjuk penggunaan yang relatif tetap. **Jangan mengulang angka `draft`/`pending` atau jumlah JPG yang cepat berubah** di banyak README.
-- Profile `styles/` baru boleh menyimpulkan pola berdasarkan bukti; utamakan analisis `approved`.
+**Status analisis berbeda dari hasil Gate:**
+- `pending`: video belum diperiksa secara memadai.
+- `draft`: AI telah memeriksa bukti dan menulis analisis; **belum disetujui pengguna**. Status ini masih mungkin memiliki Gate `PARTIAL` jika upload JPG belum lengkap.
+- `reviewed`: ditinjau pengguna, tetapi mungkin masih perlu koreksi.
+- `approved`: **disetujui jelas oleh pengguna** untuk menjadi rujukan gaya dan ide; AI tidak boleh menaikkan sendiri.
 
-Laporan hasil harus membedakan **"analisis selesai"**, **"frame tersimpan"**, dan **"sudah ditinjau/disetujui"** sebagai tiga hal terpisah.
+**Lokasi informasi utama:** `analysis/<id>.md` memuat bukti, sumber MP4 chat, timestamp, Frame Manifest, dan hasil Gate; [INDEX](../references/INDEX.md) memuat metadata dan **status terbaru per ID**. README adalah petunjuk tetap—**jangan duplikasi jumlah video, status, atau frame**. Prosedur ini berlaku juga ketika sebagian tahap gagal: laporkan hasil sebenarnya tanpa memaksakan PASS.
+
+**Izin dan jejak historis:** repo publik bukan izin redistribusi JPG. **Menghapus MP4 dari tree/branch tidak menghapus objeknya dari commit Git lama.** Pengubahan riwayat Git untuk menghapus objek lama memerlukan proyek tersendiri dan tidak menjadi bagian analisis rutin.
 
 ## 6. Pemeriksaan sebelum selesai
 - [ ] Benar-benar mengakses video/frame asli, atau dengan jelas melaporkan jika tidak bisa.
 - [ ] Setiap shot memiliki perkiraan timestamp, subjek, kamera, komposisi, dan layout.
 - [ ] Cuaca, sumber air, manusia, hewan, suara dicatat sesuai bukti atau sebagai belum pasti/tidak terlihat.
 - [ ] Ada ciri visual dan pelajaran yang bisa digunakan ulang.
-- [ ] Metadata MP4 atau kecocokan sumber chat–repo diverifikasi, atau keterbatasan dinyatakan.
-- [ ] Frame Manifest hanya menautkan JPG yang ada, dengan timestamp, resolusi sebenarnya, tipe preview/original dan status verifikasi.
-- [ ] Bila upload diminta, SHA Git blob, byte, path, commit, dan tautan GitHub diperiksa; kegagalan dilaporkan apa adanya.
-- [ ] Status pada berkas analisis dan `references/INDEX.md` konsisten; README tidak menjadi daftar status paralel.
+- [ ] Sumber MP4 unggahan chat dan cakupan pemeriksaan dicatat; **tidak ada kewajiban MP4 di GitHub**.
+- [ ] Frame Manifest hanya menautkan JPG yang ada, dengan timestamp, resolusi sebenarnya, tipe preview/original dan bukti verifikasi.
+- [ ] SHA Git blob/byte/path JPG, tautan, commit, dan branch HEAD diverifikasi; kekurangan dinyatakan.
+- [ ] Status analisis dan `references/INDEX.md` sama; README tidak memuat status paralel.
+- [ ] Hasil **Verification Gate: PASS / PARTIAL / FAIL** dicatat dan dijelaskan; video MP4 tidak ikut tersimpan di repo.
 - [ ] Tidak membuat ide maupun prompt sebelum diminta.
 
 **Prioritas utama: analisis yang jujur, terstruktur, dan bisa dilacak kembali ke referensi aslinya.**
