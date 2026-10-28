@@ -44,12 +44,12 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.
 
-## Opsi B+ v1.2 — Workflow dua fase
+## Opsi B+ v1.3 — Workflow dua fase dengan fallback upload JPG
 
 **Fase 1 — Analyze & Review (tahap 1–5):** unggah MP4 lewat chat → validasi → Shot Map (Pass 1) → Deep Shot Analysis (Pass 2) → **contact sheet JPG lokal per shot** (target 3–6 panel adaptif) → Evidence Cross-Check. AI menampilkan analisis, Shot Map dan gambar untuk review dan menerima revisi. **STOP: tidak ada penyimpanan/perubahan di GitHub selama fase ini.**
 
 **Perintah `save now`:** setelah hasil sesuai, pengguna memberikan izin penyimpanan yang eksplisit. AI menyimpan **versi yang terakhir direvisi**, bukan draft sebelumnya.
 
-**Fase 2 — Save & Verify (tahap 6–7):** simpan `analysis.md` + JPG contact sheet + pembaruan `references/INDEX.md` ke branch/PR, lalu lakukan **Gate A Visual Accuracy + Gate B Repository Integrity**, laporkan PASS/PARTIAL/FAIL. **Tidak otomatis merge atau mengubah status ke `approved`.**
+**Fase 2 — Save & Verify (tahap 6–7):** AI mencoba mengunggah contact sheet JPG. Jika pengiriman JPG biner lewat konektor gagal, **AI membuat branch staging dan memberi ZIP JPG + instruksi; pengguna upload JPG secara manual ke branch itu**. Setelah semua SHA/path/ukuran cocok, AI menyimpan analisis + `references/INDEX.md`, membuka PR, lalu menjalankan **Gate A Visual Accuracy + Gate B Repository Integrity**. Jika upload belum selesai, pekerjaan tetap `menunggu upload manual`, tidak perlu mengulang Fase 1. **Tidak otomatis merge atau mengubah status ke `approved`.**
 
 MP4 asli tetap di PC pengguna, tidak disimpan di GitHub. Artefak sementara Fase 1 mungkin tidak tersedia jika berpindah percakapan; jangan menganggap file tersimpan permanen. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.
