@@ -39,17 +39,15 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 ## Referensi dan status terkini
 
 - **Daftar referensi, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
-- **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis yang sudah dikerjakan memuat **Shot Map** dan **Contact Sheet Manifest** sesuai [template](templates/video-analysis.md).
-- **Frame JPG asli hasil ekstraksi:** tersimpan di `references/<creator>/frames/<video-id>/` jika sudah diunggah. Status `draft` bukan berarti sudah disetujui.
+- **Temuan per video, timestamp dan path JPG standar:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis memuat Shot Map dan Contact Sheet Manifest sesuai [template](templates/video-analysis.md).
+- **Contact sheet JPG:** diberikan AI pada Fase 1; pengguna menyimpannya sendiri melalui repository lokal ke `references/<creator>/frames/<video-id>/`. Penyimpanan analisis tidak menunggu JPG di GitHub. Status `draft` bukan berarti disetujui.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.
 
-## Opsi B+ v1.3 — Workflow dua fase dengan fallback upload JPG
+## Opsi B+ v1.3 — Two-Phase, Document-First Save
 
-**Fase 1 — Analyze & Review (tahap 1–5):** unggah MP4 lewat chat → validasi → Shot Map (Pass 1) → Deep Shot Analysis (Pass 2) → **contact sheet JPG lokal per shot** (target 3–6 panel adaptif) → Evidence Cross-Check. AI menampilkan analisis, Shot Map, dan **JPG individual untuk diunduh** saat review; JPG itu pula yang digunakan saat Fase 2. **STOP: tidak ada penyimpanan/perubahan di GitHub selama fase ini.**
+**Fase 1 — Analyze & Review (tahap 1–5):** unggah MP4 lewat chat → validasi → Shot Map (Pass 1) → Deep Shot Analysis (Pass 2) → contact sheet JPG per shot (target 3–6 panel adaptif) → Evidence Cross-Check. AI menampilkan hasil analisis dan **memberikan JPG individual untuk diunduh**. **STOP** sampai pengguna mengetik `save now`; tidak ada penulisan GitHub selama Fase 1.
 
-**Perintah `save now`:** setelah hasil sesuai, pengguna memberikan izin penyimpanan yang eksplisit. AI menyimpan **versi yang terakhir direvisi**, bukan draft sebelumnya.
-
-**Fase 2 — Save & Verify (tahap 6–7):** AI mencoba mengunggah **JPG yang sudah diberikan pada Fase 1**. Jika pengiriman JPG biner lewat konektor gagal, **AI membuat branch staging dan memberi instruksi folder tujuan; pengguna mengunggah JPG Fase 1 yang sama ke branch tersebut, tanpa ZIP baru**. Setelah semua SHA/path/ukuran cocok, AI menyimpan analisis + `references/INDEX.md`, membuka PR, lalu menjalankan **Gate A Visual Accuracy + Gate B Repository Integrity**. Jika upload belum selesai, pekerjaan tetap `menunggu upload manual`, tidak perlu mengulang Fase 1. **Tidak otomatis merge atau mengubah status ke `approved`.**
+**Fase 2 — Save & Verify (tahap 6–7):** setelah `save now`, AI menyimpan **Markdown analisis lengkap dan `references/INDEX.md` langsung ke `main`**, tanpa branch/PR dan **tanpa mengunggah JPG**. Contact Sheet Manifest mencatat nama/path JPG yang akan kamu simpan sendiri melalui repo lokal. Gate A memeriksa akurasi analisis; Gate B memeriksa **dokumen dan INDEX** yang benar-benar tersimpan. **Keduanya bisa PASS walaupun JPG belum dimasukkan ke GitHub**. Tidak otomatis menjadi `approved`.
 
 MP4 asli tetap di PC pengguna, tidak disimpan di GitHub. Artefak sementara Fase 1 mungkin tidak tersedia jika berpindah percakapan; jangan menganggap file tersimpan permanen. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.
