@@ -97,7 +97,7 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 ### Tahap 1 — Video Input & Validation
 
 - Tetapkan ID unik; periksa [INDEX](../references/INDEX.md) dan analisis sebelumnya. Gunakan MP4 yang **benar-benar dapat dibaca dari chat**; nama file atau metadata saja tidak membuktikan isi video.
-- Catat nama input, tanggal pemeriksaan, durasi, FPS, resolusi, rasio aspek, ukuran byte/hash **jika tersedia**, serta cakupan yang berhasil diperiksa. Jika input tidak bisa diakses, jangan mengarang temuan atau membuat frame palsu; Gate A menjadi `FAIL`.
+- Catat nama input, tanggal pemeriksaan, durasi, FPS, resolusi, rasio aspek, ukuran byte/hash **jika tersedia**, serta cakupan yang berhasil diperiksa. **Jika berbeda, bedakan durasi kontainer, trek video, dan trek audio; jangan menghitung durasi gambar hanya dari durasi kontainer × FPS.** Jika **pengguna meminta analisis sekarang** tetapi input tidak dapat diakses, jangan mengarang temuan atau membuat frame palsu; Gate A menjadi `FAIL` untuk upaya itu. **Dokumen administratif `pending` yang belum diproses tidak diberi Gate FAIL: gunakan `belum dijalankan`** sampai analisis benar-benar dicoba.
 - Audio: bedakan keberadaan audio track dari suara yang benar-benar didengar. Bila tidak diaudit, tulis `audio belum diperiksa`; tidak boleh mengarang audio.
 - Jangan meminta upload ulang bila video sudah dapat diakses pada sesi ini.
 
@@ -121,7 +121,7 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 - Seleksi dari **awal, perkembangan, akhir**, serta perubahan kamera/objek/komposisi yang benar-benar informatif. Hindari hampir-duplikat, blur, dan frame di tengah dissolve (kecuali untuk bukti transisi).
 - Urutkan panel menurut **timestamp sumber** dari kiri ke kanan, lalu atas ke bawah. Setiap panel diberi label waktu **di luar area gambar**, contoh `00:02.10`; layout enam panel vertikal lazimnya **3 kolom × 2 baris**.
 - **Panel berasal dari MP4 asli**, tanpa generasi AI, upscale, perubahan objek, atau pemotongan yang menyesatkan. Pertahankan rasio aspek dan warna sumber. Target lebar tiap panel **480–720 px jika resolusi sumber/transfer memungkinkan** dan label mudah dibaca. **Target kualitas ini harus diuji, bukan diasumsikan berhasil**.
-- Jika terpaksa resolusi lebih kecil, nama wajib `shot-XX-preview.jpg`; cantumkan dimensi nyata dan dampaknya, jangan diam-diam menyebutnya kualitas penuh. Frame individual boleh dipakai **sementara secara lokal** untuk pemeriksaan, tetapi tidak diunggah sebagai standar utama.
+- **Perbedaan ukuran sumber vs contact sheet:** panel dapat diperkecil **secara wajar** dari resolusi frame asli untuk memenuhi target keterbacaan 480–720 px; ini tetap **`shot-XX.jpg` (contact sheet standar)** jika panel jelas, proporsi/isi tidak berubah, dan ukuran sumber, ukuran panel, serta kanvas dicatat. Contoh: sumber 720×1280 menjadi panel 540×960 **tidak otomatis** disebut preview. **Wajib gunakan `shot-XX-preview.jpg`** jika resolusi diturunkan **di bawah target keterbacaan** karena batas transfer/alat, atau hasil tidak cukup detail untuk analisis; catat penurunan mutu secara terbuka. Jangan meng-upscale atau mengklaim panel beresolusi sumber jika sudah diperkecil. Frame individual boleh dipakai **sementara secara lokal** tetapi tidak diunggah sebagai standar utama.
 - **Contact Sheet Manifest** (satu baris per shot/JPG): Shot ID, link JPG jika **benar-benar sudah ada**, **semua timestamp panel**, jumlah panel, dimensi kanvas dan panel, tipe contact-sheet/preview, SHA Git blob, byte, dan hasil verifikasi render/path. Jika belum diunggah, tulis `belum diunggah` **tanpa link palsu**.
 
 ### Tahap 5 — Evidence Cross-Check
@@ -147,10 +147,10 @@ Tambahkan **tag pencarian** bila faktanya didukung, misalnya `front-yard`, `open
 
 **Gate B — Repository Integrity** wajib memeriksa:
 1. Contact sheet JPG **valid dan terbaca** dengan panel/timestamp sesuai Manifest, rasio/dimensi memadai; file dari MP4 asli, bukan gambar AI.
-2. SHA Git blob, byte, path, jumlah file/panel, tautan, commit dan branch HEAD benar. Bila render pada GitHub tak dapat diperiksa, batasan dilaporkan.
+2. SHA Git blob, byte, path, jumlah file/panel, tautan, commit dan branch HEAD benar. Bila render melalui UI GitHub tak dapat diperiksa, batasan dilaporkan; **SHA Git blob dan byte yang cocok dengan JPEG yang sudah berhasil dibuka lokal dapat membuktikan identitas biner, tetapi bukan bukti bahwa UI GitHub telah ditinjau langsung**.
 3. Analisis **10 bagian**, Shot Map/Manifest dan INDEX konsisten; tidak ada MP4 di tree. Penggantian legacy JPG tidak menyisakan link rusak.
 
-**Hasil:** `PASS` bila kriteria wajib sesuai cakupan terpenuhi; `PARTIAL` bila pemeriksaan/unggah/coverage masih kurang tetapi data yang ada valid; `FAIL` bila sumber tak bisa diperiksa, isi direka, gambar salah/rusak atau keberhasilan penyimpanan tidak dapat dipastikan. **Overall**: `PASS` hanya jika A dan B PASS; `FAIL` jika salah satu FAIL; sisanya `PARTIAL`. Simpan A/B/overall, alasan, dan bukti commit.
+**Hasil:** `belum dijalankan` untuk referensi `pending` yang belum dikerjakan; `PASS` bila kriteria wajib sesuai cakupan terpenuhi; `PARTIAL` bila pemeriksaan/unggah/coverage masih kurang tetapi data yang ada valid; `FAIL` bila analisis diminta tetapi sumber tak bisa diperiksa, isi direka, gambar salah/rusak atau keberhasilan penyimpanan tidak dapat dipastikan. **Overall**: `PASS` hanya jika A dan B PASS; `FAIL` jika salah satu FAIL; sisanya `PARTIAL`. Simpan A/B/overall, alasan, dan bukti commit.
 
 **Status terpisah dari Gate:** `pending` (belum dianalisis), `draft` (AI telah menganalisis tetapi belum disetujui), `reviewed` (ditinjau pengguna), `approved` (persetujuan **eksplisit** pengguna). Gate PASS **tidak membuat status otomatis approved**. INDEX adalah sumber status ringkas; README tidak menyalin angka status.
 

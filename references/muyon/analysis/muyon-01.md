@@ -19,7 +19,9 @@
 | Analysis status | **`draft`** — memerlukan peninjauan pengguna |
 | Verification Gate Opsi B+ | **Gate A: PASS** untuk cakupan visual; **Gate B: PASS** untuk integritas Git; **Overall: PASS**. Audio belum diaudit dan pratinjau UI GitHub belum diuji langsung. Status tetap `draft` sampai ditinjau pengguna. |
 | Evidence checked | [OBSERVASI] MP4 asli: 682 frame terdekode; timeline dipetakan (Pass 1), transisi dan komposisi tiap shot diperiksa ulang (Pass 2); 22 panel dalam empat contact sheet |
-| Video duration | **22,870 detik** |
+| Durasi kontainer MP4 | **22,870 detik** (termasuk audio) |
+| Durasi trek video | **22,733 detik** — 682 frame pada 30 FPS |
+| Durasi trek audio | **22,870 detik** — lebih panjang dari trek gambar |
 | Resolution / Frame rate | **720 × 1280**, **30 FPS** |
 | Aspect ratio | **9:16 (vertikal)** |
 | Video / audio codec | H.264; audio AAC stereo 44,1 kHz (isi suara belum diaudit secara auditori) |
@@ -50,7 +52,7 @@
 
 Batas transisi **perkiraan** karena perpindahan lembut; tidak diklaim sebagai hard cut presisi. Bagian 00:22.57–00:22.87 adalah penutup hitam, bukan shot kebun kelima. Pan dibanding tracking tetap **interpretasi** bila bukti gerakan belum cukup untuk membedakannya.
 
-**Catatan timestamp:** Batas perpindahan sekitar **00:05.6, 00:11.6, dan 00:16.6 detik** adalah **perkiraan** berdasarkan pemeriksaan frame. Ada perpindahan lembut (mirip dissolve) sehingga tidak diklaim sebagai hard cut tepat pada satu frame. Mulai sekitar 00:22.57 gambar menjadi hitam hingga akhir file, bukan shot kebun kelima.
+**Catatan timestamp:** Batas perpindahan sekitar **00:05.6, 00:11.6, dan 00:16.6 detik** adalah **perkiraan** berdasarkan pemeriksaan frame. Ada perpindahan lembut (mirip dissolve) sehingga tidak diklaim sebagai hard cut tepat pada satu frame. Mulai sekitar 00:22.57 gambar menjadi hitam hingga akhir **trek video (±22.73 detik)**, bukan shot kebun kelima; kontainer MP4 masih memiliki audio sampai ±22.87 detik.
 
 ### Shot 01 — Durian di atas bedengan tomat
 
@@ -225,11 +227,11 @@ Batas transisi **perkiraan** karena perpindahan lembut; tidak diklaim sebagai ha
 ## 9. Notes & Uncertainty
 
 - **Sumber historis:** Pada 2026-10-28 MP4 unggahan chat (19.234.334 byte, SHA Git blob `5bc8ff90e091ca7233b633774ac288171edb1465`) cocok dengan MP4 yang **ketika itu** tersimpan di repo. Setelah migrasi, MP4 tidak lagi ada di tree branch; pemilik menyimpan file asli di PC.
-- **Two-Pass:** Durasi 22,870 detik (30 FPS; 682 frame didekode), sampling timeline dan peninjauan ulang tiap shot serta transisi sekitar 05.6, 11.6, 16.6 detik. Batas transisi tetap perkiraan.
+- **Two-Pass:** Kontainer MP4 berdurasi **22,870 detik**; trek gambar **22,733 detik** (682 frame pada 30 FPS), sedangkan audio 22,870 detik. Sampling timeline dan peninjauan ulang tiap shot/transisi dilakukan sekitar 05.6, 11.6, 16.6 detik; batas transisi tetap perkiraan.
 - **Gerak kamera:** Pergeseran komposisi dominan perlahan ke samping; pan vs tracking tidak selalu dapat dipastikan, karenanya tetap berlabel `[INTERPRETASI]`.
 - **Ketidakpastian lain:** Identifikasi sebagian buah merah muda/hijau dan bentuk jingga di kolam belum pasti. Tanah basah dan sprinkler tidak cukup untuk mengonfirmasi gerimis alami. Sumber publikasi dan izin penggunaan frame belum diketahui.
 - **Audio:** Audio AAC ada, tetapi isi suara **belum diperiksa secara auditori**; Gate A hanya untuk cakupan analisis visual.
-- **Kualitas gambar:** Semua panel benar-benar diekstrak dari MP4 sumber 720×1280, diperkecil menjadi 540×960 tanpa mengubah rasio 9:16. Setiap JPG berukuran 1676×2116, timestamp berada di luar panel, dan file berhasil didekode secara lokal.
+- **Kualitas gambar:** Semua panel diekstrak dari MP4 720×1280 dan disusun sebagai contact sheet standar berpanel **540×960** (rasio 9:16), dalam rentang keterbacaan target 480–720 px menurut aturan Opsi B+. Karena pengecilan wajar ini untuk tata letak dan kualitasnya sudah diuji lokal, nama `shot-XX.jpg` benar; **bukan** file preview berkualitas rendah. Kanvas 1676×2116, label waktu berada di luar gambar, dan file berhasil didekode secara lokal.
 
 **Contact Sheet Manifest — empat JPG terverifikasi di GitHub (satu per shot, total 22 panel):**
 

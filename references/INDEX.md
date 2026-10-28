@@ -4,7 +4,7 @@
 
 **Status terkini:** lihat kolom **Status**. `draft` = observasi AI belum disetujui pengguna; `pending` = belum dianalisis. Kolom **Sumber MP4** mencatat apakah unggahan chat sudah pernah diperiksa, **bukan tautan ke file yang tersimpan permanen**. Dalam sesi baru, MP4 asli mungkin perlu diunggah ulang. Jumlah status tidak disalin ke README lain.
 
-## Muyon — 16 video
+## Muyon — 16 referensi video (MP4 tidak disimpan di repo)
 
 [Informasi koleksi Muyon](muyon/README.md)
 

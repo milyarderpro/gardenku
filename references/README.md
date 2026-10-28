@@ -2,7 +2,7 @@
 
 Folder ini menyimpan **pengetahuan hasil analisis** video referensi kebun, bukan file MP4. Video asli dikirim pengguna melalui chat untuk dianalisis dan **disimpan secara pribadi di PC pengguna**. GitHub menyimpan catatan Markdown dan JPG hasil ekstraksi yang terverifikasi.
 
-Cari referensi, status, dan metadata ringkas di [INDEX](INDEX.md). Hasil dan Frame Manifest setiap video menjadi sumber rincian utama; README tidak mengulang angka status yang cepat berubah.
+Cari referensi, status, dan metadata ringkas di [INDEX](INDEX.md). Hasil, Shot Map, dan Contact Sheet Manifest setiap video yang sudah dianalisis menjadi sumber rincian utama; README tidak mengulang angka status yang cepat berubah.
 
 ## Menambahkan atau menganalisis referensi
 

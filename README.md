@@ -24,11 +24,11 @@ gardenku/
 ├── AGENTS.md                 # Navigasi dan prioritas kerja AI
 ├── rules/                    # Ketentuan bagaimana pekerjaan dilakukan
 ├── templates/                # Bentuk dokumen yang dihasilkan
-├── references/               # Video, analisis, dan frame menurut sumber
+├── references/               # Analisis dan contact sheet JPG menurut sumber; tanpa MP4
 │   ├── INDEX.md              # Katalog seluruh kreator
 │   └── muyon/
 │       ├── README.md
-│       ├── analysis/         # hasil per video (Markdown + Frame Manifest)
+│       ├── analysis/         # hasil per video (Shot Map + Contact Sheet Manifest)
 │       └── frames/           # satu JPG contact sheet multi-panel untuk setiap shot
 ├── styles/                   # Rangkuman gaya berbasis bukti
 └── projects/                 # Konsep, prompt, evaluasi, dan arsip
@@ -39,7 +39,7 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 ## Referensi dan status terkini
 
 - **Daftar referensi, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
-- **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis memuat Frame Manifest sesuai [template](templates/video-analysis.md).
+- **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis yang sudah dikerjakan memuat **Shot Map** dan **Contact Sheet Manifest** sesuai [template](templates/video-analysis.md).
 - **Frame JPG asli hasil ekstraksi:** tersimpan di `references/<creator>/frames/<video-id>/` jika sudah diunggah. Status `draft` bukan berarti sudah disetujui.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.

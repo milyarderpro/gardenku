@@ -6,7 +6,7 @@ Koleksi ini menggunakan **MP4 yang diunggah melalui chat** untuk pemeriksaan vis
 
 | Folder | Isi |
 |---|---|
-| [`analysis/`](analysis/) | Analisis per ID video (`muyon-01.md`, dst.), berisi status, shot, catatan sumber, dan Frame Manifest |
+| [`analysis/`](analysis/) | Analisis per ID video (`muyon-01.md`, dst.), berisi status, Shot Map, bukti, dan Contact Sheet Manifest jika sudah dianalisis |
 | [`frames/`](frames/) | Standar Opsi B+: **satu contact sheet JPG per shot**, berisi target 3–6 panel kronologis secara adaptif; versi kecil memakai akhiran `-preview.jpg` |
 
 Lihat [INDEX utama](../INDEX.md) untuk status terkini dan navigasi; jangan menganggap semua referensi Muyon bertema kebun terbuka, hujan, atau slow pan. Temuan dan link frame berada dalam analisis **per video**, tidak diulang dalam README.

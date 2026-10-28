@@ -10,10 +10,11 @@
 | Creator / collection | `muyon` (label koleksi; identitas sumber belum diverifikasi) |
 | Input MP4 (chat) | **Belum diterima / belum diperiksa**; pengguna menyimpan video asli di PC |
 | MP4 di repository | **Tidak ada** — hanya analisis dan JPG ekstraksi yang disimpan |
-| Frames | `../frames/muyon-03/` — **belum tersedia** |
+| Contact sheets | `../frames/muyon-03/` — **belum dibuat/diunggah** |
 | Original source URL | Belum diketahui |
 | Rights / permission | Belum diketahui |
 | Analysis status | **`pending`** |
+| Gate A / Gate B / Overall | **Belum dijalankan** — belum ada analisis yang diminta/dilakukan |
 | Evidence checked | **Belum diperiksa** |
 | Duration / resolution / FPS | Belum diperiksa |
 | Aspect ratio / shot count | Belum diperiksa |
@@ -22,7 +23,7 @@
 _Belum dianalisis._
 
 ## 3. Shot Breakdown
-_Belum dianalisis. Catat jumlah shot, timestamp, kamera, framing, komposisi, dan transisi berdasarkan video asli._
+_Belum dianalisis. Setelah MP4 diterima, gunakan Shot Map (Pass 1) dan Deep Shot Analysis (Pass 2) sesuai [template](../../../templates/video-analysis.md); jangan mengarang timestamp._
 
 ## 4. Plants, Fruits & Garden Layout
 _Belum dianalisis._
@@ -41,14 +42,14 @@ _Belum dianalisis. Jangan mencatat tag atau gaya sebelum ada bukti._
 
 ## 9. Notes & Uncertainty
 - Informasi video belum diperiksa secara visual atau audio.
-- Frame JPG belum diekstrak karena MP4 belum diperiksa; tidak ada file JPG yang ditautkan.
+- Contact sheet JPG per shot belum dibuat karena MP4 belum diperiksa; jangan membuat tautan file yang belum ada.
 - URL Facebook dan izin penggunaan sumber belum diketahui.
 
 ## 10. Quality Checklist
 - [ ] Terima MP4 melalui chat dan periksa video aslinya; jangan mengklaim telah menonton sebelum tersedia.
-- [ ] Catat shot, kamera, komposisi, dan susunan tanaman.
-- [ ] Periksa cuaca, objek/hewan/manusia, air, serta audio.
+- [ ] Petakan seluruh timeline/Shot Map (Pass 1) dan periksa tiap shot/gerakan kamera pada MP4 (Pass 2).
+- [ ] Periksa cuaca, objek/hewan/manusia dan air; **audio hanya diklaim jika didengarkan**, jika belum tulis keterbatasannya.
 - [ ] Bedakan observasi, konteks pengguna, dan interpretasi AI.
-- [ ] Simpan 2–3 JPG pilihan sesuai bukti atau jelaskan pengecualian; isi Frame Manifest setelah file terverifikasi.
-- [ ] Jalankan Verification Gate dan sinkronkan [INDEX](../../INDEX.md) saat analisis sudah dilakukan.
+- [ ] Buat **1 JPG contact sheet per shot** dengan target **3–6 panel kronologis adaptif**, lalu isi Contact Sheet Manifest setelah upload terverifikasi.
+- [ ] Lakukan Evidence Cross-Check, jalankan **Gate A Visual Accuracy + Gate B Repository Integrity**, dan sinkronkan [INDEX](../../INDEX.md) setelah analisis.
 - [ ] Minta persetujuan sebelum mengubah status ke `approved`.

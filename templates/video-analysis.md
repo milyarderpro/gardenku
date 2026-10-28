@@ -17,9 +17,9 @@
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
 | Analysis date | [YYYY-MM-DD atau belum dianalisis] |
 | Analysis status | `pending` / `draft` / `reviewed` / `approved` |
-| Gate A / Gate B / Overall | `PASS` / `PARTIAL` / `FAIL` masing-masing; sertakan alasan dalam bagian 10 |
+| Gate A / Gate B / Overall | `belum dijalankan` saat `pending`; setelah analisis: `PASS` / `PARTIAL` / `FAIL` masing-masing, dengan alasan dalam bagian 10 |
 | Evidence checked | [video asli / frame asli / informasi pengguna / **belum diperiksa**] |
-| Duration | [detik, jika terverifikasi] |
+| Duration | [durasi kontainer, dan durasi trek video jika berbeda; hanya nilai terverifikasi] |
 | Resolution / FPS | [jika terverifikasi] |
 | Aspect ratio | [9:16, 16:9, atau belum pasti] |
 | Shot count | [jumlah atau **belum diperiksa**] |
@@ -153,9 +153,9 @@
 
 | Shot | JPG di GitHub / belum diunggah | Semua timestamp panel (urut) | Panel | Dimensi kanvas / panel | Kategori | SHA Git blob / byte | Verifikasi render/path |
 |---|---|---|---:|---|---|---|---|
-| 01 | [tautan hanya jika sudah ada di GitHub; jika belum, tulis `belum diunggah`] | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960] | [`contact-sheet` / `preview`] | [SHA / byte / belum] | [valid / tidak dapat diverifikasi] |
+| 01 | [tautan hanya jika sudah ada di GitHub; jika belum, tulis `belum diunggah`] | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960; sumber 720×1280] | [`contact-sheet` / `contact-sheet-preview`] | [SHA / byte / belum] | [valid / tidak dapat diverifikasi] |
 
-**Petunjuk:** satu JPG `shot-XX.jpg` dapat berisi **3–6 panel kronologis sebagai target adaptif**, bukan satu JPG per timestamp. Bila JPG gabungan diperkecil untuk transfer gunakan `shot-XX-preview.jpg`; catat resolusi aktual dan batas kualitasnya. Hapus baris contoh saat digunakan. Tautkan hanya JPG yang sudah **benar-benar tersimpan** di tree repo. Path frame relatif terhadap berkas analisis final di `references/<creator>/analysis/`. Lihat [aturan utama](../rules/analysis.md).
+**Petunjuk:** satu JPG `shot-XX.jpg` dapat berisi **3–6 panel kronologis sebagai target adaptif**, bukan satu JPG per timestamp. **Pengecilan wajar panel untuk komposisi contact sheet tidak otomatis menjadikannya preview.** Gunakan `shot-XX-preview.jpg` bila hasil harus diturunkan di bawah target keterbacaan karena batas transfer/alat; catat dimensi sumber, dimensi panel/kanvas, dan batas kualitas nyata. Hapus baris contoh saat digunakan. Tautkan hanya JPG yang sudah **benar-benar tersimpan** di tree repo. Path frame relatif terhadap berkas analisis final di `references/<creator>/analysis/`. Lihat [aturan utama](../rules/analysis.md).
 
 **Evidence Cross-Check:**
 - **Shot yang belum terwakili / perubahan visual yang terlewat:** [...]
@@ -165,9 +165,9 @@
 
 ## 10. Quality Checklist
 
-**Gate A — Visual Accuracy:** [PASS/PARTIAL/FAIL + cakupan MP4, Shot Map, klaim kamera, bukti, audio]  
-**Gate B — Repository Integrity:** [PASS/PARTIAL/FAIL + JPG multi-panel, SHA/byte/path, kualitas render, link, INDEX, commit/HEAD, tanpa MP4]  
-**Overall Gate:** [PASS jika keduanya PASS; FAIL jika salah satu FAIL; selain itu PARTIAL]  
+**Gate A — Visual Accuracy:** [belum dijalankan saat pending; setelah diperiksa PASS/PARTIAL/FAIL + cakupan MP4, Shot Map, kamera, bukti, audio]  
+**Gate B — Repository Integrity:** [belum dijalankan saat pending; setelah simpan PASS/PARTIAL/FAIL + JPG multi-panel, SHA/byte/path, kualitas render, link, INDEX, commit/HEAD, tanpa MP4]  
+**Overall Gate:** [belum dijalankan saat pending; PASS jika keduanya PASS; FAIL jika salah satu FAIL; selain itu PARTIAL]  
 **Bukti verifikasi:** [SHA, byte, dimensi, commit, branch HEAD, jumlah panel/shot, tautan]  
 **Kendala terbuka:** [tidak ada / daftar kekurangan] 
 
