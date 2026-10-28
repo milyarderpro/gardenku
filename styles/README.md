@@ -1,8 +1,8 @@
 # Style Library — Gardenku
 
-Folder ini merupakan **perpustakaan rangkuman gaya visual** yang diambil dari hasil analisis referensi. Berbeda dari `references/` yang menyimpan video dan catatan per video, `styles/` merangkum **pola yang dapat diterapkan ulang** untuk membuat konsep baru.
+Folder ini merupakan **perpustakaan rangkuman gaya visual** yang diambil dari hasil analisis referensi. Berbeda dari `references/` yang menyimpan **analisis dan JPG contact sheet (bukan MP4)**, `styles/` merangkum **pola yang dapat diterapkan ulang** untuk membuat konsep baru.
 
-**Status saat ini: belum ada style profile yang terverifikasi.** Dari 16 dokumen Muyon, satu (`muyon-01`) masih `draft` dan 15 lainnya `pending`. Belum ada analisis `approved`. Oleh karena itu, **jangan membuat klaim** bahwa semua video Muyon merupakan kebun terbuka, selalu hujan, atau menggunakan slow pan.
+**Status profile dan referensi harus diverifikasi.** Periksa [INDEX](../references/INDEX.md) dan file analisis sebelum mengambil kesimpulan. Profil **tidak otomatis** terbentuk hanya karena file video atau frame tersedia; gunakan analisis `approved` sebagai dasar utama. Jangan membuat klaim bahwa semua video dari satu kreator merupakan kebun terbuka, selalu hujan, atau memakai slow pan.
 
 ## Apa yang dapat menjadi style profile?
 

@@ -24,25 +24,24 @@ gardenku/
 ├── AGENTS.md                 # Navigasi dan prioritas kerja AI
 ├── rules/                    # Ketentuan bagaimana pekerjaan dilakukan
 ├── templates/                # Bentuk dokumen yang dihasilkan
-├── references/               # Video, analisis, dan frame menurut sumber
+├── references/               # Analisis dan contact sheet JPG menurut sumber; tanpa MP4
 │   ├── INDEX.md              # Katalog seluruh kreator
 │   └── muyon/
 │       ├── README.md
-│       ├── videos/           # muyon-01.mp4 ... muyon-16.mp4
-│       ├── analysis/         # muyon-01.md ... muyon-16.md
-│       └── frames/           # JPG asli bila sudah diekstrak
+│       ├── analysis/         # hasil per video (Shot Map + Contact Sheet Manifest)
+│       └── frames/           # satu JPG contact sheet multi-panel untuk setiap shot
 ├── styles/                   # Rangkuman gaya berbasis bukti
 └── projects/                 # Konsep, prompt, evaluasi, dan arsip
 ```
 
 Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backyard, rooftop, dan sebagainya). **Jenis kebun adalah metadata analisis, bukan subfolder tambahan.** ID seperti `muyon-01` menghubungkan video, analisis, dan folder frame.
 
-## Kondisi data sekarang
+## Referensi dan status terkini
 
-- **16 video Muyon** telah tersedia di `references/muyon/videos/`.
-- **16 dokumen analisis** tersedia di `references/muyon/analysis/`: **1 `draft` (`muyon-01`) dan 15 `pending`**. Status `draft` belum disetujui.
-- [Tiga JPG preview hasil ekstraksi Muyon 01](references/muyon/frames/muyon-01/) tersedia untuk Shot 01, 03, dan 04 (dikompresi untuk uji upload); frame resolusi penuh serta style profile terverifikasi belum tersedia.
+- **Daftar referensi, metadata ringkas, dan status analisis terbaru:** [references/INDEX.md](references/INDEX.md).
+- **Temuan per video, timestamp, dan JPG yang benar-benar tersimpan:** buka berkas dari [references/muyon/analysis/](references/muyon/analysis/); tiap analisis yang sudah dikerjakan memuat **Shot Map** dan **Contact Sheet Manifest** sesuai [template](templates/video-analysis.md).
+- **Frame JPG asli hasil ekstraksi:** tersimpan di `references/<creator>/frames/<video-id>/` jika sudah diunggah. Status `draft` bukan berarti sudah disetujui.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
-- URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik; periksa izin/hak distribusi sebelum memperluas penggunaan atau membagikan video.**
+- URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik:** hak untuk membagikan JPG juga perlu diperiksa. Penghapusan MP4 dari branch terbaru **tidak menghapus MP4 dari riwayat Git**; pembersihan riwayat memerlukan tindakan terpisah.
 
-**Langkah kerja berikutnya:** analisis referensi satu per satu, ekstrak frame asli bila tersedia alat yang mendukung, lalu perbarui katalog dan gaya visual berdasarkan bukti. Menyimpan file di GitHub **tidak** otomatis melatih ulang model AI; model harus diberi akses dan membaca file yang relevan.
+**Alur Opsi B+ (7 tahap):** video dari chat + validasi → Shot Map / Pass 1 → Deep Shot Analysis / Pass 2 → **contact sheet JPG per shot** (target 3–6 panel kronologis adaptif) → Evidence Cross-Check → simpan Markdown/JPG/INDEX → **Visual Accuracy Gate + Repository Integrity Gate**. **MP4 asli tetap di PC pengguna, tidak disimpan di GitHub.** Saat perlu mengoreksi gerakan/transisi di sesi lain, pengguna dapat mengirim ulang MP4 karena JPG tidak menggantikan video. [Aturan lengkap](rules/analysis.md). GitHub menyimpan pengetahuan, **bukan** melatih ulang model AI.

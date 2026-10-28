@@ -9,7 +9,7 @@ Dokumen ini adalah **peta kerja untuk AI**, bukan pengganti aturan rinci, templa
 | `AGENTS.md` | Memilih alur dan dokumen yang perlu dibaca |
 | `rules/*.md` | **Aturan proses**: apa yang boleh, wajib, dan dilarang |
 | `templates/*.md` | **Format hasil**: bagian dan kolom yang harus diisi |
-| `references/<creator>/videos/` | Bukti media asli (jika benar-benar dapat diakses) |
+| MP4 unggahan pengguna di chat | **Sumber visual utama** untuk sesi analisis; disimpan pengguna di PC, **tidak masuk repo** |
 | `references/<creator>/analysis/` | Temuan per video beserta status dan timestamp |
 | `references/INDEX.md` | Lokasi file, status, dan pencarian referensi; **bukan bukti isi video** |
 | `styles/` | Ringkasan pola visual yang dapat dilacak ke analisis terverifikasi |
@@ -20,19 +20,20 @@ Dokumen ini adalah **peta kerja untuk AI**, bukan pengganti aturan rinci, templa
 
 ## Pilih alur sesuai permintaan
 
-1. **Analisis referensi saja:** baca [`rules/analysis.md`](rules/analysis.md) dan [`templates/video-analysis.md`](templates/video-analysis.md); buka video/frame asli jika tersedia; tulis fakta dengan timestamp dan ketidakpastian. **Jangan membuat ide atau prompt** sebelum diminta.
+1. **Analisis referensi saja:** baca [`rules/analysis.md`](rules/analysis.md) dan [`templates/video-analysis.md`](templates/video-analysis.md). **Terima MP4 dari chat**, jangan mencari MP4 aktif di GitHub; MP4 asli disimpan di PC pengguna. Jika tidak bisa mengakses isi video, nyatakan keterbatasan dan jangan mengarang observasi. Tulis Shot Map, hasil pemeriksaan dua tahap, timestamp dan ketidakpastian; buat **1 JPG contact sheet per shot, berisi 3–6 panel kronologis sebagai target adaptif**. **Jangan membuat ide atau prompt** sebelum diminta.
 2. **Buat ide/konsep:** baca [`rules/ideas.md`](rules/ideas.md) dan [`references/INDEX.md`](references/INDEX.md). Gunakan analisis yang sudah terverifikasi; `styles/` hanya pendukung. Gunakan [template konsep](templates/video-concept.md) **jika konsep lengkap diminta atau sebuah ide sudah dipilih**, bukan untuk setiap ide singkat.
 3. **Buat prompt Google Veo/Flow:** baca [`rules/prompts.md`](rules/prompts.md), konsep terpilih, dan [`templates/video-prompt.md`](templates/video-prompt.md). Default **satu continuous shot ~8 detik per prompt**, biasanya 2–3 shot berbeda jika membuat beberapa klip; ketentuan eksplisit pengguna tetap diutamakan.
-4. **Tambah referensi baru:** tentukan `<creator>` dengan nama folder Inggris lowercase-kebab-case; simpan `videos/<id>.mp4`, buat `analysis/<id>.md` berstatus `pending`, lalu perbarui `references/INDEX.md`. Folder `frames/<id>/` digunakan untuk frame JPG **yang benar-benar diekstrak**, bukan storyboard AI. Catat URL sumber/izin bila diketahui, jangan mengasumsikan izin dari fakta bahwa video ada di Facebook.
-5. **Selesai menganalisis:** ubah status `pending` menjadi `draft` hanya setelah melihat sumber; status `reviewed` dan `approved` mengikuti [aturan analisis](rules/analysis.md). Perbarui kolom jenis kebun, cuaca, kamera, dan status pada katalog hanya berdasarkan temuan yang terbukti. Profile `styles/` baru dibuat bila mempunyai bukti.
+4. **Tambah referensi baru:** tentukan `<creator>` dan ID unik berbahasa Inggris lowercase-kebab-case, buat `analysis/<id>.md` dengan status `pending`, lalu tambahkan baris di `references/INDEX.md`. **Jangan upload MP4 ke repo.** Saat MP4 diterima via chat dan diperiksa, **ubah kerangka `pending` menjadi hasil lengkap sesuai template 10 bagian**, termasuk Shot Map, Contact Sheet Manifest, dan kedua Gate; jangan mengikuti checklist lama dalam kerangka `pending` jika bertentangan dengan aturan aktif. Gunakan `frames/<id>/` hanya untuk JPG yang benar-benar diekstrak dari MP4, bukan storyboard AI. Catat sumber/izin bila diketahui.
+5. **Simpan dan Dual Verification Gate:** lakukan **Evidence Cross-Check** antara MP4, Shot Map, contact sheet dan uraian; lalu simpan Markdown + **1 JPG multi-panel per shot** + [INDEX](references/INDEX.md) dalam commit yang terkoordinasi. Laporkan **Gate A Visual Accuracy**, **Gate B Repository Integrity**, dan overall sebagai PASS/PARTIAL/FAIL; jangan menyamakan file lokal dengan file yang benar-benar terunggah. `draft` bukan `approved`; README tidak menyalin jumlah status.
 
 ## Prinsip singkat
 
 - Bahasa isi: Indonesia; istilah teknis kamera Inggris diperbolehkan.
 - Bedakan **[OBSERVASI]**, **[KONTEKS PENGGUNA]**, **[INTERPRETASI]**, dan **[BELUM PASTI]**.
-- Video `pending` bukan referensi visual terverifikasi. Hindari menyebut sudah menonton jika hanya membaca nama file.
+- Video `pending` bukan referensi visual terverifikasi. Hindari menyebut sudah menonton jika hanya membaca nama file atau metadata GitHub. Keberadaan audio track tidak berarti suara sudah diperiksa.
 - **Shot** = rekaman kontinu; **scene** = kesatuan adegan; **clip** = file atau potongan video.
 - Manusia, hewan, hujan, kolam, dan sprinkler bukan elemen wajib.
-- Hindari instruksi kamera maju terus jika kamera pan/tracking/detail lebih sesuai dengan subjek.
-- Jangan mengubah atau menghapus media asli tanpa perintah pengguna.
+- Hindari instruksi kamera maju terus jika kamera pan/tracking/detail lebih sesuai dengan subjek. **Bedakan pan/tracking/zoom berdasarkan MP4 bergerak**, bukan berdasarkan satu gambar diam.
+- MP4 asli tetap di penyimpanan pengguna, bukan GitHub; jangan meminta pengguna mengunggah ulang jika MP4 sudah tersedia dan dapat dibaca dalam sesi ini.
+- Jangan mengubah atau menghapus media asli pengguna; penghapusan MP4 repo dalam migrasi ini adalah keputusan eksplisit pengguna.
 - [`README.md`](README.md) adalah panduan awal untuk pengguna.

@@ -8,17 +8,22 @@
 |---|---|
 | Video ID | `[creator-01]` |
 | Creator / Source | [nama kreator atau sumber] |
-| Video file | `../videos/[creator-01].mp4` (periksa path aktual) |
-| Frames folder | `../frames/[creator-01]/` (jika tersedia) |
+| Input MP4 (chat) | [nama file yang diunggah pengguna / belum diterima] |
+| Video storage | PC pengguna; **tidak disimpan di repo** |
+| Evidence input | [MP4 chat yang diperiksa / hanya frame / sebagian / belum diperiksa] |
+| Input metadata | [ukuran byte dan hash file bila tersedia; **bukan** hash yang ditebak] |
+| Contact sheet folder | `../frames/[creator-01]/` — JPG multi-panel per shot, jika sudah diunggah |
 | Source URL | [tautan asli atau **belum diketahui**] |
 | Rights / Permission | [izin/status hak penggunaan atau **belum diketahui**] |
 | Analysis date | [YYYY-MM-DD atau belum dianalisis] |
 | Analysis status | `pending` / `draft` / `reviewed` / `approved` |
+| Gate A / Gate B / Overall | `belum dijalankan` saat `pending`; setelah analisis: `PASS` / `PARTIAL` / `FAIL` masing-masing, dengan alasan dalam bagian 10 |
 | Evidence checked | [video asli / frame asli / informasi pengguna / **belum diperiksa**] |
-| Duration | [detik, jika terverifikasi] |
+| Duration | [durasi kontainer, dan durasi trek video jika berbeda; hanya nilai terverifikasi] |
 | Resolution / FPS | [jika terverifikasi] |
 | Aspect ratio | [9:16, 16:9, atau belum pasti] |
 | Shot count | [jumlah atau **belum diperiksa**] |
+| Audio review | [didengarkan / hanya track terdeteksi / belum diperiksa] |
 
 **Aturan status:** mulai dari `pending`; ubah ke `draft` setelah benar-benar dianalisis. `approved` memerlukan persetujuan yang jelas.
 
@@ -35,6 +40,14 @@
 - **Distinctive character:** [maksimal tiga ciri khas]
 
 ## 3. Shot Breakdown
+
+**Shot Map (Pass 1, pemeriksaan ulang batas via Pass 2):**
+
+| Shot | Mulai–akhir | Durasi | Transisi | Ketepatan dan bukti waktu | Cakupan |
+|---|---|---|---|---|---|
+| Shot 01 | [00:00.00–00:05.60] | [5,6s] | [awal/dissolve] | [pasti/perkiraan, alasan] | [diperiksa/belum] |
+
+**Deep Shot Analysis (Pass 2):** setiap shot mencatat observasi MP4 bergerak, perubahan **awal → tengah → akhir**, dan jika gerak kamera ambigu tulis tingkat keyakinan/alternatif.
 
 > **Salin bagian Shot 01 ini untuk tiap shot yang benar-benar terlihat.** Timestamp merujuk pada **video referensi asli**, bukan durasi target generate 8 detik. Pisahkan shot berdasarkan cut; perubahan objek dalam satu gerakan kamera belum tentu cut.
 
@@ -136,16 +149,37 @@
 - **Belum bisa diverifikasi:** [...]
 - **Asumsi yang harus diuji ulang:** [...]
 - **Sumber informasi dari pengguna:** [...]
-- **Frames pendukung:** [path + timestamp untuk setiap frame yang benar-benar tersedia]
-- **Saran pemeriksaan lanjutan:** [...]
+**Contact Sheet Manifest — satu baris untuk satu JPG berisi beberapa panel frame satu shot:**
+
+| Shot | JPG di GitHub / belum diunggah | Semua timestamp panel (urut) | Panel | Dimensi kanvas / panel | Kategori | SHA Git blob / byte | Verifikasi render/path |
+|---|---|---|---:|---|---|---|---|
+| 01 | [tautan hanya jika sudah ada di GitHub; jika belum, tulis `belum diunggah`] | [00:00.20; 00:01.10; 00:02.10; ...] | [6] | [1676×2116 / 540×960; sumber 720×1280] | [`contact-sheet` / `contact-sheet-preview`] | [SHA / byte / belum] | [valid / tidak dapat diverifikasi] |
+
+**Petunjuk:** satu JPG `shot-XX.jpg` dapat berisi **3–6 panel kronologis sebagai target adaptif**, bukan satu JPG per timestamp. **Pengecilan wajar panel untuk komposisi contact sheet tidak otomatis menjadikannya preview.** Gunakan `shot-XX-preview.jpg` bila hasil harus diturunkan di bawah target keterbacaan karena batas transfer/alat; catat dimensi sumber, dimensi panel/kanvas, dan batas kualitas nyata. Hapus baris contoh saat digunakan. Tautkan hanya JPG yang sudah **benar-benar tersimpan** di tree repo. Path frame relatif terhadap berkas analisis final di `references/<creator>/analysis/`. Lihat [aturan utama](../rules/analysis.md).
+
+**Evidence Cross-Check:**
+- **Shot yang belum terwakili / perubahan visual yang terlewat:** [...]
+- **Gerakan kamera/transisi/objek ambigu yang diperiksa ulang pada MP4:** [...]
+- **Kualitas dan keberadaan contact sheet:** [terunggah dan terbaca / lokal saja / belum tersedia]
+- **Audio belum diperiksa bila relevan:** [...]
 
 ## 10. Quality Checklist
+
+**Gate A — Visual Accuracy:** [belum dijalankan saat pending; setelah diperiksa PASS/PARTIAL/FAIL + cakupan MP4, Shot Map, kamera, bukti, audio]  
+**Gate B — Repository Integrity:** [belum dijalankan saat pending; setelah simpan PASS/PARTIAL/FAIL + JPG multi-panel, SHA/byte/path, kualitas render, link, INDEX, commit/HEAD, tanpa MP4]  
+**Overall Gate:** [belum dijalankan saat pending; PASS jika keduanya PASS; FAIL jika salah satu FAIL; selain itu PARTIAL]  
+**Bukti verifikasi:** [SHA, byte, dimensi, commit, branch HEAD, jumlah panel/shot, tautan]  
+**Kendala terbuka:** [tidak ada / daftar kekurangan] 
 
 - [ ] Referensi benar-benar diperiksa; bila tidak, keterbatasan tertulis jelas.
 - [ ] Jumlah dan waktu shot tidak dikarang.
 - [ ] Camera movement, framing, komposisi, layout, cuaca, dan ritme tercatat.
 - [ ] Sumber air, manusia/hewan/objek, dan audio dibedakan sesuai bukti.
 - [ ] Tag dan kesimpulan didukung timestamp atau sumber yang jelas.
-- [ ] Link video/frame mengarah ke lokasi file yang benar.
-- [ ] Status benar, tidak otomatis `approved`.
+- [ ] Nama MP4 unggahan chat, sumber, serta cakupan pemeriksaan jelas; tidak mengklaim MP4 tersedia di repo.
+- [ ] Shot Map Pass 1 dan pemeriksaan MP4 Pass 2 mencakup shot yang relevan.
+- [ ] Satu JPG contact sheet per shot sebagai target, dengan timestamp tiap panel berurutan dan dapat dibaca.
+- [ ] Contact Sheet Manifest satu baris per shot/JPG, semua timestamp panel, dimensi, SHA/byte, dan status; hanya JPG repo yang tersedia diberi tautan.
+- [ ] Evidence Cross-Check serta Gate A dan B dicatat terpisah, overall PASS/PARTIAL/FAIL konsisten.
+- [ ] Status berkas analisis dan baris `references/INDEX.md` konsisten, tidak otomatis `approved`.
 - [ ] **Belum membuat ide atau prompt** jika pengguna hanya meminta analisis.

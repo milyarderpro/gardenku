@@ -8,21 +8,25 @@
 |---|---|
 | Video ID | `muyon-01` |
 | Creator / Collection | Muyon (label koleksi, identitas akun asli belum diverifikasi) |
-| Video file | [`muyon-01.mp4`](../videos/muyon-01.mp4) |
-| Source for this analysis | Unggahan pengguna `muyon01(1).mp4`; **Git blob SHA identik** dengan video di repository |
-| SHA Git blob | `5bc8ff90e091ca7233b633774ac288171edb1465` |
+| Input MP4 (chat) | `muyon01(1).mp4` — diunggah pengguna saat analisis, 2026-10-28 |
+| Penyimpanan MP4 | PC pengguna; **tidak ada MP4 di repository setelah migrasi v1.1** |
+| Bukti cocok historis | Saat MP4 masih berada di repo, ukuran dan SHA Git blob unggahan chat cocok dengan file `muyon-01.mp4` (pemeriksaan 2026-10-28) |
+| SHA Git blob historis | `5bc8ff90e091ca7233b633774ac288171edb1465`; **bukan tautan MP4 aktif** |
 | File size | 19.234.334 bytes |
 | Source URL | URL unggahan Facebook asli belum diketahui; URL repo bukan sumber publikasi asli |
 | Rights / Permission | Belum diverifikasi; jangan menganggap video bebas didistribusikan |
 | Analysis date | 2026-10-28 |
 | Analysis status | **`draft`** — memerlukan peninjauan pengguna |
-| Evidence checked | [OBSERVASI] MP4 asli, cuplikan frame sepanjang video, pemeriksaan batas shot, metadata video |
-| Video duration | **22,870 detik** |
+| Verification Gate Opsi B+ | **Gate A: PASS** untuk cakupan visual; **Gate B: PASS** untuk integritas Git; **Overall: PASS**. Audio belum diaudit dan pratinjau UI GitHub belum diuji langsung. Status tetap `draft` sampai ditinjau pengguna. |
+| Evidence checked | [OBSERVASI] MP4 asli: 682 frame terdekode; timeline dipetakan (Pass 1), transisi dan komposisi tiap shot diperiksa ulang (Pass 2); 22 panel dalam empat contact sheet |
+| Durasi kontainer MP4 | **22,870 detik** (termasuk audio) |
+| Durasi trek video | **22,733 detik** — 682 frame pada 30 FPS |
+| Durasi trek audio | **22,870 detik** — lebih panjang dari trek gambar |
 | Resolution / Frame rate | **720 × 1280**, **30 FPS** |
 | Aspect ratio | **9:16 (vertikal)** |
 | Video / audio codec | H.264; audio AAC stereo 44,1 kHz (isi suara belum diaudit secara auditori) |
 | Main shot count | **4** (batas waktu perkiraan karena perpindahan singkat/dissolve) |
-| Frames folder | [`../frames/muyon-01/`](../frames/muyon-01/) — **3 frame JPG asli yang diperkecil**, lihat daftar pada bagian 9 |
+| Contact sheets folder | [`../frames/muyon-01/`](../frames/muyon-01/) — **4 JPG contact sheet terverifikasi di GitHub**, masing-masing satu per shot (5–6 panel) |
 
 ## 2. Overall Description
 
@@ -37,7 +41,18 @@
 
 ## 3. Shot Breakdown
 
-**Catatan timestamp:** Batas perpindahan sekitar **00:05.6, 00:11.6, dan 00:16.6 detik** adalah **perkiraan** berdasarkan pemeriksaan frame. Ada perpindahan lembut (mirip dissolve) sehingga tidak diklaim sebagai hard cut tepat pada satu frame. Mulai sekitar 00:22.57 gambar menjadi hitam hingga akhir file, bukan shot kebun kelima.
+**Shot Map — hasil pemeriksaan MP4 dua tahap:**
+
+| Shot | Waktu awal–akhir (perkiraan) | Durasi | Bukti transisi | Contact sheet |
+|---|---|---:|---|---|
+| 01 | 00:00.00–00:05.60 | ±5,6 dtk | 05.35–05.55 masih durian; 05.75 sudah adegan kebun berbeda | [`shot-01.jpg`](../frames/muyon-01/shot-01.jpg), 6 panel |
+| 02 | 00:05.60–00:11.60 | ±6,0 dtk | 11.35–11.55 pohon buah/orang; 11.75 sudah sprinkler | [`shot-02.jpg`](../frames/muyon-01/shot-02.jpg), 6 panel |
+| 03 | 00:11.60–00:16.60 | ±5,0 dtk | 16.35–16.55 kolam; 16.75 sudah kelapa/bedengan | [`shot-03.jpg`](../frames/muyon-01/shot-03.jpg), 5 panel |
+| 04 | 00:16.60–00:22.57 | ±6,0 dtk | Setelah ±22.57 layar menjadi hitam | [`shot-04.jpg`](../frames/muyon-01/shot-04.jpg), 5 panel |
+
+Batas transisi **perkiraan** karena perpindahan lembut; tidak diklaim sebagai hard cut presisi. Bagian 00:22.57–00:22.87 adalah penutup hitam, bukan shot kebun kelima. Pan dibanding tracking tetap **interpretasi** bila bukti gerakan belum cukup untuk membedakannya.
+
+**Catatan timestamp:** Batas perpindahan sekitar **00:05.6, 00:11.6, dan 00:16.6 detik** adalah **perkiraan** berdasarkan pemeriksaan frame. Ada perpindahan lembut (mirip dissolve) sehingga tidak diklaim sebagai hard cut tepat pada satu frame. Mulai sekitar 00:22.57 gambar menjadi hitam hingga akhir **trek video (±22.73 detik)**, bukan shot kebun kelima; kontainer MP4 masih memiliki audio sampai ±22.87 detik.
 
 ### Shot 01 — Durian di atas bedengan tomat
 
@@ -211,31 +226,42 @@
 
 ## 9. Notes & Uncertainty
 
-- **Verifikasi identitas file:** Unggahan pengguna berukuran 19.234.334 byte dan menghasilkan SHA blob Git `5bc8ff90e091ca7233b633774ac288171edb1465`; **cocok persis** dengan MP4 pada `../videos/muyon-01.mp4`.
-- **Batas shot:** Angka waktu perkiraan; beberapa perpindahan memakai efek lembut sehingga sulit ditetapkan sebagai satu cut keras.
-- **Sumber dan izin:** URL unggahan asli, identitas pemilik video, dan hak distribusi belum diketahui.
-- **Audio:** Track terdeteksi, tetapi jenis suara tidak diklaim tanpa pemeriksaan auditori.
-- **Waktu/camera gear:** Jam pengambilan dan model alat perekam tidak diketahui.
-- **Jenis tanaman:** Buah merah muda berkelompok (Shot 02), buah hijau bulat (Shot 04), dan beberapa sayuran daun belum dapat diidentifikasi hingga spesies dengan keyakinan tinggi.
-- **Ikan:** Bentuk jingga di kolam terlihat, tetapi identifikasinya belum pasti.
-- **Cuaca:** Kondisi selepas hujan dan gerimis adalah konteks pengguna; video menunjukkan jalur basah dan penyiraman, tetapi tidak cukup untuk memisahkan intensitas gerimis dari sprinkler.
-- **Frames pendukung:** Terdapat **3 JPG preview yang diekstrak dari MP4 asli**, bukan gambar buatan AI:
-  - **Shot 01, 00:02.1** — [Pohon durian dan bedengan tomat](../frames/muyon-01/shot-01_2.1s-preview.jpg), **128 × 228 px**.
-  - **Shot 03, 00:15.9** — [Sprinkler, pepaya, dan kolam](../frames/muyon-01/shot-03_15.9s-preview.jpg), **160 × 284 px**.
-  - **Shot 04, 00:19.5** — [Bedengan sayuran dan pohon buah](../frames/muyon-01/shot-04_19.5s-preview.jpg), **128 × 228 px**.
-  Ketiganya merupakan **preview berukuran kecil dan terkompresi**, bukan frame resolusi asli 720 × 1280. Cuplikan lainnya, termasuk Shot 02, masih belum diunggah; jangan membuat tautan fiktif.
-- **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diperlukan unggah frame resolusi penuh sebagai pengganti/tambahan preview berukuran kecil.
+- **Sumber historis:** Pada 2026-10-28 MP4 unggahan chat (19.234.334 byte, SHA Git blob `5bc8ff90e091ca7233b633774ac288171edb1465`) cocok dengan MP4 yang **ketika itu** tersimpan di repo. Setelah migrasi, MP4 tidak lagi ada di tree branch; pemilik menyimpan file asli di PC.
+- **Two-Pass:** Kontainer MP4 berdurasi **22,870 detik**; trek gambar **22,733 detik** (682 frame pada 30 FPS), sedangkan audio 22,870 detik. Sampling timeline dan peninjauan ulang tiap shot/transisi dilakukan sekitar 05.6, 11.6, 16.6 detik; batas transisi tetap perkiraan.
+- **Gerak kamera:** Pergeseran komposisi dominan perlahan ke samping; pan vs tracking tidak selalu dapat dipastikan, karenanya tetap berlabel `[INTERPRETASI]`.
+- **Ketidakpastian lain:** Identifikasi sebagian buah merah muda/hijau dan bentuk jingga di kolam belum pasti. Tanah basah dan sprinkler tidak cukup untuk mengonfirmasi gerimis alami. Sumber publikasi dan izin penggunaan frame belum diketahui.
+- **Audio:** Audio AAC ada, tetapi isi suara **belum diperiksa secara auditori**; Gate A hanya untuk cakupan analisis visual.
+- **Kualitas gambar:** Semua panel diekstrak dari MP4 720×1280 dan disusun sebagai contact sheet standar berpanel **540×960** (rasio 9:16), dalam rentang keterbacaan target 480–720 px menurut aturan Opsi B+. Karena pengecilan wajar ini untuk tata letak dan kualitasnya sudah diuji lokal, nama `shot-XX.jpg` benar; **bukan** file preview berkualitas rendah. Kanvas 1676×2116, label waktu berada di luar gambar, dan file berhasil didekode secara lokal.
+
+**Contact Sheet Manifest — empat JPG terverifikasi di GitHub (satu per shot, total 22 panel):**
+
+| Shot | Contact sheet | Timestamp panel kronologis | Panel | Dimensi kanvas / panel | Byte | SHA Git blob |
+|---|---|---|---:|---|---:|---|
+| 01 | [`shot-01.jpg`](../frames/muyon-01/shot-01.jpg) | 00:00.20; 00:01.10; 00:02.10; 00:03.10; 00:04.10; 00:05.20 | 6 | 1676×2116 / 540×960 | 1.265.088 | `8a04eab91ce1f4e6120e47d005b4832c27a7cbac` |
+| 02 | [`shot-02.jpg`](../frames/muyon-01/shot-02.jpg) | 00:06.20; 00:07.20; 00:08.30; 00:09.30; 00:10.30; 00:11.40 | 6 | 1676×2116 / 540×960 | 1.163.762 | `a69eb2afedeb1ade3fb50d919a787b1dcc4f3aeb` |
+| 03 | [`shot-03.jpg`](../frames/muyon-01/shot-03.jpg) | 00:12.20; 00:13.30; 00:14.40; 00:15.40; 00:16.20 | 5 | 1676×2116 / 540×960 | 953.713 | `4b504aa895ddc5f2dbd6bb3b908aafad394bad22` |
+| 04 | [`shot-04.jpg`](../frames/muyon-01/shot-04.jpg) | 00:17.30; 00:18.40; 00:19.50; 00:20.60; 00:21.70 | 5 | 1676×2116 / 540×960 | 1.112.812 | `14d20db8968421b3869fe726f04bd982062b9aa7` |
+
+**Verifikasi:** SHA Git blob dan byte dari keempat file pada tree GitHub cocok **persis** dengan JPEG lokal yang berhasil didekode. Karena cocok secara kriptografis, konten biner GitHub identik dengan file yang dapat dibuka lokal. Namun **pratinjau langsung lewat UI GitHub belum bisa diperiksa** oleh konektor; jangan mengklaim telah menguji tampilan web.
+
+Tiga preview kecil lama telah digantikan empat contact sheet baru pada tree branch; semua tautan analisis mengarah ke JPG baru. File lama mungkin tetap tersedia dalam riwayat Git. Pengguna masih dapat meninjau dan mengoreksi identifikasi spesies yang belum pasti tanpa mengubah status `draft` secara otomatis.
 
 ## 10. Quality Checklist
 
-- [x] Video asli diakses dan dicocokkan dengan SHA Git.
-- [x] Shot dan timestamp dipetakan dari isi video, batas perkiraan ditandai.
-- [x] Kamera, framing, komposisi, tanaman, layout, cuaca, objek manusia/hewan, dan air diperiksa.
-- [x] Observasi, konteks pengguna, interpretasi, dan ketidakpastian dibedakan.
-- [x] Tag dan karakter visual didukung bukti/timestamp.
-- [x] Tautan MP4, aturan, template, dan tiga frame JPG preview merujuk file yang benar-benar ada; frame yang belum diunggah tidak ditautkan.
-- [x] Status benar sebagai `draft`, bukan `reviewed` atau `approved`.
-- [x] Tidak membuat ide atau prompt video tanpa diminta.
-- [ ] Audio diperiksa secara auditori.
-- [ ] Hasil analisis ditinjau dan disetujui pengguna.
-- [x] Tiga frame MP4 asli diunggah ke repository sebagai JPG **preview terkompresi** (128 × 228 dan 160 × 284 px). Frame resolusi penuh serta Shot 02 belum diunggah.
+**Gate A — Visual Accuracy: PASS (cakupan visual)**
+- [x] Video asli di chat dapat diproses; metadata, seluruh timeline, Shot Map, dan transisi diperiksa dua tahap.
+- [x] Empat shot utama serta penutup hitam dicatat; batas dissolve ditandai perkiraan.
+- [x] Setiap shot mempunyai contact sheet 5–6 panel informatif (total 22) sesuai urutan waktu.
+- [x] Gerak kamera, perubahan awal–tengah–akhir, tanaman, orang/hewan, kondisi air/cuaca, dan ketidakpastian dilacak ke shot/MP4.
+- [x] Audio tidak diklaim telah didengarkan; interpretasi yang ambigu diberi label.
+
+**Gate B — Repository Integrity: PASS**
+- [x] Empat JPG valid, berhasil dibuka lokal, masing-masing 1676×2116; teks timestamp dan panel terbaca.
+- [x] Keempat SHA Git blob serta ukuran byte pada GitHub **identik** dengan JPEG lokal yang diuji.
+- [x] Manifest dan Shot Map menautkan empat JPG yang ada; tiga preview lama yang digantikan telah dikeluarkan dari tree.
+- [x] Dokumen tetap 10 bagian, katalog INDEX konsisten dengan status `draft`, tanpa MP4 dalam tree branch.
+- [x] Commit dan branch HEAD diverifikasi setelah penyimpanan.
+
+**Overall Gate: PASS (untuk analisis visual dan integritas GitHub).** Status referensi **tetap `draft`**, bukan `approved`.
+
+**Batas pemeriksaan:** Audio belum diaudit, identifikasi tertentu masih `[BELUM PASTI]`, batas transisi perkiraan; pratinjau gambar **langsung melalui UI GitHub** belum diuji, tetapi byte GitHub cocok dengan file JPEG yang terbukti valid secara lokal. Hak distribusi belum diverifikasi.

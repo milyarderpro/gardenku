@@ -7,7 +7,7 @@
 ## 1. Input dan sumber referensi
 1. Pahami permintaan pengguna: jenis kebun, luas ruang, tanaman, cuaca, waktu, hewan/manusia, gaya visual, dan jumlah ide yang diminta.
 2. Cari referensi relevan dari `references/INDEX.md` **jika sudah ada**; sebelum katalog dibuat, telusuri `references/<creator>/analysis/` yang tersedia atau gunakan referensi yang diberikan langsung.
-3. Baca analisis asli, tautan video, dan frame bila diperlukan serta dapat diakses.
+3. Baca analisis dan **contact sheet JPG dari repository**. Jika perlu memverifikasi gerakan atau transisi, gunakan MP4 asli yang **diunggah pengguna melalui chat**, bila tersedia. **Jangan mengasumsikan tautan MP4 GitHub masih ada.**
 4. Utamakan referensi berstatus `approved`. Referensi `draft` boleh digunakan hanya bila dijelaskan bahwa hasilnya belum diverifikasi; jangan mencampurnya diam-diam dengan fakta.
 5. Jika `styles/` sudah berisi rangkuman yang mempunyai sumber referensi jelas, pakai sebagai petunjuk cepat lalu periksa detail analisis saat memerlukan bukti.
 6. **Jangan mengaku telah menonton video** bila hanya membaca ringkasan atau metadata.
