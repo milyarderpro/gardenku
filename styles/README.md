@@ -2,7 +2,7 @@
 
 Folder ini merupakan **perpustakaan rangkuman gaya visual** yang diambil dari hasil analisis referensi. Berbeda dari `references/` yang menyimpan video dan catatan per video, `styles/` merangkum **pola yang dapat diterapkan ulang** untuk membuat konsep baru.
 
-**Status saat ini: belum ada style profile yang terverifikasi.** Seluruh 16 dokumen analisis Muyon masih `pending`. Oleh karena itu, **jangan membuat klaim** bahwa semua video Muyon merupakan kebun terbuka, selalu hujan, atau menggunakan slow pan.
+**Status saat ini: belum ada style profile yang terverifikasi.** Dari 16 dokumen Muyon, satu (`muyon-01`) masih `draft` dan 15 lainnya `pending`. Belum ada analisis `approved`. Oleh karena itu, **jangan membuat klaim** bahwa semua video Muyon merupakan kebun terbuka, selalu hujan, atau menggunakan slow pan.
 
 ## Apa yang dapat menjadi style profile?
 

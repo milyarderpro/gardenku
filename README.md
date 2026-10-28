@@ -40,7 +40,7 @@ Satu kreator dapat memiliki berbagai jenis kebun (open-field, front-yard, backya
 ## Kondisi data sekarang
 
 - **16 video Muyon** telah tersedia di `references/muyon/videos/`.
-- **16 dokumen analisis** tersedia di `references/muyon/analysis/`, semuanya masih **`pending`** (belum dianalisis).
+- **16 dokumen analisis** tersedia di `references/muyon/analysis/`: **1 `draft` (`muyon-01`) dan 15 `pending`**. Status `draft` belum disetujui.
 - Belum ada frame JPG asli atau style profile yang didukung analisis terverifikasi.
 - [Master prompt lama](projects/legacy/README.md) diarsipkan agar tidak bertentangan dengan aturan baru.
 - URL Facebook asli dan izin penggunaan setiap video belum terverifikasi. **Repository ini publik; periksa izin/hak distribusi sebelum memperluas penggunaan atau membagikan video.**

@@ -2,7 +2,7 @@
 
 **Katalog utama semua kreator.** Tiap video memakai **ID unik dalam folder kreator**: `videos/muyon-01.mp4` berpasangan dengan `analysis/muyon-01.md`; frame asli (jika tersedia) disimpan di `frames/muyon-01/`.
 
-**Status saat ini:** 16 video dari koleksi Muyon; seluruh analisis masih **`pending`**, sehingga **jenis kebun, cuaca, tanaman, kamera, dan jumlah shot belum dapat diklaim**. Baris di bawah adalah katalog file, bukan hasil pengamatan.
+**Status saat ini:** 16 video Muyon: **1 analisis `draft` (`muyon-01`) dan 15 `pending`**. Metadata visual `muyon-01` di bawah bersumber dari pemeriksaan MP4 asli dan **belum ditinjau pengguna**; baris lain hanya katalog file, bukan hasil pengamatan.
 
 ## Muyon — 16 video
 
@@ -10,7 +10,7 @@
 
 | Referensi | Video | Jenis kebun | Cuaca | Kamera | Status |
 |---|---|---|---|---|---|
-| [`muyon-01`](muyon/analysis/muyon-01.md) | [MP4](muyon/videos/muyon-01.mp4) | — | — | — | `pending` |
+| [`muyon-01`](muyon/analysis/muyon-01.md) | [MP4](muyon/videos/muyon-01.mp4) | `open-field` (campuran sayur–buah) | Mendung, tanah basah; sprinkler terlihat; gerimis belum pasti | Slow pan / gerak lateral (interpretasi) | `draft` |
 | [`muyon-02`](muyon/analysis/muyon-02.md) | [MP4](muyon/videos/muyon-02.mp4) | — | — | — | `pending` |
 | [`muyon-03`](muyon/analysis/muyon-03.md) | [MP4](muyon/videos/muyon-03.mp4) | — | — | — | `pending` |
 | [`muyon-04`](muyon/analysis/muyon-04.md) | [MP4](muyon/videos/muyon-04.mp4) | — | — | — | `pending` |
