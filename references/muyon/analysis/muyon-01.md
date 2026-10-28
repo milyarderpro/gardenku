@@ -22,7 +22,7 @@
 | Aspect ratio | **9:16 (vertikal)** |
 | Video / audio codec | H.264; audio AAC stereo 44,1 kHz (isi suara belum diaudit secara auditori) |
 | Main shot count | **4** (batas waktu perkiraan karena perpindahan singkat/dissolve) |
-| Frames folder | `../frames/muyon-01/` — belum ada JPG yang diunggah ke GitHub |
+| Frames folder | [`../frames/muyon-01/`](../frames/muyon-01/) — satu [JPG preview Shot 03 pada 00:15.9](../frames/muyon-01/shot-03_15.9s-preview.jpg) (160 × 284 px, dikompresi dari frame MP4 asli) |
 
 ## 2. Overall Description
 
@@ -219,8 +219,8 @@
 - **Jenis tanaman:** Buah merah muda berkelompok (Shot 02), buah hijau bulat (Shot 04), dan beberapa sayuran daun belum dapat diidentifikasi hingga spesies dengan keyakinan tinggi.
 - **Ikan:** Bentuk jingga di kolam terlihat, tetapi identifikasinya belum pasti.
 - **Cuaca:** Kondisi selepas hujan dan gerimis adalah konteks pengguna; video menunjukkan jalur basah dan penyiraman, tetapi tidak cukup untuk memisahkan intensitas gerimis dari sprinkler.
-- **Frames pendukung:** Cuplikan frame asli telah diekstrak secara lokal untuk pemeriksaan pada ±00:02.1, 00:07.7, 00:10.6, 00:13.2, 00:15.9, 00:19.5. **JPG belum diunggah ke folder `frames/muyon-01/` pada GitHub**, sehingga tidak dibuat tautan file yang belum ada.
-- **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diinginkan unggah frame representatif asli ke folder frame.
+- **Frames pendukung:** Cuplikan frame asli diekstrak secara lokal pada ±00:02.1, 00:07.7, 00:10.6, 00:13.2, 00:15.9, 00:19.5. **[Preview Shot 03 pada 00:15.9](../frames/muyon-01/shot-03_15.9s-preview.jpg)** telah disimpan sebagai JPG berukuran **160 × 284 piksel**, yaitu versi kecil dan terkompresi dari frame MP4 asli untuk menguji unggah biner GitHub. Frame lainnya masih lokal dan belum ditautkan.
+- **Saran peninjauan:** Verifikasi identitas jenis buah yang tidak jelas, dengarkan audio asli, dan bila diperlukan unggah frame resolusi penuh sebagai pengganti/tambahan preview berukuran kecil.
 
 ## 10. Quality Checklist
 
@@ -229,9 +229,9 @@
 - [x] Kamera, framing, komposisi, tanaman, layout, cuaca, objek manusia/hewan, dan air diperiksa.
 - [x] Observasi, konteks pengguna, interpretasi, dan ketidakpastian dibedakan.
 - [x] Tag dan karakter visual didukung bukti/timestamp.
-- [x] Tautan MP4, aturan, dan template merujuk file yang ada; frame yang belum terunggah tidak diberi tautan palsu.
+- [x] Tautan MP4, aturan, template, dan satu frame JPG preview merujuk file yang benar-benar ada; frame lain yang belum diunggah tidak ditautkan.
 - [x] Status benar sebagai `draft`, bukan `reviewed` atau `approved`.
 - [x] Tidak membuat ide atau prompt video tanpa diminta.
 - [ ] Audio diperiksa secara auditori.
 - [ ] Hasil analisis ditinjau dan disetujui pengguna.
-- [ ] Frame JPG asli diunggah ke repository (opsional jika fasilitas unggah tersedia).
+- [x] Satu frame MP4 asli diunggah ke repository sebagai JPG **preview terkompresi** (160 × 284 px). Frame resolusi penuh dan frame lainnya belum diunggah.
