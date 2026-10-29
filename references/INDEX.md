@@ -15,7 +15,7 @@
 | [`muyon-03`](muyon/analysis/muyon-03.md) | Unggahan chat (diperiksa 2026-10-28) | Kebun tropis campuran sayur–buah, air dan bedengan | Cahaya lembut; tanah lembap, hujan belum pasti | Slow pan / lateral reveal (interpretasi) | `draft` |
 | [`muyon-04`](muyon/analysis/muyon-04.md) | Unggahan chat (diperiksa 2026-10-28) | Kebun tropis campuran sayur–buah, bedengan dan kolam | Cahaya alami menyebar; hujan belum pasti | Slow pan / lateral reveal (interpretasi) | `draft` |
 | [`muyon-05`](muyon/analysis/muyon-05.md) | Unggahan chat (diperiksa 2026-10-28) | Kebun pekarangan tropis campuran sayur–buah, kolam | Cahaya alami tersebar; hujan belum pasti | Slow pan / pergeseran lateral (interpretasi) | `draft` |
-| [`muyon-06`](muyon/analysis/muyon-06.md) | Belum dikirim lewat chat | — | — | — | `pending` |
+| [`muyon-06`](muyon/analysis/muyon-06.md) | Unggahan chat (diperiksa 2026-10-28) | Kebun tropis campuran sayur–buah, bedengan dan kolam | Cahaya natural difus; semprotan air terlihat; gerimis belum pasti | Slow pan / lateral (interpretasi) | `draft` |
 | [`muyon-07`](muyon/analysis/muyon-07.md) | Belum dikirim lewat chat | — | — | — | `pending` |
 | [`muyon-08`](muyon/analysis/muyon-08.md) | Belum dikirim lewat chat | — | — | — | `pending` |
 | [`muyon-09`](muyon/analysis/muyon-09.md) | Belum dikirim lewat chat | — | — | — | `pending` |
