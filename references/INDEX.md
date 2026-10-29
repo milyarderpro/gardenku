@@ -12,7 +12,7 @@
 |---|---|---|---|---|---|
 | [`muyon-01`](muyon/analysis/muyon-01.md) | Unggahan chat (diperiksa 2026-10-28) | `open-field` (campuran sayur–buah) | Mendung, tanah basah; sprinkler terlihat; gerimis belum pasti | Slow pan / gerak lateral (interpretasi) | `draft` |
 | [`muyon-02`](muyon/analysis/muyon-02.md) | Unggahan chat (diperiksa 2026-10-28) | `open-field` (campuran sayur–buah, kolam) | Cahaya terang lembut; hujan belum pasti | Slow pan / pergeseran kanan (interpretasi) | `draft` |
-| [`muyon-03`](muyon/analysis/muyon-03.md) | Belum dikirim lewat chat | — | — | — | `pending` |
+| [`muyon-03`](muyon/analysis/muyon-03.md) | Unggahan chat (diperiksa 2026-10-28) | Kebun tropis campuran sayur–buah, air dan bedengan | Cahaya lembut; tanah lembap, hujan belum pasti | Slow pan / lateral reveal (interpretasi) | `draft` |
 | [`muyon-04`](muyon/analysis/muyon-04.md) | Belum dikirim lewat chat | — | — | — | `pending` |
 | [`muyon-05`](muyon/analysis/muyon-05.md) | Belum dikirim lewat chat | — | — | — | `pending` |
 | [`muyon-06`](muyon/analysis/muyon-06.md) | Belum dikirim lewat chat | — | — | — | `pending` |
