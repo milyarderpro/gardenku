@@ -136,11 +136,11 @@ Belum pasti: sumber URL dan hak penggunaan, luas lahan, waktu perekaman, kondisi
 ## 10. Quality Checklist
 
 - **Gate A Visual Accuracy:** PASS berdasarkan pemeriksaan MP4 Fase 1, Shot Map, analisis 3 shot, manifest dan batas ketidakpastian.
-- **Gate B Document & Repository Integrity:** Menunggu verifikasi read-back dokumen dan INDEX setelah commit.
-- **Overall:** Menunggu Gate B.
+- **Gate B Document & Repository Integrity:** PASS — pembacaan ulang dokumen 10 bagian, INDEX, status draft, tiga baris manifest, dan HEAD main sesuai commit penyimpanan; JPG remote di luar Gate B.
+- **Overall:** PASS — Gate A PASS dan Gate B PASS.
 - [x] MP4, Shot Map, perkembangan awal–tengah–akhir, komposisi dan kontak frame dilaporkan.
 - [x] Jenis tanaman/cuaca/hewan dan kamera dibedakan menurut keyakinan.
 - [x] Audio tidak dikarang.
 - [x] Tiga contact sheet, total 18 panel, tercatat dalam manifest.
 - [x] `save now` diterima; status tetap `draft`.
-- [ ] Baca ulang kedua dokumen dan HEAD branch `main`.
+- [x] Kedua dokumen dan HEAD branch `main` dibaca ulang setelah commit.
